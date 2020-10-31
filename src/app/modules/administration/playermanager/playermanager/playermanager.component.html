@@ -1,0 +1,28 @@
+<div class="p-d-flex p-ai-start content-wrapper">
+	<div class="p-mr-2" style="height: 100%; width: 250px">
+		<div>
+			<div class="player-search">
+				<span class="p-input-icon-left">
+					<i class="pi pi-search"></i>
+					<input type="text" pInputText placeholder="Search" [(ngModel)]="searchValue" (keyup)="filterPlayers()" />
+				</span>
+			</div>
+			<p-virtualScroller
+        *ngIf="players"
+				[value]="playersFiltered"
+				[scrollHeight]="'calc(100vh - 7.5rem)'"
+				[itemSize]="50"
+				[rows]="players.length"
+				[lazy]="true"
+			>
+				<ng-template pTemplate="item" let-players>
+					<div class="player-box" (click)="navigateToPlayer(players)">{{ players.name }}</div></ng-template
+				>
+				<ng-template let-players pTemplate="loadingItem"> Loading... </ng-template>
+			</p-virtualScroller>
+		</div>
+	</div>
+	<div style="height: 100%; width: 100%">
+    <router-outlet></router-outlet>
+  </div>
+</div>

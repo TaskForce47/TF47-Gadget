@@ -1,0 +1,16 @@
+<p-progressSpinner *ngIf="!ready"></p-progressSpinner>
+<tf47-table
+  *ngIf="ready"
+  [defaultHeaders]="defaultHeaders"
+  [dataLoading]="loading"
+  [data]="data"
+  [headers]="headers"
+  [paginator]="true"
+  [rows]="20"
+  [showCurrentPageReport]="true"
+  [autoLayout]="true"
+  [stateKey]="'player_profile_chat'"
+  [fieldSettings]="fieldSettings"
+  (onManualReload)="loadNotes()"
+>
+</tf47-table>

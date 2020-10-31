@@ -1,0 +1,18 @@
+<p-progressSpinner *ngIf="!ready"></p-progressSpinner>
+<tf47-table
+  *ngIf="ready"
+  [defaultHeaders]="defaultHeaders"
+  [dataLoading]="loading"
+  [data]="data"
+  [headers]="headers"
+  [paginator]="true"
+  [rows]="20"
+  [showCurrentPageReport]="true"
+  [autoLayout]="true"
+  [stateKey]="'squad_overview'"
+  [headerActions]="headerAction"
+  [selectionMode]="'single'"
+  [dataKey]="'id'"
+  (onManualReload)="loadSquads()"
+>
+</tf47-table>

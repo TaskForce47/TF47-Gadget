@@ -1,0 +1,29 @@
+<p-progressSpinner *ngIf="loading || playerId === ''"></p-progressSpinner>
+
+<div *ngIf="player && !loading" class="player-profile">
+	<div class="player-profile-header p-d-flex">
+		<img
+			*ngIf="player.gadgetUser && player.gadgetUser?.avatarUrl"
+			[src]="'https://forum.taskforce47.com' + player.gadgetUser.avatarUrl"
+		/>
+		<div>
+			<div class="p-d-flex player-profile-header-name">
+				<h1>{{ player.name }}</h1>
+				<span *ngIf="player.gadgetUser" style="align-self: center; margin-left: 0.5rem"
+					>({{ player.gadgetUser.forumName }})</span
+				>
+			</div>
+			<span>{{ player.uid }}</span>
+			<div class="p-d-flex player-profile-header-roles" *ngIf="player.gadgetUser">
+				<span
+					class="p-tag p-tag-rounded role"
+					style="margin-left: 0.25rem"
+					*ngFor="let role of player.gadgetUser.roles"
+					>{{ role }}</span
+				>
+			</div>
+		</div>
+	</div>
+	<app-subnavi [subnaviItems]="subnaviItems"></app-subnavi>
+	<router-outlet></router-outlet>
+</div>

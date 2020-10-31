@@ -1,0 +1,5 @@
+<ul *ngIf="ready" style="list-style: none;">
+  <li *ngFor="let whitelist of whitelists; index as i" style="margin-bottom: 1rem">
+    <p-checkbox [label]="whitelist.whitelistName" [(ngModel)]="whitelist.enabled" [binary]="true" (onChange)="updateWhitelist($event, whitelist)"></p-checkbox>
+  </li>
+</ul>

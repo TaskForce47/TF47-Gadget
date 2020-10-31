@@ -1,0 +1,109 @@
+<div class="table-header">
+	<p-header>
+		<div class="p-d-flex p-ai-center">
+			<div class="table-header-actions">
+				<ng-container *ngFor="let headerAction of headerActions">
+					<button
+						pButton
+						class="p-button-text"
+						[label]="headerAction.title"
+            [disabled]="headerAction.disabled || (!selectedItems && headerAction.selectable)"
+						(click)="headerButtonClicked($event, headerAction.action, this.selectedItems)"
+					></button>
+				</ng-container>
+			</div>
+			<div class="table-header-buttons p-d-flex p-ml-auto">
+				<div class="p-ml-auto">
+					<i class="mdi mdi-refresh" (click)="reloadTable($event)"></i>
+				</div>
+				<div>
+					<i class="mdi mdi-cog" #columnIcon (mouseover)="op.show($event, columnIcon)"></i>
+					<p-overlayPanel
+						#op
+						[dismissable]="true"
+						[appendTo]="'body'"
+						[autoZIndex]="true"
+						[baseZIndex]="1100"
+						styleClass="overlaypanel"
+						[showTransitionOptions]="'225ms ease-out'"
+						[hideTransitionOptions]="'195ms ease-in'"
+					>
+						<ul class="column-selection" (mouseleave)="op.hide()">
+							<li *ngFor="let col of headers">
+								<p-checkbox
+									name="groupname"
+									[label]="col.header"
+									(onChange)="tHeadChange($event, col)"
+									[(ngModel)]="tableHeadersFields"
+									[value]="col.field"
+								></p-checkbox>
+							</li>
+						</ul>
+					</p-overlayPanel>
+				</div>
+			</div>
+		</div>
+	</p-header>
+</div>
+<div>
+	<p-table
+		[lazy]="lazy"
+		[responsive]="true"
+		[autoLayout]="autoLayout"
+		[resizableColumns]="resizeableColumns"
+		[value]="data"
+		[columns]="tableHeaders"
+		[reorderableColumns]="reordableColumns"
+		[loadingIcon]="'mdi mdi-loading'"
+		[loading]="dataLoading && !silentReload"
+		[rowHover]="true"
+		[rows]="rows"
+		[first]="first || 0"
+		[(selection)]="selectedItems"
+		[sortMode]="sortMode"
+		[multiSortMeta]="sort"
+		[paginator]="paginator"
+		[pageLinks]="pageLinks"
+		[totalRecords]="totalRecords"
+		[dataKey]="dataKey"
+		[compareSelectionBy]="compareSelectionBy"
+		[scrollable]="scrollable"
+		[scrollHeight]="scrollHeight"
+		[selectionMode]="selectionMode"
+		[showCurrentPageReport]="showCurrentPageReport"
+		[rowsPerPageOptions]="rowsPerPageOptions"
+		[stateKey]="stateKey"
+		[sortOrder]="sortOrder"
+		[sortField]="sortField"
+		[stateStorage]="'local'"
+		(onRowSelect)="onRowSelectEvent($event)"
+		(onPage)="onPageEvent($event)"
+		styleClass="p-datatable-sm p-datatable-gridlines p-datatable-striped"
+	>
+		<ng-template pTemplate="header" let-columns>
+			<tr>
+        <th *ngFor="let col of columns" pReorderableColumn pResizableColumn [pSortableColumn]="col.field">
+          <p-sortIcon [field]="col.field"></p-sortIcon>
+          {{ col.header }}
+				</th>
+			</tr>
+		</ng-template>
+		<ng-template pTemplate="body" let-rowData let-columns="columns" let-index="rowIndex">
+			<tr [pSelectableRow]="rowData" [pSelectableRowIndex]="index">
+				<td *ngFor="let col of columns" [classList]="applyStyling(col.field, rowData[col.field])">
+					<span class="p-column-title">{{ col.header }}</span>
+					<span
+						*ngIf="['timeWritten', 'timeSend', 'ticketChangeTime'].indexOf(col.field) >= 0; else elseBlock"
+						>{{ checkType(rowData[col.field]) }}</span
+					>
+					<ng-template #elseBlock>{{ rowData[col.field] }}</ng-template>
+				</td>
+			</tr>
+		</ng-template>
+		<ng-template pTemplate="emptymessage" let-columns>
+			<tr class="table-empty-message">
+				<td [attr.colspan]="columns.length">No records found</td>
+			</tr>
+		</ng-template>
+	</p-table>
+</div>

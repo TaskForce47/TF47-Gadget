@@ -1,0 +1,15 @@
+<div class="p-d-flex squad-card">
+  <div>
+    <img style="max-width: 128px; max-height: 128px; height: 128px; width: 128px;" [src]="'https://api.taskforce47.com/squadxml/' + squad.squadNick + '/logo.png'"/>
+  </div>
+  <div class="p-d-flex p-flex-column" style="margin-left: 0.5rem">
+    <h1>{{squad.squadTitle}} [{{squad.squadNick}}]</h1>
+    <span>Email: {{squad.squadEmail}}</span>
+    <span>Web: {{squad.squadWeb}}</span>
+    <span>Your Remark: {{squad.remark}}</span>
+  </div>
+  <div class="p-ml-auto" style="margin-right: .25rem">
+    <button pButton type="button" icon="mdi mdi-content-copy" pTooltip="Copy XML Link" class="p-button-text p-button-secondary" tooltipPosition="bottom"></button>
+    <button pButton type="button" icon="mdi mdi-door" pTooltip="Leave Squad" class="p-button-text"></button>
+  </div>
+</div>

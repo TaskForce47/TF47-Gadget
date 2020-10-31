@@ -1,0 +1,100 @@
+{
+	"links": [
+		{
+			"label": "Dashboard",
+			"tooltip": "Dashboard",
+			"routerLink": "/",
+			"roles": [],
+			"icon": "mdi-home",
+			"items": []
+		},
+		{
+			"label": "Gallery",
+			"tooltip": "Gallery",
+			"routerLink": "/gallery",
+			"roles": ["asdsad"],
+			"icon": "mdi-folder-image",
+			"items": []
+		},
+		{
+			"label": "Planning",
+			"tooltip": "Planning",
+			"routerLink": "/planning",
+			"roles": ["asdsad"],
+			"icon": "mdi-map-outline",
+			"items": []
+		},
+		{
+			"label": "Missions",
+			"tooltip": "",
+			"routerLink": "",
+			"roles": ["asdasd"],
+			"icon": "pi pi-calendar",
+			"items": [
+				{
+					"label": "Attendance",
+					"icon": "mdi-flag-plus",
+					"routerLink": "/missions/attendance",
+					"roles": []
+				},
+				{
+					"label": "After Action Report",
+					"icon": "mdi-clipboard-check",
+					"routerLink": "/missions/after-action-report",
+					"roles": ["Moderator", "Admin"]
+				}
+			]
+		},
+		{
+			"label": "Administration",
+			"tooltip": "",
+			"routerLink": "",
+			"roles": ["Admin", "Moderator"],
+			"icon": "pi pi-cog",
+			"items": [
+				{
+					"label": "Player Manager",
+					"icon": "mdi-account-cog",
+					"routerLink": "/administration/playermanager",
+					"roles": []
+				},
+				{
+					"label": "Squad Manager",
+					"icon": "mdi-account-supervisor",
+					"routerLink": "/administration/squadmanager",
+					"roles": []
+				},
+				{
+					"label": "Server Control",
+					"icon": "mdi-server",
+					"routerLink": "/administration/server-control",
+					"roles": ["scsd"]
+				},
+				{
+					"label": "Logs",
+					"icon": "mdi-clipboard-text",
+					"routerLink": "/administration/logs",
+					"roles": []
+				},
+				{
+					"label": "Discord Manager",
+					"icon": "mdi-discord",
+					"routerLink": "/administration/discord",
+					"roles": ["asdasd"]
+				},
+				{
+					"label": "Whitelist",
+					"icon": "mdi-clipboard-list",
+					"routerLink": "/administration/whitelist-overview",
+					"roles": ["asdsad"]
+				},
+				{
+					"label": "Live Map",
+					"icon": "mdi-eye",
+					"routerLink": "/administration/live-map",
+					"roles": ["asdsad"]
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,15 @@
+<tf47-table
+	*ngIf="ready"
+	[gridSettings]="gridSettings"
+	[data]="data"
+	[headers]="headers"
+  [defaultHeaders]="defaultHeaders"
+	[paginator]="true"
+	[rows]="20"
+	[showCurrentPageReport]="true"
+	[dataLoading]="loading"
+	[totalRecords]="totalRecords"
+  [autoLayout]="true"
+  [fieldSettings]="fieldSettings"
+	(onPage)="onPage($event)"
+></tf47-table>

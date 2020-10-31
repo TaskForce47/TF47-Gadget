@@ -1,0 +1,9 @@
+<p-dialog [(visible)]="display" [draggable]="false" class="modal-lg" [ngClass]="styleClass">
+  <p-header>
+    <ng-content select="[header]"></ng-content>
+  </p-header>
+  <ng-content select="[content]"></ng-content>
+  <p-footer>
+    <ng-content select="[footer]"></ng-content>
+  </p-footer>
+</p-dialog>

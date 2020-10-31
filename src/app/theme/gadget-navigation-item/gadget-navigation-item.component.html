@@ -1,0 +1,28 @@
+<div class="nav-item">
+	<ng-container *ngIf="data.items.length > 0; else elseBlock">
+		<div class="nav-item-header">
+			<!--<span><i [classList]="data.icon"></i></span>-->
+			<span> {{ data.label | uppercase }}</span>
+		</div>
+		<ul class="nav-item-sub-container">
+			<ng-container *ngFor="let sublink of data.items">
+				<a [routerLink]="sublink.routerLink" routerLinkActive="nav-item-sub-active">
+					<li class="nav-item-sub" *ngIf="checkRoles(sublink)">
+						<span><i [ngClass]="['mdi', sublink.icon]"></i></span>
+						<span>{{ sublink.label }}</span>
+					</li>
+				</a>
+			</ng-container>
+		</ul>
+	</ng-container>
+	<ng-template #elseBlock>
+		<a [routerLink]="data.routerLink">
+			<ul class="nav-item-sub-container" style="margin-top: 1rem">
+				<li class="nav-item-sub">
+					<span><i [ngClass]="['mdi', data.icon]"></i></span>
+					<span>{{ data.label }}</span>
+				</li>
+			</ul>
+		</a>
+	</ng-template>
+</div>

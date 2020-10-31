@@ -1,0 +1,76 @@
+:host ::ng-deep {
+	.p-datatable-responsive-demo .p-datatable-tbody > tr > td .p-column-title {
+		display: none;
+	}
+}
+
+@media screen and (max-width: 1365px) {
+	:host ::ng-deep {
+		.p-datatable {
+			&.p-datatable-responsive-demo {
+				.p-datatable-thead > tr > th,
+				.p-datatable-tfoot > tr > td {
+					display: none !important;
+				}
+
+				.p-datatable-tbody > tr > td {
+					text-align: left;
+					display: block;
+					width: 100% !important;
+					float: left;
+					clear: left;
+					border: 0 none !important;
+
+					.p-column-title {
+						padding: 0.4rem;
+						min-width: 30%;
+						display: inline-block;
+						margin: -0.4em 1em -0.4em -0.4rem;
+					}
+
+					&:last-child {
+						border-bottom: 1px solid var(--surface-d);
+					}
+				}
+			}
+		}
+	}
+}
+
+
+.table-header-buttons {
+	i {
+		font-size: 1.5rem;
+		margin-right: 1rem;
+		cursor: pointer;
+	}
+}
+.table-empty-message {
+	td {
+		text-align: center;
+		vertical-align: middle;
+	}
+}
+
+.table-header-settings {
+	p-checkbox {
+		margin-top: 0.5rem;
+	}
+}
+
+.ui-overlaypanel {
+  &:before {
+    bottom: none;
+    left: unset;
+    position: unset;
+    content: unset;
+  }
+  &:after {
+    border-bottom-color: transparent;
+    border-top-color: transparent;
+  }
+}
+
+.p-datatable-auto-layout>.p-datatable-wrapper {
+  overflow-x: hidden;
+}

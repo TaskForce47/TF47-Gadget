@@ -1,0 +1,49 @@
+<p-progressSpinner *ngIf="!ready"></p-progressSpinner>
+<tf47-table
+	*ngIf="ready"
+	[defaultHeaders]="defaultHeaders"
+	[dataLoading]="loading"
+	[data]="data"
+	[headers]="headers"
+	[paginator]="true"
+	[rows]="20"
+	[lazy]="false"
+	[showCurrentPageReport]="true"
+	[autoLayout]="true"
+	[sortMode]="'single'"
+	[sortField]="'timeWritten'"
+	[sortOrder]="-1"
+	[stateKey]="'player_profile_notes'"
+	[headerActions]="headerAction"
+	[fieldSettings]="fieldSettings"
+  [selectionMode]="'single'"
+  [dataKey]="'nodeId'"
+	(onManualReload)="loadNotes()"
+	(onHeaderButtonClicked)="headerButtonClicked($event)"
+>
+</tf47-table>
+
+<app-modal #addModal>
+	<div header>Add Note</div>
+	<div content>
+		<div style="margin-top: 1rem; width: 800px" class="modal-lg">
+			<p-fieldset legend="Settings">
+				<form [formGroup]="form" (ngSubmit)="submit()">
+					<div class="p-d-flex p-flex-column">
+						<formly-form [form]="form" [fields]="fields" [model]="model"></formly-form>
+					</div>
+				</form>
+			</p-fieldset>
+		</div>
+	</div>
+	<div footer>
+		<p-button
+			type="submit"
+			label="Submit"
+			icon="pi pi-check"
+			class="p-ml-auto"
+			[disabled]="form.invalid"
+			(click)="submit()"
+		></p-button>
+	</div>
+</app-modal>

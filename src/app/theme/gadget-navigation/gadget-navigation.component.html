@@ -1,0 +1,6 @@
+<ul class="nav-item-container" *ngIf="roles">
+	<li *ngFor="let link of navdata.links">
+		<gadget-navigation-item [data]="link" *ngIf="checkRoles(link)">
+		</gadget-navigation-item>
+	</li>
+</ul>
