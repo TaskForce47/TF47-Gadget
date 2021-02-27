@@ -1,11 +1,10 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { FieldSettings, HeaderButton } from '../../../../ui/table/table.component';
 import { ModalComponent } from '../../../../ui/modal/modal.component';
 import { FormGroup } from '@angular/forms';
-import { FormlyFieldConfig } from '@ngx-formly/core';
 import { AuthService } from '../../../../services/auth.service';
 
 @Component({
@@ -13,7 +12,7 @@ import { AuthService } from '../../../../services/auth.service';
 	templateUrl: './player-notes.component.html',
 	styleUrls: ['./player-notes.component.scss'],
 })
-export class PlayerNotesComponent implements OnInit {
+export class PlayerNotesComponent implements OnInit, OnDestroy {
 	public defaultHeaders: any = [];
 	public loading: any;
 	public data: any;
@@ -34,35 +33,6 @@ export class PlayerNotesComponent implements OnInit {
 			],
 		},
 	};
-	public form = new FormGroup({});
-	public model = {};
-	public fields: FormlyFieldConfig[] = [
-		{
-			key: 'type',
-			type: 'select',
-			defaultValue: 'Info',
-			templateOptions: {
-				label: 'Type',
-				required: true,
-				type: 'string',
-				options: [
-					{ value: 'Info', label: 'Info' },
-					{ value: 'Warning', label: 'Warning' },
-				],
-			},
-		},
-		{
-			key: 'note',
-			type: 'textarea',
-			templateOptions: {
-				label: 'Note',
-				required: true,
-				attributes: {
-					style: 'width: 100%; min-height: 5rem;',
-				},
-			},
-		},
-	];
 	constructor(
 		private router: Router,
 		private activatedRouter: ActivatedRoute,
@@ -99,8 +69,6 @@ export class PlayerNotesComponent implements OnInit {
 				}
 				this.headerAction = headers;
 			});
-
-			this.model = { playerId: Number(this.playerId) };
 		}
 	}
 
@@ -128,16 +96,15 @@ export class PlayerNotesComponent implements OnInit {
 				this.addModal.open();
 				break;
 			case 'delete':
-				console.log($event);
 				this.deleteNote($event[2]);
 				break;
 		}
 	}
 
 	submit() {
-		if (this.form.valid) {
+		if (true) {
 			const headers = new HttpHeaders({ 'Content-Type': 'application/json; charset=utf-8' });
-			this.http.put('/PlayerNotes/addNote', JSON.stringify(this.model), { headers }).subscribe((res) => {
+			this.http.put('/PlayerNotes/addNote', JSON.stringify({}), { headers }).subscribe((res) => {
 				this.loadNotes();
 				this.addModal.close();
 			});

@@ -15,11 +15,6 @@ export class AccountComponent implements OnInit {
 			routerLink: 'profile',
 			routerLinkActiveOptions: { exact: true },
 		},
-		{
-			label: 'Settings',
-			routerLink: 'settings',
-			routerLinkActiveOptions: { exact: true },
-		},
 	];
 	constructor(private auth: AuthService) {}
 

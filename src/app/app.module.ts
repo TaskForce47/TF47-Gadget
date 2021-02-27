@@ -10,24 +10,7 @@ import { AuthService } from './services/auth.service';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { APIInterceptor } from './interceptor/APIInterceptor.interceptor';
 import { ReactiveFormsModule } from '@angular/forms';
-import { FormlyModule } from '@ngx-formly/core';
-import { FormlyPrimeNGModule } from '@ngx-formly/primeng';
-
-export function minlengthValidationMessage(err, field) {
-	return `Should have atleast ${field.templateOptions.minLength} characters`;
-}
-
-export function maxlengthValidationMessage(err, field) {
-	return `This value should be less than ${field.templateOptions.maxLength} characters`;
-}
-
-export function minValidationMessage(err, field) {
-	return `This value should be more than ${field.templateOptions.min}`;
-}
-
-export function maxValidationMessage(err, field) {
-	return `This value should be less than ${field.templateOptions.max}`;
-}
+import { AccountModule } from './modules/account/account.module';
 
 const routes: Routes = [
 	{
@@ -79,17 +62,7 @@ const routes: Routes = [
 		ThemeModule,
 		HttpClientModule,
 		ReactiveFormsModule,
-		FormlyModule.forRoot({
-			extras: { lazyRender: true },
-			validationMessages: [
-				{ name: 'required', message: 'This field is required' },
-				{ name: 'minlength', message: minlengthValidationMessage },
-				{ name: 'maxlength', message: maxlengthValidationMessage },
-				{ name: 'min', message: minValidationMessage },
-				{ name: 'max', message: maxValidationMessage },
-			],
-		}),
-		FormlyPrimeNGModule,
+		AccountModule,
 	],
 	providers: [
 		{

@@ -9,10 +9,33 @@
   [rows]="20"
   [showCurrentPageReport]="true"
   [autoLayout]="true"
-  [stateKey]="'squad_overview'"
   [headerActions]="headerAction"
   [selectionMode]="'single'"
   [dataKey]="'id'"
   (onManualReload)="loadSquads()"
+  (onHeaderButtonClicked)="headerButtonClicked($event)"
 >
 </tf47-table>
+
+<app-modal #addModal>
+	<div header>Add Note</div>
+	<div content>
+		<div style="margin-top: 1rem; width: 800px" class="modal-lg">
+			<p-fieldset legend="Settings">
+				<form (ngSubmit)="submit()">
+					<div class="p-d-flex p-flex-column">
+					</div>
+				</form>
+			</p-fieldset>
+		</div>
+	</div>
+	<div footer>
+		<p-button
+			type="submit"
+			label="Submit"
+			icon="pi pi-check"
+			class="p-ml-auto"
+			(click)="submit()"
+		></p-button>
+	</div>
+</app-modal>

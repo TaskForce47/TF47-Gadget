@@ -64,9 +64,5 @@ export class PlayerProfileComponent implements OnInit, OnDestroy {
 			label: 'Stats',
 			routerLink: 'stats',
 		},
-		{
-			label: 'Attendance',
-			routerLink: 'attendance',
-		},
 	];
 }

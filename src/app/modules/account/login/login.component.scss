@@ -1,0 +1,44 @@
+.login-form-container{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%); /* IE 9 */
+  -webkit-transform: translate(-50%, -50%); /* Chrome, Safari, Opera */
+}
+
+.login-form{
+  background: var(--surface-a);
+  width: 500px;
+  padding: 2em;
+  padding-top: 1em;
+  h1{
+    text-align: center;
+  }
+}
+
+.login-form-split {
+  display: flex;
+}
+
+.login-form-left{
+  width: 50%;
+}
+.login-form-right{
+  width: 50%;
+  border-left: 2px solid;
+  border-color: var(--surface-d);
+  text-align: center;
+  img {
+    width: 150px;
+    margin-left: 0.5rem;
+  }
+}
+
+body{
+  background: url('/assets/images/gm_tankbattle_01_wallpaper.jpg')  no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}

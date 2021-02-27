@@ -39,11 +39,11 @@
 						"assets": ["src/favicon.ico", "src/assets", "src/manifest.webmanifest"],
 						"styles": [
 							"node_modules/primeicons/primeicons.css",
-							"node_modules/primeng/resources/primeng.min.css",
-							"node_modules/quill/dist/quill.core.css",
-							"node_modules/quill/dist/quill.snow.css",
+              "node_modules/primeng/resources/themes/arya-green/theme.css",
+              "node_modules/primeng/resources/primeng.min.css",
+              "node_modules/quill/dist/quill.core.css",
+              "node_modules/quill/dist/quill.snow.css",
 							"node_modules/primeflex/primeflex.css",
-							"src/assets/theme.css",
 							"src/styles.scss"
 						],
 						"scripts": ["./node_modules/quill/dist/quill.js"]

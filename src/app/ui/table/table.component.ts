@@ -64,10 +64,11 @@ export class TableComponent implements OnInit, OnChanges {
 	@Input() selectedItems: any = null;
 	@Input() showCurrentPageReport: boolean;
 	@Input() rowsPerPageOptions: Array<number>;
-	@Input() stateKey: string = 'table';
+	@Input() stateKey: string;
 	@Input() sortOrder: number = 1;
 	@Input() sortField: string;
 	@Input() lazy: boolean = true;
+	@Input() disableSorting: boolean = false;
 	@Output() onRowSelect: EventEmitter<any> = new EventEmitter();
 	@Output() onPage: EventEmitter<any> = new EventEmitter();
 	@Output() onManualReload: EventEmitter<any> = new EventEmitter();
@@ -114,7 +115,6 @@ export class TableComponent implements OnInit, OnChanges {
 				}
 			}
 		});
-		console.log(this.headerActions);
 	}
 	public onPageEvent($event: any) {
 		this.onPage.emit($event);

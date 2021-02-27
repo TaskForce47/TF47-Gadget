@@ -32,12 +32,6 @@
 			"icon": "pi pi-calendar",
 			"items": [
 				{
-					"label": "Attendance",
-					"icon": "mdi-flag-plus",
-					"routerLink": "/missions/attendance",
-					"roles": []
-				},
-				{
 					"label": "After Action Report",
 					"icon": "mdi-clipboard-check",
 					"routerLink": "/missions/after-action-report",

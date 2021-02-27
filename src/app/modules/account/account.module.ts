@@ -4,15 +4,15 @@ import { RouterModule, Routes } from '@angular/router';
 import { UiModule } from '../../ui/ui.module';
 import { AccountProfileComponent } from './account-profile/account-profile.component';
 import { AccountComponent } from './account/account.component';
-import { AccountSettingsComponent } from './account-settings/account-settings.component';
 import { UiComponentsModule } from '../../ui-components/ui-components.module';
-import { FormlyModule } from '@ngx-formly/core';
 import { ReactiveFormsModule } from '@angular/forms';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
 	{
 		path: '',
 		component: AccountComponent,
+		pathMatch: 'full',
 		children: [
 			{ path: '', redirectTo: 'profile', pathMatch: 'full' },
 			{
@@ -22,27 +22,13 @@ const routes: Routes = [
 					breadcrumb: 'Profile',
 				},
 			},
-			{
-				path: 'settings',
-				component: AccountSettingsComponent,
-				data: {
-					breadcrumb: 'Settings',
-				},
-			},
 		],
 	},
 ];
 
 @NgModule({
-	declarations: [AccountComponent, AccountProfileComponent, AccountSettingsComponent],
-	imports: [
-		CommonModule,
-		UiModule,
-		RouterModule.forChild(routes),
-		UiComponentsModule,
-		FormlyModule,
-		ReactiveFormsModule,
-	],
-	exports: [RouterModule],
+	declarations: [AccountComponent, AccountProfileComponent, LoginComponent],
+	imports: [CommonModule, UiModule, RouterModule.forChild(routes), UiComponentsModule, ReactiveFormsModule],
+	exports: [RouterModule, LoginComponent],
 })
 export class AccountModule {}

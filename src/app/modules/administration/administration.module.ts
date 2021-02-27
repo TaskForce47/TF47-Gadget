@@ -4,7 +4,6 @@ import { UiModule } from '../../ui/ui.module';
 import { RouterModule, Routes } from '@angular/router';
 import { SquadOverviewComponent } from './squadmanager/squad-overview/squad-overview.component';
 import { SquadProfileComponent } from './squadmanager/squad-profile/squad-profile.component';
-import { SquadAddComponent } from './squadmanager/squad-add/squad-add.component';
 import { PlayerProfileComponent } from './playermanager/player-profile/player-profile.component';
 import { PlayermanagerComponent } from './playermanager/playermanager/playermanager.component';
 import { SquadmanagerComponent } from './squadmanager/squadmanager/squadmanager.component';
@@ -15,9 +14,7 @@ import { PlayerNotesComponent } from './playermanager/player-notes/player-notes.
 import { PlayerChatComponent } from './playermanager/player-chat/player-chat.component';
 import { PlayerWhitelistComponent } from './playermanager/player-whitelist/player-whitelist.component';
 import { PlayerStatisticsComponent } from './playermanager/player-statistics/player-statistics.component';
-import { PlayerAttendanceComponent } from './playermanager/player-attendance/player-attendance.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { FormlyModule } from '@ngx-formly/core';
 
 const routes: Routes = [
 	{
@@ -68,13 +65,6 @@ const routes: Routes = [
 							breadcrumb: 'Statistics',
 						},
 					},
-					{
-						path: 'attendance',
-						component: PlayerAttendanceComponent,
-						data: {
-							breadcrumb: 'Attendance',
-						},
-					},
 				],
 			},
 		],
@@ -97,6 +87,23 @@ const routes: Routes = [
 					breadcrumb: 'Overview',
 				},
 			},
+			{
+				path: ':id',
+				component: SquadProfileComponent,
+				data: {
+					breadcrumb: 'Add',
+				},
+				children: [
+					{ path: '', redirectTo: 'profile', pathMatch: 'full' },
+					{
+						path: 'profile',
+						component: SquadProfileComponent,
+						data: {
+							breadcrumb: 'Profile',
+						},
+					},
+				],
+			},
 		],
 	},
 	{ path: 'logs', redirectTo: 'logs/chat' },
@@ -112,7 +119,6 @@ const routes: Routes = [
 	declarations: [
 		SquadOverviewComponent,
 		SquadProfileComponent,
-		SquadAddComponent,
 		PlayerProfileComponent,
 		PlayermanagerComponent,
 		SquadmanagerComponent,
@@ -122,15 +128,7 @@ const routes: Routes = [
 		PlayerChatComponent,
 		PlayerWhitelistComponent,
 		PlayerStatisticsComponent,
-		PlayerAttendanceComponent,
 	],
-	imports: [
-		CommonModule,
-		UiModule,
-		RouterModule.forChild(routes),
-		UiComponentsModule,
-		ReactiveFormsModule,
-		FormlyModule,
-	],
+	imports: [CommonModule, UiModule, RouterModule.forChild(routes), UiComponentsModule, ReactiveFormsModule],
 })
 export class AdministrationModule {}
