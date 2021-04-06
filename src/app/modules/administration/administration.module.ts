@@ -14,7 +14,20 @@ import { PlayerNotesComponent } from './playermanager/player-notes/player-notes.
 import { PlayerChatComponent } from './playermanager/player-chat/player-chat.component';
 import { PlayerWhitelistComponent } from './playermanager/player-whitelist/player-whitelist.component';
 import { PlayerStatisticsComponent } from './playermanager/player-statistics/player-statistics.component';
+import { LiveMapComponent } from './live-map/live-map.component';
+import { PlayerListComponent } from './map/player-list/player-list.component';
+import { TaskListComponent } from './map/task-list/task-list.component';
+import { MissionLogComponent } from './map/mission-log/mission-log.component';
+import { PlayerControlsComponent } from './map/player-controls/player-controls.component';
+import { DynamicFormsPrimeNGUIModule } from '@ng-dynamic-forms/ui-primeng';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SquadSettingsComponent } from './squadmanager/squad-settings/squad-settings.component';
+import { SquadWrapperComponent } from './squadmanager/squad-wrapper/squad-wrapper.component';
+import { UsermanagerComponent } from './usermanager/usermanager/usermanager.component';
+import { UserProfileComponent } from './usermanager/user-profile/user-profile.component';
+import { UserKeysComponent } from './usermanager/user-keys/user-keys.component';
+import { UserGroupsComponent } from './usermanager/user-groups/user-groups.component';
+import { GroupmanagerComponent } from './groupmanager/groupmanager/groupmanager.component';
 
 const routes: Routes = [
 	{
@@ -89,9 +102,9 @@ const routes: Routes = [
 			},
 			{
 				path: ':id',
-				component: SquadProfileComponent,
+				component: SquadWrapperComponent,
 				data: {
-					breadcrumb: 'Add',
+					breadcrumb: '',
 				},
 				children: [
 					{ path: '', redirectTo: 'profile', pathMatch: 'full' },
@@ -100,6 +113,13 @@ const routes: Routes = [
 						component: SquadProfileComponent,
 						data: {
 							breadcrumb: 'Profile',
+						},
+					},
+					{
+						path: 'settings',
+						component: SquadSettingsComponent,
+						data: {
+							breadcrumb: 'Settings',
 						},
 					},
 				],
@@ -113,6 +133,63 @@ const routes: Routes = [
 		data: {
 			breadcrumb: 'Logs',
 		},
+	},
+	{
+		path: 'live',
+		component: LiveMapComponent,
+		data: {
+			breadcrumb: 'Live Map',
+		},
+	},
+	{
+		path: 'usermanager',
+		component: UsermanagerComponent,
+		data: {
+			breadcrumb: 'User Manager',
+		},
+		children: [
+			{
+				path: ':id',
+				component: UserProfileComponent,
+				data: {
+					breadcrumb: '',
+				},
+				children: [
+					{ path: '', redirectTo: 'groups', pathMatch: 'full' },
+					{
+						path: 'groups',
+						component: UserGroupsComponent,
+						data: {
+							breadcrumb: 'Groups',
+						},
+					},
+					{
+						path: 'keys',
+						component: UserKeysComponent,
+						data: {
+							breadcrumb: 'Api Keys',
+						},
+					},
+				],
+			},
+		],
+	},
+	{
+		path: 'groupmanager',
+		component: GroupmanagerComponent,
+		data: {
+			breadcrumb: 'User Manager',
+		},
+		children: [
+			{
+				path: ':id',
+				component: UserProfileComponent,
+				data: {
+					breadcrumb: '',
+				},
+				children: [{ path: '', redirectTo: 'groups', pathMatch: 'full' }],
+			},
+		],
 	},
 ];
 @NgModule({
@@ -128,7 +205,26 @@ const routes: Routes = [
 		PlayerChatComponent,
 		PlayerWhitelistComponent,
 		PlayerStatisticsComponent,
+		LiveMapComponent,
+		PlayerListComponent,
+		TaskListComponent,
+		MissionLogComponent,
+		PlayerControlsComponent,
+		SquadSettingsComponent,
+		SquadWrapperComponent,
+		UsermanagerComponent,
+		UserProfileComponent,
+		UserKeysComponent,
+		UserGroupsComponent,
+		GroupmanagerComponent,
 	],
-	imports: [CommonModule, UiModule, RouterModule.forChild(routes), UiComponentsModule, ReactiveFormsModule],
+	imports: [
+		CommonModule,
+		UiModule,
+		RouterModule.forChild(routes),
+		UiComponentsModule,
+		DynamicFormsPrimeNGUIModule,
+		ReactiveFormsModule,
+	],
 })
 export class AdministrationModule {}

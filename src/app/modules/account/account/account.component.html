@@ -1,23 +1,25 @@
 <div class="content-wrapper account-profile">
-  <div class="account-profile-header p-d-flex" *ngIf="userDetails">
-    <div class="account-profile-image">
-      <img [src]="'https://forum.taskforce47.com' + userDetails.avatar">
-    </div>
-    <div  class="account-profile-text p-d-flex p-flex-column">
-      <h1>{{userDetails.profileName}}</h1>
-      <span>{{userDetails.playerUid}}</span>
-      <div class="p-d-flex player-profile-header-roles" *ngIf="userDetails.roles && userDetails.roles.length > 0">
+	<div class="account-profile-header p-d-flex" *ngIf="userDetails">
+		<div class="account-profile-image">
+			<img [src]="userDetails.profilePicture" />
+		</div>
+		<div class="account-profile-text p-d-flex p-flex-column">
+			<h1>{{ userDetails.username }}</h1>
+			<span>{{ userDetails.steamId }}</span>
+			<span>First seen: {{ userDetails.firstTimeSeen | date: 'medium' }}</span>
+			<span>Last seen: {{ userDetails.lastTimeSeen | date: 'medium' }}</span>
+			<span>{{ userDetails.countryCode }}</span>
+			<div class="p-d-flex player-profile-header-roles" *ngIf="userDetails.roles && userDetails.roles.length > 0">
 				<span
-          class="p-tag p-tag-rounded role"
-          style="margin-left: 0.25rem"
-          *ngFor="let role of userDetails.roles"
-        >{{ role }}</span
-        >
-      </div>
-    </div>
-  </div>
+					class="p-tag p-tag-rounded role"
+					style="margin-left: 0.25rem"
+					*ngFor="let role of userDetails.roles"
+					>{{ role }}</span
+				>
+			</div>
+		</div>
+	</div>
 
-  <app-subnavi [subnaviItems]="subnaviItems"></app-subnavi>
-  <router-outlet></router-outlet>
+	<app-subnavi [subnaviItems]="subnaviItems"></app-subnavi>
+	<router-outlet></router-outlet>
 </div>
-

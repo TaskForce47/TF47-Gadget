@@ -6,13 +6,15 @@ import { AccountProfileComponent } from './account-profile/account-profile.compo
 import { AccountComponent } from './account/account.component';
 import { UiComponentsModule } from '../../ui-components/ui-components.module';
 import { ReactiveFormsModule } from '@angular/forms';
-import { LoginComponent } from './login/login.component';
+import { AccountKeysComponent } from './account-keys/account-keys.component';
 
 const routes: Routes = [
 	{
-		path: '',
+		path: 'account',
 		component: AccountComponent,
-		pathMatch: 'full',
+		data: {
+			breadcrumb: 'Account',
+		},
 		children: [
 			{ path: '', redirectTo: 'profile', pathMatch: 'full' },
 			{
@@ -22,13 +24,20 @@ const routes: Routes = [
 					breadcrumb: 'Profile',
 				},
 			},
+			{
+				path: 'keys',
+				component: AccountKeysComponent,
+				data: {
+					breadcrumb: 'Api Keys',
+				},
+			},
 		],
 	},
 ];
 
 @NgModule({
-	declarations: [AccountComponent, AccountProfileComponent, LoginComponent],
+	declarations: [AccountComponent, AccountProfileComponent, AccountKeysComponent],
 	imports: [CommonModule, UiModule, RouterModule.forChild(routes), UiComponentsModule, ReactiveFormsModule],
-	exports: [RouterModule, LoginComponent],
+	exports: [RouterModule],
 })
 export class AccountModule {}

@@ -1,0 +1,18 @@
+<p-progressSpinner *ngIf="loading || userId === ''" styleClass="custom-spinner" strokeWidth="8" animationDuration="2s"></p-progressSpinner>
+
+<div *ngIf="user && !loading">
+  <div class="user-profile-header p-d-flex" *ngIf="user">
+    <div class="user-profile-image">
+      <img [src]="user.profilePicture" />
+    </div>
+    <div class="user-profile-text p-d-flex p-flex-column">
+      <h1>{{ user.username }}</h1>
+      <span>{{ user.steamId }}</span>
+      <span>First seen: {{ user.firstTimeSeen | date: 'medium' }}</span>
+      <span>Last seen: {{ user.lastTimeSeen | date: 'medium' }}</span>
+      <span>{{ user.countryCode }}</span>
+    </div>
+  </div>
+  <app-subnavi [subnaviItems]="subnaviItems"></app-subnavi>
+  <router-outlet></router-outlet>
+</div>

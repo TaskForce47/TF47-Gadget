@@ -1,0 +1,32 @@
+<div class="p-col-10">
+  <div class="p-d-flex">
+    <p-toggleButton
+      class="p-mr-2"
+      onIcon="pi pi-play"
+      offIcon="pi pi-pause"
+      iconPos="right"
+      [(ngModel)]="play"
+    ></p-toggleButton>
+    <p-selectButton [options]="speed" [(ngModel)]="selectedSpeed" optionLabel="name"></p-selectButton>
+    <div class="p-ml-auto p-d-flex">
+      <div class="p-d-flex p-flex-column p-mr-5">
+        <b>Current Time</b>
+        <small>{{time}}</small>
+      </div>
+      <div class="p-d-flex p-flex-column">
+        <b>Total Time</b>
+        <small>{{endDate.getTime() / 1000}}</small>
+      </div>
+    </div>
+  </div>
+  <div class="p-mt-5 p-pl-2 p-pr-2">
+    <p-slider [min]="0" [max]="endDate.getTime() / 1000" [(ngModel)]="time"></p-slider>
+    <div class="p-d-flex p-mt-2">
+      <div class="p-ml-auto p-d-flex">
+        <button pButton label="LIVE" class="p-button-text p-mr-2"></button>
+        <div *ngIf="time == endDate.getTime() / 1000" class="live-status p-as-center"></div>
+        <div *ngIf="time != endDate.getTime() / 1000" class="live-status-off p-as-center"></div>
+      </div>
+    </div>
+  </div>
+</div>

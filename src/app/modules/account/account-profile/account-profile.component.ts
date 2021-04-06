@@ -1,37 +1,21 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Subscription } from 'rxjs';
-export interface Squad {
-	squadId: number;
-	squadNick: string;
-	squadTitle: string;
-	squadEmail: string;
-	squadWeb: string;
-	squadHasPicture: boolean;
-	remark: string;
-	email: string;
-}
+import { Squad } from '../../../models/Gadget';
 @Component({
-	selector: 'app-account-profile',
 	templateUrl: './account-profile.component.html',
 	styleUrls: ['./account-profile.component.scss'],
 })
-export class AccountProfileComponent implements OnInit, OnDestroy {
-	private squadSubscription: Subscription;
+export class AccountProfileComponent implements OnInit {
 	public squads: Array<Squad>;
-	public ready: boolean = false;
+	public loading: boolean = true;
 
 	constructor(private http: HttpClient) {}
 
 	ngOnInit(): void {
-		this.ready = false;
-		this.squadSubscription = this.http.get('/User/getSquads').subscribe((res: Array<Squad>) => {
+		this.loading = true;
+		this.http.get('/Squad/me', { withCredentials: true }).subscribe((res: Array<Squad>) => {
 			this.squads = res;
-			this.ready = true;
+			this.loading = false;
 		});
-	}
-
-	ngOnDestroy() {
-		this.squadSubscription.unsubscribe();
 	}
 }

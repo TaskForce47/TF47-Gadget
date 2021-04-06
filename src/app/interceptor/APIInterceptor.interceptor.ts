@@ -1,11 +1,41 @@
 import { Injectable } from '@angular/core';
-import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest } from '@angular/common/http';
-import { Observable } from 'rxjs';
-
+import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest, HttpErrorResponse } from '@angular/common/http';
+import { Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
+import { MessageService } from 'primeng/api';
+import { ActivatedRoute, Router } from '@angular/router';
 @Injectable()
 export class APIInterceptor implements HttpInterceptor {
+	constructor(private notification: MessageService, private router: Router, private activatedRoute: ActivatedRoute) {}
 	intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-		const apiReq = req.clone({ url: `https://api.taskforce47.com/api${req.url}`, withCredentials: true });
-		return next.handle(apiReq);
+		if (req.url.indexOf('https') === -1) {
+			const apiReq = req.clone({ url: `https://beta.taskforce47.com/api${req.url}` });
+			return next.handle(apiReq).pipe(
+				// @ts-ignore
+				catchError((error: HttpErrorResponse) => {
+					switch (error.status) {
+						case 0:
+							this.notification.add({
+								severity: 'error',
+								summary: 'Request failed',
+								detail: 'Server did not respond',
+							});
+							break;
+						case 400:
+							this.router.navigate(['..'], {
+								relativeTo: this.activatedRoute,
+							});
+							this.notification.add({
+								severity: 'error',
+								summary: 'Request failed',
+								detail: 'The Resource with the specified it was not found',
+							});
+							break;
+					}
+					return throwError(error);
+				})
+			);
+		}
+		return next.handle(req);
 	}
 }

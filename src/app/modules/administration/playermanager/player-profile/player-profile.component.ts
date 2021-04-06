@@ -4,24 +4,15 @@ import { HttpClient } from '@angular/common/http';
 import { Subscription } from 'rxjs';
 import { MenuItem } from 'primeng/api';
 
-export interface GadgetUser {
-	id: number;
-	forumName: string;
-	avatarUrl: string;
-	roles: string[];
-}
-
 export interface Player {
-	id: number;
-	name: string;
-	uid: string;
-	isBanned: boolean;
-	bannedUntil?: any;
-	gadgetUser?: GadgetUser;
+	playerUid: string;
+	playerName: string;
+	numberConnections: number;
+	firstVisit: string;
+	lastVisit: string;
 }
 
 @Component({
-	selector: 'app-player-profile',
 	templateUrl: './player-profile.component.html',
 	styleUrls: ['./player-profile.component.scss'],
 })
@@ -36,7 +27,7 @@ export class PlayerProfileComponent implements OnInit, OnDestroy {
 			this.playerId = res.id;
 			if (this.playerId !== 'playermanager') {
 				this.loading = true;
-				this.http.get('/player/' + this.playerId + '/details').subscribe((res: Player) => {
+				this.http.get('/player/' + this.playerId).subscribe((res: Player) => {
 					this.player = res;
 					this.loading = false;
 				});
@@ -59,10 +50,6 @@ export class PlayerProfileComponent implements OnInit, OnDestroy {
 		{
 			label: 'Chat',
 			routerLink: 'chat',
-		},
-		{
-			label: 'Stats',
-			routerLink: 'stats',
 		},
 	];
 }

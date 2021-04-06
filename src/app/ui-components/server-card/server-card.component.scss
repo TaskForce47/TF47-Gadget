@@ -1,0 +1,45 @@
+.server-card {
+	width: 25rem;
+	padding: 1rem;
+	margin-bottom: 1rem;
+	background: var(--surface-e);
+}
+@media screen and  (min-width: 992px){
+  .server-card{
+    width: 50em;
+  }
+}
+.server-wrapper {
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+}
+.server-card-header {
+	width: 100%;
+	color: rgba(227, 225, 222, 0.5);
+  h1 {
+		margin: 0;
+	}
+}
+.server-card-header-image {
+	height: 3em;
+	opacity: 0.4;
+  filter: saturate(0) invert(1);
+  -webkit-user-drag: none;
+}
+.server-card-status{
+  width: 25px;
+  height: 25px;
+  border-radius: 999999px;
+  background: green;
+}
+
+.server-card-main{
+  text-align: center;
+}
+
+.server-card-footer{
+  a:-webkit-any-link{
+    color: black;
+  }
+}

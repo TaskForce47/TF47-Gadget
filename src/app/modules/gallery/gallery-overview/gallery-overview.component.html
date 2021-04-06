@@ -1,1 +1,31 @@
-<p>gallery-overview works!</p>
+<div class="gallery-filter-container p-d-flex p-jc-center content-wrapper">
+	<div>
+    <a class="p-mr-3 filter">Neu</a>
+    <a class="p-mr-3 filter filter-active">Beliebt</a>
+		<input type="search" pInputText placeholder="Search" style="height: 35px; width: 500px" class="p-mr-3" />
+    <a pButton icon="mdi mdi-cloud-upload" iconPos="left" [href]="'/gallery/upload'" style="color: black"></a>
+  </div>
+</div>
+<div class="p-grid content-wrapper">
+	<div class="p-col-0 p-xl-2"></div>
+	<div id="galleryContainer" class="p-col-12 p-xl-8">
+		<div *ngFor="let chunk of chunked; let x = index" class="p-d-flex p-flex-column">
+			<div class="p-d-flex p-flex-row stream-row p-jc-center">
+				<div *ngFor="let img of chunk; let i = index">
+					<img
+						[src]="'https://thumb.pr0gramm.com/' + img.thumb"
+						height="128px"
+						width="128px"
+            style="margin: 0 0 4px 4px;"
+						alt="asd"
+						(click)="maxImg($event, img)"
+					/>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="p-col-0 p-xl-2"></div>
+</div>
+<div id="expanded-resource">
+	<ng-template galleryresource></ng-template>
+</div>

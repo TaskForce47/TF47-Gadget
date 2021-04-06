@@ -3,19 +3,21 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
-import { RouterModule, Routes } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule, Routes } from '@angular/router';
 import { ThemeModule } from './theme/theme.module';
-import { HomeComponent } from './modules/dashboard/home/home.component';
 import { AuthService } from './services/auth.service';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { APIInterceptor } from './interceptor/APIInterceptor.interceptor';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AccountModule } from './modules/account/account.module';
+import { DynamicFormsPrimeNGUIModule } from '@ng-dynamic-forms/ui-primeng';
+import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
 
 const routes: Routes = [
 	{
 		path: '',
-		component: HomeComponent,
+		loadChildren: () => import('./modules/dashboard/dashboard.module').then((m) => m.DashboardModule),
 	},
 	{
 		path: 'account',
@@ -39,9 +41,9 @@ const routes: Routes = [
 		loadChildren: () => import('./modules/administration/administration.module').then((m) => m.AdministrationModule),
 	},
 	{
-		path: 'missions',
+		path: 'campaigns',
 		data: {
-			breadcrumb: 'Missions',
+			breadcrumb: 'Campaigns',
 		},
 		loadChildren: () => import('./modules/missions/missions.module').then((m) => m.MissionsModule),
 	},
@@ -51,6 +53,13 @@ const routes: Routes = [
 			breadcrumb: 'Gallery',
 		},
 		loadChildren: () => import('./modules/gallery/gallery.module').then((m) => m.GalleryModule),
+	},
+	{
+		path: 'community',
+		data: {
+			breadcrumb: 'Community',
+		},
+		loadChildren: () => import('./modules/community/community.module').then((m) => m.CommunityModule),
 	},
 ];
 @NgModule({
@@ -63,14 +72,18 @@ const routes: Routes = [
 		HttpClientModule,
 		ReactiveFormsModule,
 		AccountModule,
+		ReactiveFormsModule,
+		DynamicFormsPrimeNGUIModule,
 	],
 	providers: [
 		{
 			provide: HTTP_INTERCEPTORS,
 			useClass: APIInterceptor,
 			multi: true,
+			deps: [MessageService, Router, ActivatedRoute],
 		},
 		AuthService,
+		MessageService,
 	],
 	bootstrap: [AppComponent],
 })

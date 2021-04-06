@@ -1,0 +1,14 @@
+<div class="p-grid">
+	<div class="p-col-1 next-chev">
+		<i class="mdi mdi-chevron-left" style="font-size: 50pt"></i>
+	</div>
+	<div class="p-col-10 p-d-flex p-jc-center">
+    <img *ngIf="imgObj.image.indexOf('.mp4') === -1" [src]="'https://img.pr0gramm.com/' + imgObj.image" style="max-width: 100%"/>
+    <video *ngIf="imgObj.image.indexOf('.mp4') !== -1" style="max-width: 100%" controls preload="auto">
+      <source [src]="'https://vid.pr0gramm.com/' + imgObj.image" type="video/mp4" />
+    </video>
+  </div>
+	<div class="p-col-1 p-d-flex next-chev">
+		<i class="mdi mdi-chevron-right p-ml-auto" style="font-size: 50pt"></i>
+	</div>
+</div>

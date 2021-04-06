@@ -1,0 +1,77 @@
+<div class="content-wrapper">
+	<div>
+		<p-dataView
+			#dv
+			[value]="issues"
+			[paginator]="true"
+			[rows]="9"
+			filterBy="name"
+			[sortField]="sortField"
+			[sortOrder]="sortOrder"
+		>
+			<ng-template pTemplate="header">
+				<div class="p-d-flex p-flex-column p-flex-md-row">
+					<p-dropdown
+						[options]="sortOptions"
+						[(ngModel)]="sortKey"
+						placeholder="Filter"
+						(onChange)="onSortChange($event)"
+						styleClass="p-mb-2 p-mb-md-0"
+					></p-dropdown>
+					<span class="p-input-icon-left p-mb-2 p-mb-md-0">
+						<i class="pi pi-search"></i>
+						<input
+							type="search"
+							pInputText
+							placeholder="Search"
+						/>
+					</span>
+          <button pButton type="button" label="New Issue" class="p-button text-black p-ml-md-auto" (click)="addModal.open()"></button>
+				</div>
+			</ng-template>
+			<ng-template let-issue pTemplate="listItem">
+				<div class="p-p-3 p-col-12 issue-container p-d-flex">
+          <div class="p-d-flex p-flex-column p-flex-md-row">
+            <div class="p-d-flex">
+              <i class="mdi mdi-alert-circle-outline" style="color: lightgreen"></i>
+              <div class="p-d-flex p-flex-column p-ml-2">
+                <a class="p-text-bold issue-title" [routerLink]="'../'+issue.issueId">{{ issue.title }}</a>
+                <div class="p-ml-2">
+                  <span class="p-text-secondary p-text-light issue-sub-title">#{{ issue.issueId }} opened on {{issue.timeCreated|date}} by {{ issue.creatorName }}</span>
+                </div>
+              </div>
+            </div>
+            <div>
+              <p-tag *ngFor="let issueTag of issue.issueTags" [value]="issueTag.tagName" [style]="{'background-color': issueTag.color}"></p-tag>
+            </div>
+          </div>
+					<div class="p-ml-auto p-d-flex">
+						<div class="p-as-center p-d-flex p-ml-6">
+							<i class="mdi mdi-comment-outline"></i>
+							<span class="p-ml-1">{{issue.issueItems.length}}</span>
+						</div>
+					</div>
+				</div>
+			</ng-template>
+		</p-dataView>
+	</div>
+</div>
+<app-modal #addModal [styleClass]="['modal-sm']">
+  <div header>Add Issue</div>
+  <div content>
+    <div>
+      <form *ngIf="formReady" [formGroup]="myFormGroup">
+        <dynamic-primeng-form *ngIf="formReady" [group]="myFormGroup" [model]="myFormModel"></dynamic-primeng-form>
+      </form>
+    </div>
+  </div>
+  <div footer>
+    <p-button
+      *ngIf="formReady"
+      type="submit"
+      label="Submit"
+      class="p-ml-auto"
+      (click)="submit()"
+    ></p-button>
+  </div>
+</app-modal>

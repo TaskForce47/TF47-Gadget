@@ -1,0 +1,14 @@
+.gallery-filter-container{
+ height: 50px;
+}
+.filter{
+  text-decoration: underline;
+  cursor: pointer;
+  &:hover{
+    color: var(--text-color-secondary);
+  }
+}
+.filter-active {
+  color: var(--primary-color);
+
+}

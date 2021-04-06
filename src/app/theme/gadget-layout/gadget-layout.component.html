@@ -5,41 +5,57 @@
 				<span>Task Force 47</span>
 				<span class="header-gadget">Gadget</span>
 			</div>
-			<app-breadcrumbs class="p-d-md-block p-d-none"></app-breadcrumbs>
-			<div class="p-ml-auto p-d-none p-d-lg-block">
-				<!--<i class="mdi mdi-bell"></i>-->
-				<a routerLink="/account/profile">{{ user?.profileName }}</a>
+			<app-breadcrumbs class="header-breadcrumbs p-d-md-block p-d-none"></app-breadcrumbs>
+			<div class="p-ml-auto p-d-none p-d-lg-block p-mr-3">
+				<a
+					pButton
+					type="button"
+					icon="mdi mdi-github"
+					class="p-button-text text-5xl p-mr-3 p-mt-2"
+					pTooltip="Github"
+					tooltipPosition="bottom"
+					href="https://github.com/taskforce47"
+          target="_blank"
+				></a>
+				<a
+					pButton
+					type="button"
+					icon="mdi mdi-forum"
+					class="p-button-text text-5xl p-mr-3 p-mt-2"
+					pTooltip="Forum"
+					tooltipPosition="bottom"
+					href="https://forum.taskforce47.com"
+          target="_blank"
+				></a>
+        <a href="https://beta.taskforce47.com/api/Authentication/login/steam">
+          <img
+            *ngIf="!user"
+            class="steam-login"
+            alt="Steam login"
+            src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/steamworks_docs/german/sits_small.png"
+          />
+        </a>
+        <p-splitButton *ngIf="user" class="profile-link" [label]="user.username" [model]="items"></p-splitButton>
 			</div>
-			<div class="p-d-lg-none p-ml-auto">
+			<div class="p-d-lg-none p-ml-auto header-burger">
 				<i class="mdi mdi-menu menu-burger" (click)="menuToggle($event)"></i>
 			</div>
 		</div>
 	</div>
 	<div class="nav-side" [ngClass]="{ 'expand-side-menu': toggleMenu }" #navigation>
 		<div class="nav-side-sub p-d-flex p-flex-column">
+      <a href="https://beta.taskforce47.com/api/Authentication/login/steam">
+        <img
+          *ngIf="!user"
+          class="steam-login"
+          src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/steamworks_docs/german/sits_small.png"
+        />
+      </a>
 			<gadget-navigation></gadget-navigation>
-			<div class="nav-side-bottom-container p-d-flex p-flex-column p-mt-auto">
-				<!--<button pButton type="button" label="Homepage" icon="mdi mdi-home" class="nav-side-bottom-button p-button-text"></button>-->
-				<button
-					pButton
-					type="button"
-					label="Github"
-					icon="mdi mdi-github"
-					class="nav-side-bottom-button p-button-text"
-					(click)="openPage('https://github.com/taskforce47')"
-				></button>
-				<button
-					pButton
-					type="button"
-					label="Forum"
-					icon="mdi mdi-forum"
-					class="nav-side-bottom-button p-button-text"
-					(click)="openPage('https://forum.taskforce47.com')"
-				></button>
-			</div>
 		</div>
 	</div>
 	<div class="content-area" [ngClass]="{ 'content-blur': toggleMenu }">
+    <p-toast></p-toast>
 		<router-outlet></router-outlet>
 	</div>
 </div>

@@ -16,7 +16,7 @@
 				<div class="p-ml-auto">
 					<i class="mdi mdi-refresh" (click)="reloadTable($event)"></i>
 				</div>
-				<div>
+				<div *ngIf="!static">
 					<i class="mdi mdi-cog" #columnIcon (mouseover)="op.show($event, columnIcon)"></i>
 					<p-overlayPanel
 						#op
@@ -101,10 +101,8 @@
 				<td *ngFor="let col of columns" [classList]="applyStyling(col.field, rowData[col.field])">
 					<span class="p-column-title">{{ col.header }}</span>
 					<span
-						*ngIf="['timeWritten', 'timeSend', 'ticketChangeTime'].indexOf(col.field) >= 0; else elseBlock"
 						>{{ checkType(rowData[col.field]) }}</span
 					>
-					<ng-template #elseBlock>{{ rowData[col.field] }}</ng-template>
 				</td>
 			</tr>
 		</ng-template>

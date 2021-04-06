@@ -9,33 +9,98 @@
 			"items": []
 		},
 		{
+			"label": "Community",
+			"tooltip": "",
+			"routerLink": "",
+			"roles": [],
+			"icon": "",
+			"items": [
+				{
+					"label": "Servers",
+					"icon": "mdi-gamepad-variant",
+					"routerLink": "/community/servers",
+					"roles": []
+				},
+				{
+					"label": "Squads",
+					"icon": "mdi-account-group",
+					"routerLink": "/community/squads",
+					"roles": []
+				},
+				{
+					"label": "Issues",
+					"icon": "mdi-alert-circle",
+					"routerLink": "/community/issues",
+					"roles": []
+				},
+				{
+					"label": "Changelog",
+					"icon": "mdi-account-hard-hat",
+					"routerLink": "/community/changelog",
+					"roles": []
+				}
+			]
+		},
+		{
 			"label": "Gallery",
 			"tooltip": "Gallery",
 			"routerLink": "/gallery",
-			"roles": ["asdsad"],
-			"icon": "mdi-folder-image",
-			"items": []
+			"roles": [],
+			"icon": "",
+			"items": [
+				{
+					"label": "Overview",
+					"icon": "mdi-folder-image",
+					"routerLink": "/gallery/overview",
+					"roles": []
+				},
+				{
+					"label": "Upload File",
+					"icon": "mdi-upload",
+					"routerLink": "/gallery/upload",
+					"roles": []
+				}
+			]
 		},
 		{
 			"label": "Planning",
 			"tooltip": "Planning",
 			"routerLink": "/planning",
-			"roles": ["asdsad"],
-			"icon": "mdi-map-outline",
-			"items": []
+			"roles": ["asd"],
+			"icon": "",
+			"items": [
+				{
+					"label": "Overview",
+					"icon": "mdi-map-outline",
+					"routerLink": "/planning/overview",
+					"roles": []
+				},
+				{
+					"label": "New Mission Plan",
+					"icon": "mdi-map-plus",
+					"routerLink": "/planning/create",
+					"roles": []
+				}
+			]
 		},
 		{
 			"label": "Missions",
 			"tooltip": "",
 			"routerLink": "",
-			"roles": ["asdasd"],
+			"roles": ["asd"],
 			"icon": "pi pi-calendar",
 			"items": [
 				{
-					"label": "After Action Report",
+					"label": "Overview",
 					"icon": "mdi-clipboard-check",
-					"routerLink": "/missions/after-action-report",
-					"roles": ["Moderator", "Admin"]
+					"routerLink": "/campaigns/overview",
+					"roles": []
+				},
+				{
+					"label": "Statistics",
+					"icon": "mdi-chart-areaspline",
+					"routerLink": "/campaigns/after-action-report",
+					"roles": []
 				}
 			]
 		},
@@ -46,9 +111,21 @@
 			"roles": ["Admin", "Moderator"],
 			"icon": "pi pi-cog",
 			"items": [
+        {
+          "label": "User Manager",
+          "icon": "mdi-account-cog",
+          "routerLink": "/administration/usermanager",
+          "roles": []
+        },
+        {
+          "label": "Group Manager",
+          "icon": "mdi-account-group",
+          "routerLink": "/administration/groupmanager",
+          "roles": []
+        },
 				{
 					"label": "Player Manager",
-					"icon": "mdi-account-cog",
+					"icon": "mdi-account-search",
 					"routerLink": "/administration/playermanager",
 					"roles": []
 				},
@@ -61,8 +138,8 @@
 				{
 					"label": "Server Control",
 					"icon": "mdi-server",
-					"routerLink": "/administration/server-control",
-					"roles": ["scsd"]
+					"routerLink": "/servercontrol/",
+					"roles": []
 				},
 				{
 					"label": "Logs",
@@ -74,19 +151,19 @@
 					"label": "Discord Manager",
 					"icon": "mdi-discord",
 					"routerLink": "/administration/discord",
-					"roles": ["asdasd"]
+					"roles": ["asd"]
 				},
 				{
 					"label": "Whitelist",
 					"icon": "mdi-clipboard-list",
 					"routerLink": "/administration/whitelist-overview",
-					"roles": ["asdsad"]
+					"roles": ["asd"]
 				},
 				{
 					"label": "Live Map",
 					"icon": "mdi-eye",
-					"routerLink": "/administration/live-map",
-					"roles": ["asdsad"]
+					"routerLink": "/administration/live",
+					"roles": []
 				}
 			]
 		}

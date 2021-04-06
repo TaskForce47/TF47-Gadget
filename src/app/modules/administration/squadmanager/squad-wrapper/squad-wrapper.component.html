@@ -1,0 +1,16 @@
+<div class="content-wrapper">
+  <div class="squad-profile-header p-d-flex" *ngIf="squad">
+    <div>
+      <img *ngIf="squad.squadImageLink !== null" [src]="'https://' + squad.squadImageLink" height="128px" width="128px" />
+      <img *ngIf="squad.squadImageLink === null" src="assets/images/no-image.svg" height="128px" width="128px" />
+    </div>
+    <div class="account-profile-text p-d-flex p-flex-column">
+      <h1>{{squad.title}} [{{squad.nick}}]</h1>
+      <span>{{ squad.mail }}</span>
+      <span>{{ squad.website }}</span>
+    </div>
+  </div>
+
+  <app-subnavi [subnaviItems]="subnaviItems"></app-subnavi>
+  <router-outlet></router-outlet>
+</div>

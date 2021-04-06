@@ -71,9 +71,26 @@ import { MegaMenuComponent } from './mega-menu/mega-menu.component';
 import { TableComponent } from './table/table.component';
 import { SubnaviComponent } from './subnavi/subnavi.component';
 import { ModalComponent } from './modal/modal.component';
-
+import { ChipModule } from 'primeng/chip';
+import { Tf47ChartComponent } from './tf47-chart/tf47-chart.component';
+import { HighchartsChartModule } from 'highcharts-angular';
+import { SafeUrlPipe } from '../pipes/url.pipe';
+import '@fullcalendar/angular';
+import { Tf47CalendarComponent } from './tf47-calendar/tf47-calendar.component';
+import { FullCalendarModule } from 'primeng/fullcalendar';
+import { DividerModule } from 'primeng/divider';
+import { TagModule } from 'primeng/tag';
 @NgModule({
-	declarations: [BreadcrumbsComponent, MegaMenuComponent, TableComponent, SubnaviComponent, ModalComponent],
+	declarations: [
+		BreadcrumbsComponent,
+		MegaMenuComponent,
+		TableComponent,
+		SubnaviComponent,
+		ModalComponent,
+		Tf47ChartComponent,
+		SafeUrlPipe,
+		Tf47CalendarComponent,
+	],
 	imports: [
 		CommonModule,
 		CheckboxModule,
@@ -142,6 +159,11 @@ import { ModalComponent } from './modal/modal.component';
 		ProgressSpinnerModule,
 		RippleModule,
 		TerminalModule,
+		ChipModule,
+		HighchartsChartModule,
+		FullCalendarModule,
+		DividerModule,
+		TagModule,
 	],
 	exports: [
 		CheckboxModule,
@@ -215,6 +237,13 @@ import { ModalComponent } from './modal/modal.component';
 		TableComponent,
 		SubnaviComponent,
 		ModalComponent,
+		ChipModule,
+		Tf47ChartComponent,
+		SafeUrlPipe,
+		FullCalendarModule,
+		Tf47CalendarComponent,
+		DividerModule,
+		TagModule,
 	],
 })
 export class UiModule {}

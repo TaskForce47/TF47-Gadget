@@ -1,1 +1,115 @@
-
+<div class="p-d-flex p-flex-column p-flex-lg-row content-wrapper">
+	<div class="p-sm-12 p-lg-9 p-xl-10">
+		<p-tabView>
+			<p-tabPanel header="Public Server #1">
+				<div class="p-grid">
+					<div class="card p-col-12 p-shadow-2">
+            <div class="p-d-flex">
+            <h2>Info</h2>
+              <div class="p-ml-auto server-join">
+                <div class="p-d-flex p-ac-center p-jc-center">
+                  <a pButton type="button" label="Connect" class="p-button text-black" (click)="sendMessage()"></a>
+                </div>
+              </div>
+            </div>
+            <div class="p-d-flex">
+              <h3>[TF47] MilSim Public Server #1 ACE|TFAR|RHS GER/ENG</h3>
+              <div class="p-ml-auto p-d-flex">
+                <div class="p-mr-5 p-text-center p-d-flex p-flex-column">
+                 <b>Ping</b>
+                  <span>39</span>
+                </div>
+                <div class="p-text-center p-d-flex p-flex-column">
+                  <b>Players</b>
+                 <span>21/64</span>
+                </div>
+              </div>
+            </div>
+            <div class="p-d-flex p-flex-column">
+              <div><b>Current Map:</b> Kunduz</div>
+              <div><b>Current Mission:</b> Insurgency Kunduz</div>
+              <div><b>IP:</b> 116.202.164.243:2302</div>
+            </div>
+					</div>
+					<div class="card p-col-12 p-shadow-2">
+						<h2>Players</h2>
+						<p-tabView>
+							<p-tabPanel header="Chart">
+								<app-tf47-chart [chartOptions]="chartOptions"></app-tf47-chart>
+							</p-tabPanel>
+							<p-tabPanel header="Log"> </p-tabPanel>
+						</p-tabView>
+					</div>
+					<div class="card p-col-12 p-xl-7 p-shadow-2">
+						<h2>Tickets</h2>
+						<p-tabView>
+							<p-tabPanel header="Chart">
+								<app-tf47-chart [chartOptions]="chartOptionsTicket"></app-tf47-chart>
+							</p-tabPanel>
+							<p-tabPanel header="Log"> </p-tabPanel>
+						</p-tabView>
+					</div>
+					<div class="card p-col-12 p-xl-5 p-shadow-2">
+						<h2 style="margin-bottom: 65px">Top 10 Ticketwaster of the Month</h2>
+						<tf47-table
+							[defaultHeaders]="defaultHeaders"
+							[data]="data"
+							[headers]="headers"
+							[paginator]="false"
+							[rows]="10"
+							[showCurrentPageReport]="true"
+							[autoLayout]="true"
+							[stateKey]="'player_profile_chat'"
+						></tf47-table>
+					</div>
+					<div class="card p-col-12 p-shadow-2">
+						<h2>Mods</h2>
+					</div>
+				</div>
+			</p-tabPanel>
+			<p-tabPanel header="Event Server #1"> </p-tabPanel>
+		</p-tabView>
+	</div>
+	<div class="p-sm-12 p-lg-3 p-xl-2">
+		<div>
+			<div>
+				<h3>Upcoming Events</h3>
+				<ul class="termin-wrapper">
+					<li class="termin">
+						<h4>Schlacht #3</h4>
+						<small>Donnerstag, 11 März 2021, 19:30 - 22:30</small>
+					</li>
+					<li class="termin">
+						<h4>Schlacht #4</h4>
+						<small>Sonntag, 21 März 2021, 19:30 - 22:30</small>
+					</li>
+					<li class="termin">
+						<h4>Schlacht #5</h4>
+						<small>Dienstag, 30 März 2021, 19:30 - 22:30</small>
+					</li>
+				</ul>
+			</div>
+			<div>
+				<h3>Upcoming Group Events</h3>
+				<h4 class="termin-group-name">Developer</h4>
+				<ul class="termin-wrapper">
+					<li class="termin">
+						<h4>Entwickler Sitzung #5</h4>
+						<small>Samstag, 13. März 2021, 15:30 - 17:00</small>
+					</li>
+				</ul>
+				<h4 class="termin-group-name">External Events</h4>
+				<ul class="termin-wrapper">
+					<li class="termin">
+						<h4>[TvT/PvP 37] Arma 3 - WWII - Battleground Sark bei der AAB/GT</h4>
+						<small>Freitag, 12. März 2021, 20:20 - 22:20</small>
+					</li>
+					<li class="termin">
+						<h4>[TvT][WW2] Battle of Hakamäki Remasterd bei Armafinland</h4>
+						<small>Samstag, 20. März 2021, 17:45 - 18:45</small>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>

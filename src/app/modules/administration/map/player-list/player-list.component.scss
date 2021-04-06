@@ -1,0 +1,47 @@
+.AAF{
+  background-color: green;
+}
+.CSAT{
+  background-color: red;
+}
+
+.player-list{
+  list-style: none;
+  li{
+    padding-left: 1rem;
+    height: 25px;
+    cursor: pointer;
+    &:hover{
+     background-color: #555555;
+    }
+  }
+}
+.squad-title{
+  height: 25px;
+  display: flex;
+  align-self: center;
+  padding-left: .5rem;
+}
+
+.player-dead{
+  text-decoration: line-through;
+  color: orangered;
+}
+
+.player-list-container{
+  overflow-y: scroll;
+  max-height: 90vh;
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--surface-d);
+    border-radius: 20px;
+    border: 3px solid var(--surface-d);
+  }
+}

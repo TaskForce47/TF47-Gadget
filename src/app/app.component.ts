@@ -9,8 +9,10 @@ export class AppComponent implements OnInit {
 	constructor(private auth: AuthService) {}
 	public isAuthenticated: boolean = false;
 	ngOnInit() {
-		this.auth.authenticate().subscribe((isAuthenticated) => {
-			this.isAuthenticated = isAuthenticated;
+		this.auth.details$.subscribe((res) => {
+			if (res) {
+				this.isAuthenticated = true;
+			}
 		});
 	}
 }

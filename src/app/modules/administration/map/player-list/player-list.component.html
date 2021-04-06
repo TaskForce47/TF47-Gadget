@@ -1,0 +1,41 @@
+<p-progressSpinner *ngIf="loading" styleClass="custom-spinner" strokeWidth="8" animationDuration="2s"></p-progressSpinner>
+<ng-container *ngIf="!loading">
+  <div class="player-list-container">
+    <div *ngFor="let squad of playersFiltered">
+      <div [ngClass]="[squad.side, 'squad-title']">
+        {{ squad.side }} <span class="p-ml-1 p-mr-1">-</span><b>{{ squad.name }}</b>
+        <span class="p-ml-1 p-mr-1">- {{ squad.member.length }}</span>
+      </div>
+      <ul class="player-list">
+        <li *ngFor="let player of squad.member">
+          <ng-container [ngSwitch]="player.role">
+            <ng-container *ngSwitchCase="'rifleman'">
+              <i class="mdi mdi-pistol"></i>
+            </ng-container>
+            <ng-container *ngSwitchCase="'engineer'">
+              <i class="mdi mdi-wrench"></i>
+            </ng-container>
+            <ng-container *ngSwitchCase="'medic'">
+              <i class="mdi mdi-plus"></i>
+            </ng-container>
+            <ng-container *ngSwitchCase="'sniper'">
+              <i class="mdi mdi-crosshairs"></i>
+            </ng-container>
+            <ng-container *ngSwitchCase="'zeus'">
+              <i class="mdi mdi-cryengine"></i>
+            </ng-container>
+          </ng-container>
+          <ng-container [ngSwitch]="player.status">
+            <ng-container *ngSwitchCase="'unconscious'">
+              <i class="mdi mdi-sleep p-ml-1"></i>
+            </ng-container>
+            <ng-container *ngSwitchCase="'dead'">
+              <i class="mdi mdi-skull p-ml-1"></i>
+            </ng-container>
+          </ng-container>
+          <span [ngClass]="{'player-dead': player.status === 'dead'}" class="p-ml-2">{{ player.name }}</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</ng-container>

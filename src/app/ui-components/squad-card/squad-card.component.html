@@ -1,15 +1,40 @@
-<div class="p-d-flex squad-card">
-  <div>
-    <img style="max-width: 128px; max-height: 128px; height: 128px; width: 128px;" [src]="'https://api.taskforce47.com/squadxml/' + squad.squadNick + '/logo.png'"/>
+<div class="p-d-flex p-flex-column squad-card" *ngIf="user !== null">
+  <div class="p-d-flex">
+    <div style="max-width: 128px; max-height: 128px; height: 128px; width: 128px;">
+      <img *ngIf="squad.squadImageLink !== null" style="max-width: 128px; max-height: 128px; height: 128px; width: 128px;" [src]="'https://' + squad.squadImageLink" alt="Squad Image"/>
+      <img *ngIf="squad.squadImageLink == null" style="max-width: 128px; max-height: 128px; height: 128px; width: 128px;" src="assets/images/no-image.svg" alt="Squad Image"/>
+    </div>
+    <div class="p-d-flex p-flex-column" style="margin-left: 0.5rem">
+      <h1>{{squad.title}} [{{squad.nick}}]</h1>
+      <span>Email: {{squad.mail}}</span>
+      <span>Web: {{squad.website}}</span>
+      <span *ngIf="!public">Your Remark: {{findRemark(squad)}}</span>
+    </div>
+    <div class="p-ml-auto" *ngIf="!noButtons" style="margin-right: .25rem">
+      <button pButton type="button" icon="mdi mdi-content-copy" pTooltip="Copy XML Link" class="p-button-text p-button-secondary" tooltipPosition="bottom" (click)="copyLink(squad)"></button>
+      <button pButton type="button" icon="mdi mdi-door" pTooltip="Leave Squad" class="p-button-text" (click)="leaveSquad(squad)"></button>
+    </div>
   </div>
-  <div class="p-d-flex p-flex-column" style="margin-left: 0.5rem">
-    <h1>{{squad.squadTitle}} [{{squad.squadNick}}]</h1>
-    <span>Email: {{squad.squadEmail}}</span>
-    <span>Web: {{squad.squadWeb}}</span>
-    <span>Your Remark: {{squad.remark}}</span>
-  </div>
-  <div class="p-ml-auto" style="margin-right: .25rem">
-    <button pButton type="button" icon="mdi mdi-content-copy" pTooltip="Copy XML Link" class="p-button-text p-button-secondary" tooltipPosition="bottom"></button>
-    <button pButton type="button" icon="mdi mdi-door" pTooltip="Leave Squad" class="p-button-text"></button>
+  <div class="p-mt-2">
+    <p-accordion>
+      <p-accordionTab header="Members">
+        <p-table [value]="squad.squadMembers">
+          <ng-template pTemplate="header">
+            <tr>
+              <th>Name</th>
+              <th>Steam ID</th>
+              <th>Remark</th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-member>
+            <tr>
+              <td>{{member.username}}</td>
+              <td>{{member.steamId}}</td>
+              <td>{{member.remark}}</td>
+            </tr>
+          </ng-template>
+        </p-table>
+      </p-accordionTab>
+    </p-accordion>
   </div>
 </div>

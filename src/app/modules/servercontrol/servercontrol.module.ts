@@ -12,6 +12,9 @@ const routes: Routes = [
 	{
 		path: '',
 		component: ServerOverviewComponent,
+		data: {
+			breadcrumb: 'Overview',
+		},
 	},
 	{
 		path: '/:id',

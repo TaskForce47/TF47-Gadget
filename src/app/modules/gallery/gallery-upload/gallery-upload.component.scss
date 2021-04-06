@@ -1,0 +1,57 @@
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 80%) 20%;
+  height: 100%;
+}
+
+.upload-btn {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  display: grid;
+  i {
+    font-size: 50pt;
+  }
+  button{
+    border: none;
+    color: white;
+    cursor: pointer;
+    background: var(--surface-d);
+    border-radius: 9999999px;
+    height: 250px;
+    width: 250px;
+  }
+}
+
+.upload-btn-wrapper {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+.upload-btn:hover{
+  opacity: 0.5;
+}
+.settings-container{
+  border-left: 2px solid darkgray;
+  padding: 1rem 2rem;
+  h2{
+    text-align: center;
+  }
+}
+
+:host ::ng-deep .settings-upload-btn.p-button{
+  width: 100%;
+}
+
+.uploaded-img{
+  max-width: 100%;
+  max-height: 85vh;
+}
+
+.img-wrapper{
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}

@@ -14,7 +14,7 @@ export class GadgetNavigationItemComponent implements OnInit {
 	}
 	ngOnInit(): void {
 		this.auth.details$.subscribe((res) => {
-			this.roles = res.roles;
+			this.roles = ['Admin'];
 		});
 	}
 }

@@ -1,6 +1,4 @@
-<p-progressSpinner *ngIf="!ready"></p-progressSpinner>
 <tf47-table
-	*ngIf="ready"
 	[defaultHeaders]="defaultHeaders"
 	[dataLoading]="loading"
 	[data]="data"
@@ -9,38 +7,56 @@
 	[rows]="20"
 	[lazy]="false"
 	[showCurrentPageReport]="true"
-	[autoLayout]="true"
+	[autoLayout]="false"
 	[sortMode]="'single'"
-	[sortField]="'timeWritten'"
+	[sortField]="'timeCreated'"
 	[sortOrder]="-1"
 	[stateKey]="'player_profile_notes'"
 	[headerActions]="headerAction"
 	[fieldSettings]="fieldSettings"
   [selectionMode]="'single'"
-  [dataKey]="'nodeId'"
+  [dataKey]="'noteId'"
 	(onManualReload)="loadNotes()"
 	(onHeaderButtonClicked)="headerButtonClicked($event)"
 >
 </tf47-table>
 
-<app-modal #addModal>
+<app-modal #addModal [styleClass]="['modal-sm']">
 	<div header>Add Note</div>
 	<div content>
-		<div style="margin-top: 1rem; width: 800px" class="modal-lg">
-			<p-fieldset legend="Settings">
-				<form (ngSubmit)="submit()">
-					<div class="p-d-flex p-flex-column form-test">
-					</div>
-				</form>
-			</p-fieldset>
-		</div>
+    <div>
+      <form [formGroup]="myFormGroup">
+        <dynamic-primeng-form *ngIf="!loading" [group]="myFormGroup" [model]="myFormModel" ></dynamic-primeng-form>
+      </form>
+    </div>
 	</div>
 	<div footer>
 		<p-button
 			type="submit"
 			label="Submit"
 			class="p-ml-auto"
-			(click)="submit()"
+      [disabled]="myFormGroup.invalid || myFormGroup.pristine"
+			(click)="addNote()"
 		></p-button>
 	</div>
+</app-modal>
+
+<app-modal #editModal [styleClass]="['modal-sm']">
+  <div header>Edit Note</div>
+  <div content>
+    <div>
+      <form [formGroup]="myFormGroup">
+        <dynamic-primeng-form *ngIf="!loading" [group]="myFormGroup" [model]="myFormModel" ></dynamic-primeng-form>
+      </form>
+    </div>
+  </div>
+  <div footer>
+    <p-button
+      type="submit"
+      label="Submit"
+      class="p-ml-auto"
+      [disabled]="myFormGroup.invalid || myFormGroup.pristine"
+      (click)="editNote()"
+    ></p-button>
+  </div>
 </app-modal>

@@ -1,0 +1,11 @@
+.next-chev {
+  cursor: pointer;
+	i {
+		color: var(--surface-d);
+	}
+	&:hover {
+		i {
+			color: var(--text-color);
+		}
+	}
+}

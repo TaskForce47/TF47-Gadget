@@ -1,1 +1,73 @@
-<p>squad-profile works!</p>
+<div class="content-wrapper">
+  <tf47-table
+    *ngIf="squad"
+    #userGrid
+    [defaultHeaders]="defaultHeaders"
+    [dataLoading]="loading"
+    [data]="squad.squadMembers"
+    [headers]="headers"
+    [paginator]="true"
+    [rows]="20"
+    [showCurrentPageReport]="true"
+    [autoLayout]="true"
+    [headerActions]="headerAction"
+    [selectionMode]="'single'"
+    [dataKey]="'squadMemberId'"
+    (onManualReload)="loadSquad()"
+    (onHeaderButtonClicked)="headerButtonClicked($event)"
+  >
+  </tf47-table>
+</div>
+
+
+<app-modal #addModal [styleClass]="['modal-sm']">
+  <div header>Add Member</div>
+  <div content>
+    <div>
+      <tf47-table
+        #addUserGrid
+        [defaultHeaders]="defaultHeadersUsers"
+        [headers]="headersUsers"
+        [dataLoading]="loadingUsers"
+        [data]="users"
+        [static]="true"
+        [disableSorting]="true"
+        [paginator]="true"
+        [selectionMode]="'single'"
+        [dataKey]="'userId'"
+        (onManualReload)="loadUser()"
+      >
+      </tf47-table>
+    </div>
+  </div>
+  <div footer>
+    <p-button
+      type="submit"
+      label="Submit"
+      class="p-ml-auto"
+      [disabled]="!this.addUserGrid?.selectedItems || requestInProgress"
+      (click)="addMember()"
+    ></p-button>
+  </div>
+</app-modal>
+
+<app-modal #editModal [styleClass]="['modal-sm']">
+  <div header>Edit Member</div>
+  <div content>
+    <div>
+      <form *ngIf="editFormReady" [formGroup]="myFormGroup">
+        <dynamic-primeng-form *ngIf="editFormReady" [group]="myFormGroup" [model]="myFormModel"></dynamic-primeng-form>
+      </form>
+    </div>
+  </div>
+  <div footer>
+    <p-button
+      *ngIf="editFormReady"
+      type="submit"
+      label="Submit"
+      class="p-ml-auto"
+      [disabled]="requestInProgress || myFormGroup?.invalid"
+      (click)="editMember()"
+    ></p-button>
+  </div>
+</app-modal>

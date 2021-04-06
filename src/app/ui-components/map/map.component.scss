@@ -1,0 +1,23 @@
+.grad-replay__map {
+  height: 100%;
+  width: 100%;
+}
+
+.grad-marker {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  overflow: visible;
+
+  > div {
+    flex-shrink: 0;
+  }
+
+  > span {
+    white-space: nowrap;
+    font-weight: bold;
+    font-size: 1rem;
+    margin-left: .25rem;
+    pointer-events: none;
+  }
+}

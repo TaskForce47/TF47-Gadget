@@ -7,18 +7,18 @@
 					<input type="text" pInputText placeholder="Search" [(ngModel)]="searchValue" (keyup)="filterPlayers()" />
 				</span>
 			</div>
+      <p-progressSpinner *ngIf="players.length == 0" styleClass="custom-spinner" strokeWidth="8" animationDuration="2s"></p-progressSpinner>
 			<p-virtualScroller
-        *ngIf="players"
 				[value]="playersFiltered"
 				[scrollHeight]="'calc(100vh - 7.5rem)'"
 				[itemSize]="50"
 				[rows]="players.length"
 				[lazy]="true"
 			>
-				<ng-template pTemplate="item" let-players>
-					<div class="player-box" (click)="navigateToPlayer(players)">{{ players.name }}</div></ng-template
+				<ng-template pTemplate="item" let-player>
+					<div class="player-box" [routerLink]="player.playerUid" routerLinkActive="player-box-active">{{ player.playerName }}</div></ng-template
 				>
-				<ng-template let-players pTemplate="loadingItem"> Loading... </ng-template>
+				<ng-template pTemplate="loadingItem"> Loading... </ng-template>
 			</p-virtualScroller>
 		</div>
 	</div>

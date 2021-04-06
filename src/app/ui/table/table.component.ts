@@ -44,9 +44,10 @@ export class TableComponent implements OnInit, OnChanges {
 	@Input() headers: Array<{ field: string; header: string }> = [];
 	@Input() defaultHeaders: Array<string> = [];
 	@Input() selectedValues: string[] = [];
-	@Input() rows: number;
+	@Input() rows: number = 20;
 	@Input() silentReload: boolean;
 	@Input() dataLoading: boolean;
+	@Input() static: boolean = false;
 	@Input() first: number;
 	@Input() reordableColumns: boolean;
 	@Input() resizeableColumns: boolean = false;
@@ -62,7 +63,7 @@ export class TableComponent implements OnInit, OnChanges {
 	@Input() sort: SortMeta[];
 	@Input() sortMode: string = 'single';
 	@Input() selectedItems: any = null;
-	@Input() showCurrentPageReport: boolean;
+	@Input() showCurrentPageReport: boolean = true;
 	@Input() rowsPerPageOptions: Array<number>;
 	@Input() stateKey: string;
 	@Input() sortOrder: number = 1;
@@ -73,7 +74,7 @@ export class TableComponent implements OnInit, OnChanges {
 	@Output() onPage: EventEmitter<any> = new EventEmitter();
 	@Output() onManualReload: EventEmitter<any> = new EventEmitter();
 	@Output() onHeaderButtonClicked: EventEmitter<any> = new EventEmitter();
-	@Input() headerActions: HeaderButton[];
+	@Input() headerActions: HeaderButton[] = [];
 	ngOnInit(): void {
 		this.applyFieldSettings();
 	}
@@ -104,6 +105,7 @@ export class TableComponent implements OnInit, OnChanges {
 	}
 	public onRowSelectEvent($event: any) {
 		this.onRowSelect.emit($event);
+		if (this.headerActions?.length === 0) return;
 		this.headerActions.forEach((action, index) => {
 			if (action.selectable && !action.condition) {
 				this.headerActions[index].disabled = false;
@@ -133,6 +135,12 @@ export class TableComponent implements OnInit, OnChanges {
 	}
 
 	public checkType(rowData: any) {
+		if (typeof rowData === 'number') {
+			return rowData;
+		}
+		if (!rowData.includes('T')) {
+			return rowData;
+		}
 		const date = dayjs(rowData);
 		if (date.isValid()) {
 			return date.format('DD.MM.YYYY HH:MM');

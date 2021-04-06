@@ -1,0 +1,101 @@
+<p-progressSpinner *ngIf="loading" styleClass="custom-spinner" strokeWidth="8" animationDuration="2s"></p-progressSpinner>
+<div *ngIf="issue !== undefined && !loading" class="content-wrapper" style="min-height: 100%">
+	<div class="p-grid p-flex-lg-row p-flex-row-reverse">
+		<div class="p-col-12 p-lg-9">
+			<h1>
+				{{ issue.title }}<span style="color: grey"> &nbsp;#{{ issue.issueId }}</span>
+			</h1>
+			<div>
+				<div *ngFor="let issueItem of issue.issueItems" class="p-mt-2 p-mr-3">
+					<p-panel>
+						<ng-template pTemplate="header">
+              <div>
+                <span>{{issueItem.authorName}}<small> commented on {{issueItem.timeCreated | date: 'medium'}}</small></span>
+                <span *ngIf="issueItem.timeLastEdited !== null"> (Edited)</span>
+              </div>
+						</ng-template>
+						{{ issueItem.message }}
+            <ng-template pTemplate="icons">
+              <button *ngIf="issueItem.authorId === user.userId" pButton type="button" icon="mdi mdi-lead-pencil" class="p-button-text" (click)="initEditIssueItem(issueItem)"></button>
+            </ng-template>
+					</p-panel>
+				</div>
+				<form *ngIf="issue" [formGroup]="myFormGroup" class="p-mt-4 p-mr-3">
+					<dynamic-primeng-form *ngIf="!loading" [group]="myFormGroup" [model]="myFormModel"></dynamic-primeng-form>
+				</form>
+				<button pButton label="Comment" class="p-mt-2" (click)="addComment()"></button>
+			</div>
+		</div>
+		<div class="p-col-12 p-lg-3">
+			<div class="p-d-flex">
+				<button pButton label="Edit" (click)="initEditIssueForm()"></button>
+				<button pButton label="Close" class="p-ml-2"></button>
+			</div>
+			<p-divider></p-divider>
+			<div>
+				<p class="p-text-bold">Info</p>
+				<ul style="list-style: none">
+					<li>Created by {{ issueCreator.username }}</li>
+					<li>Created on {{ issue.timeCreated | date: 'medium' }}</li>
+					<li>Updated on {{ issue.timeLastUpdated | date: 'medium' }}</li>
+				</ul>
+			</div>
+			<p-divider></p-divider>
+			<div>
+				<p class="p-text-bold">Group</p>
+				{{ issue.issueGroupName }}
+			</div>
+			<p-divider></p-divider>
+			<div>
+				<p class="p-text-bold">Tags</p>
+				<p-tag
+					*ngFor="let issueTag of issue.issueTags"
+					[value]="issueTag.tagName"
+					[style]="{ 'background-color': issueTag.color }"
+				></p-tag>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<app-modal #editIssueModal [styleClass]="['modal-sm']">
+  <div header>Edit Issue</div>
+  <div content>
+    <div>
+      <form *ngIf="issueEdit" [formGroup]="editIssueFormGroup">
+        <dynamic-primeng-form *ngIf="issueEdit" [group]="editIssueFormGroup" [model]="editIssueFormModel"></dynamic-primeng-form>
+      </form>
+    </div>
+  </div>
+  <div footer>
+    <p-button
+      type="submit"
+      label="Submit"
+      class="p-ml-auto"
+       [disabled]="requestInProgress || editIssueFormGroup?.invalid"
+      (click)="editIssue()"
+    ></p-button>
+  </div>
+</app-modal>
+
+<app-modal #editIssueItemModal [styleClass]="['modal-sm']">
+  <div header>Edit Comment</div>
+  <div content>
+    <div>
+      <form [formGroup]="editIssueItemFormGroup">
+        <dynamic-primeng-form [group]="editIssueItemFormGroup" [model]="editIssueItemFormModel"></dynamic-primeng-form>
+      </form>
+    </div>
+  </div>
+  <div footer>
+    <p-button
+      type="submit"
+      label="Submit"
+      class="p-ml-auto"
+      [disabled]="requestInProgress || editIssueItemFormGroup?.invalid"
+      (click)="editIssueItem()"
+    ></p-button>
+  </div>
+</app-modal>
+

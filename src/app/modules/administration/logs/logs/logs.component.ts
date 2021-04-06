@@ -1,4 +1,4 @@
-import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MenuItem } from 'primeng/api';
 
@@ -10,12 +10,11 @@ import { MenuItem } from 'primeng/api';
 export class LogsComponent implements OnInit {
 	constructor(private activatedRoute: ActivatedRoute, private router: Router) {}
 	public type: string = 'chat';
-	public ready: boolean = false;
+	public loading: boolean = true;
 	ngOnInit(): void {
 		this.activatedRoute.params.subscribe((params) => {
-			this.ready = false;
 			this.type = params.type;
-			this.ready = true;
+			this.loading = false;
 		});
 	}
 

@@ -5,10 +5,8 @@ body {
 	font-family: Roboto, sans-serif !important;
 	max-width: 100%;
 	margin: 0 !important;
+  height: 100%;
 }
-.p-inputtext{
-   margin-bottom: 1rem;
- }
 * {
 	padding: 0;
 	outline: none;
@@ -45,7 +43,6 @@ a:-webkit-any-link {
 	background: var(--surface-a);
 	line-height: 1.5;
 	border-bottom: 1px solid black;
-	padding: 1rem 1.5rem 0.25rem 1.5rem;
 	width: 100%;
 	height: 3.25rem;
 	position: fixed;
@@ -58,19 +55,25 @@ a:-webkit-any-link {
 }
 
 .header-text {
+  margin: 1rem 0 0 1rem;
 	font-size: 1.25rem;
 	font-weight: bolder;
 	white-space: nowrap;
 	text-overflow: ellipsis;
 	cursor: pointer;
 }
-
+.header-breadcrumbs{
+  margin: 1.2rem 0 0 0;
+}
+.header-burger{
+  margin: 1.25rem 1rem 0 0;
+}
 .content-area {
 	margin-left: 0;
-	padding: 0.5rem;
-	margin-top: 3.25rem;
-/*	width: calc(100% - 17rem);*/
+	padding: 1rem 0.5rem 0;
+	margin-top: 2.75rem;
 	position: relative;
+  height: 100%;
 }
 
 .nav-side {
@@ -85,10 +88,13 @@ a:-webkit-any-link {
 	top: 0;
 	overflow: hidden;
 	z-index: 1100;
+  .steam-login{
+    display: none;
+  }
 }
 .nav-side-sub {
 	height: 100%;
-	padding: 1rem;
+	padding: 0 0.5rem 0.5rem 0.5rem;
 	position: relative;
 	ul {
 		list-style: none;
@@ -167,6 +173,25 @@ a:-webkit-any-link {
 	margin-block-end: 0;
 }
 
+.nav-item-container{
+  overflow-y: auto;
+  max-height: 90vh;
+
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--surface-d);
+    border-radius: 20px;
+    border: 3px solid var(--surface-d);
+  }
+}
+
 @media screen and (min-width: 992px) {
 	.nav-side {
 		transform: translateX(0%);
@@ -179,6 +204,9 @@ a:-webkit-any-link {
 	transform: translate(0%);
   .content-area {
     filter: blur(4px);
+  }
+  .steam-login{
+    display: block;
   }
 }
 .menu-burger {
@@ -244,6 +272,8 @@ a:-webkit-any-link {
 
 .content-wrapper {
 	background: var(--surface-a);
+  height: fit-content;
+  padding: .5rem;
 }
 
 td{
@@ -255,34 +285,71 @@ td{
 .ui-widget {
   margin-bottom: .3rem;
 }
-
 .modal{
-  max-width: 35vw;
+  .p-dialog {
+    width: 100vw;
+  }
 }
 .modal-sm {
-  max-width: 25vw;
+  .p-dialog {
+    width: 100vw;
+  }
 }
 .modal-lg {
-  max-width: 50vw;
+  .p-dialog {
+    width: 100vw;
+  }
 }
 .modal-xl {
-  max-width: 75vw;
+  .p-dialog {
+    width: 100vw;
+  }
 }
-
-@media screen and (max-width: 40em) {
+@media (min-width: 768px) {
   .modal{
-    max-width: 35vw;
+    .p-dialog {
+      width: 55vw;
+    }
   }
   .modal-sm {
-    max-width: 25vw;
+    .p-dialog {
+      width: 65vw;
+    }
   }
   .modal-lg {
-    max-width: 75vw;
+    .p-dialog {
+      width: 75vw;
+    }
   }
   .modal-xl {
-    max-width: 75vw;
+    .p-dialog {
+      width: 85vw;
+    }
   }
 }
+@media (min-width: 992px) {
+  .modal{
+    .p-dialog {
+      width: 45vw;
+    }
+  }
+  .modal-sm {
+    .p-dialog {
+      width: 35vw;
+    }
+  }
+  .modal-lg {
+    .p-dialog {
+      width: 55vw;
+    }
+  }
+  .modal-xl {
+    .p-dialog {
+      width: 80vw;
+    }
+  }
+}
+
 
 .field_info {
   color: rgba(255,255,255,0.9);
@@ -334,4 +401,183 @@ p-virtualScroller {
 
 .form-test:first-child {
   margin-bottom: 1.5rem;
+}
+
+a {
+  text-decoration: none;
+}
+
+.steam-login{
+  cursor: pointer;
+  padding: 0.5rem 0;
+}
+
+.profile-link{
+  .p-splitbutton{
+    transform: translate(0, -5px);
+  }
+}
+.mapboxgl-ctrl-attrib{
+  display: none !important;
+}
+.ng-dynamic-forms-checkbox{
+  margin-bottom: .5rem;
+}
+.ng-dynamic-forms-input{
+  margin-bottom: .5rem;
+}
+.ng-dynamic-forms-select{
+  margin-bottom: .5rem;
+}
+.p-inputtextarea {
+  width: 100%;
+  max-width: 100%;
+}
+.p-inputtext {
+  width: 100%;
+  max-width: 100%;
+}
+.p-dropdown{
+  width: 100%;
+}
+.p-multiselect{
+  width: 100%;
+}
+.p-dropdown-panel{
+  position: absolute;
+}
+
+
+// Chart background, point stroke for markers and columns etc
+$background-color: #2a2a2b;
+
+// Colors for data series and points.
+$colors: #2b908f #90ee7e #f45b5b #7798BF #aaeeee #ff0066 #eeaaee #55BF3B #DF5353 #7798BF #aaeeee;
+
+// Neutral colors
+$neutral-color-100: #fff;
+$neutral-color-80: #E0E0E3;
+$neutral-color-60: #E0E0E3;
+$neutral-color-40: #666;
+$neutral-color-20: #606063;
+$neutral-color-10: #707073;
+$neutral-color-5: #505053;
+
+// Colored, shades
+$highlight-color-100: #F0F0F3;
+$highlight-color-60: rgba(255,255,255,0.1);
+$highlight-color-20: $neutral-color-10;
+
+// Data-labels
+$data-label-color: #B0B0B3;
+
+// Fonts
+$font-family: 'Unica One', Arial, Helvetica, sans-serif;
+$title-font-size: 20px;
+
+// Tooltip
+$tooltip-background: rgba(0, 0, 0, 0.85);
+
+// Range-selector
+$range-selector-input-text: silver;
+$range-selector-input-border: $neutral-color-5;
+
+// Buttons
+$highcharts-button-background: $neutral-color-5;
+$highcharts-button-text:  #ccc;
+
+$highcharts-button-pressed-background: #000003;
+$highcharts-button-pressed-text:  $neutral-color-100;
+
+$highcharts-button-hover-background: $neutral-color-10;
+$highcharts-button-hover-text:  $neutral-color-100;
+
+$context-button-background: $neutral-color-5;
+
+// Navigator
+$navigator-series-fill: #7798BF;
+$navigator-series-border: #A6C7ED;
+
+// Navigator
+$scrollbar-track-background: #404043;
+$scrollbar-track-border: #404043;
+
+// Titles
+.highcharts-title, .highcharts-subtitle {
+  text-transform: uppercase;
+}
+
+// Tooltip
+.highcharts-tooltip text {
+  fill: #F0F0F0
+}
+
+// Range-selector
+.highcharts-range-selector-buttons text {
+  fill: silver;
+}
+
+// Axes
+.highcharts-yaxis-grid  {
+  stroke-width: 1px;
+}
+
+.highcharts-axis-labels, .highcharts-axis-title {
+  fill: #E0E0E3;
+}
+
+// Navigator
+.highcharts-navigator .highcharts-navigator-handle {
+  fill: $neutral-color-40;
+  stroke: #aaa;
+}
+
+.highcharts-navigator .highcharts-navigator-outline {
+  stroke: #CCC;
+}
+
+.highcharts-navigator .highcharts-navigator-xaxis .highcharts-grid-line {
+  stroke: $neutral-color-5;
+}
+
+// Scrollbar
+.highcharts-scrollbar .highcharts-scrollbar-rifles {
+  stroke: $neutral-color-100;
+}
+
+.highcharts-scrollbar .highcharts-scrollbar-button {
+  stroke: #606063;
+  fill: #606063;
+}
+
+.highcharts-scrollbar .highcharts-scrollbar-arrow {
+  fill: #CCC;
+}
+
+.highcharts-scrollbar .highcharts-scrollbar-thumb {
+  fill: #808083;
+  stroke: #808083;
+}
+
+// Navigation
+.highcharts-contextbutton .highcharts-button-symbol {
+  stroke: #DDDDDD;
+}
+text {
+  color: var(--text-color-secondary) !important;
+  fill: var(--text-color-secondary) !important;
+}
+@import 'node_modules/highcharts/css/highcharts.scss';
+
+.field_info{
+  color: white;
+}
+.field_warning{
+  color: orangered;
+}
+.field_critical{
+  color: red;
+}
+.field_success{
+  color: lawngreen;
 }
