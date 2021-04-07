@@ -1,0 +1,73 @@
+export interface Squad {
+	squadId: number;
+	nick: string;
+	title: string;
+	name: string;
+	mail: string;
+	website: string;
+	squadImageLink: string;
+	squadMembers: SquadMember[];
+}
+export interface SquadMember {
+	mail: string;
+	remark: string;
+	steamId: string;
+	userId: string;
+	username: string;
+	squadMemberId: number;
+}
+
+export interface User {
+	allowEmails: boolean;
+	apiKeys: [];
+	banned: boolean;
+	countryCode: string;
+	discordId: string;
+	email: string;
+	firstTimeSeen: string;
+	lastTimeSeen: string;
+	profilePicture: string;
+	profileUrl: string;
+	steamId: string;
+	userGroups: [];
+	userId: string;
+	username: string;
+	writtenChangelogs: [];
+	writtenNotes: [];
+}
+
+export interface Group {
+	groupId: number;
+	name: string;
+	description: string;
+	textColor: string;
+	backgroundColor: string;
+	isVisible: boolean;
+	groupMembers?: GroupMembersEntity[] | null;
+	permissions?: PermissionsEntity[] | null;
+}
+export interface GroupMembersEntity {
+	userId: string;
+	banned: boolean;
+	email: string;
+	username: string;
+	allowEmails: boolean;
+	countryCode: string;
+	discordId: string;
+	profilePicture: string;
+	profileUrl: string;
+	steamId: string;
+	firstTimeSeen: string;
+	lastTimeSeen: string;
+}
+export interface PermissionsEntity {
+	permissionId: number;
+	type: number;
+	name: string;
+}
+
+export interface Permission {
+	name: string;
+	permissionId: number;
+	type: string;
+}
