@@ -28,7 +28,7 @@
 		</div>
 		<div class="p-col-12 p-lg-3">
 			<div class="p-d-flex">
-				<button pButton label="Edit" (click)="initEditIssueForm()"></button>
+				<button *ngIf="permissionService.hasPermission('issue:update')" pButton label="Edit" (click)="initEditIssueForm()"></button>
 				<button pButton label="Close" class="p-ml-2"></button>
 			</div>
 			<p-divider></p-divider>

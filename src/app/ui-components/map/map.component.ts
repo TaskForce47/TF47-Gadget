@@ -1,7 +1,7 @@
 import { Component, ElementRef, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 import { GradMap } from '@gruppe-adler/maps-frontend-utils/lib/mapbox';
 import { Marker as MapboxGLMarker } from 'mapbox-gl';
-import { ReplayFrame } from '../../models/Replay';
+import { ReplayFrame } from '../../core/models/Replay';
 
 @Component({
 	selector: 'app-map',

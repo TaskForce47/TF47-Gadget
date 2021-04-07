@@ -1,6 +1,6 @@
-<div class="p-d-flex p-ai-start content-wrapper">
-  <div class="p-mr-2" style="height: 100%; width: 250px">
-    <div>
+<div class="p-d-flex p-flex-column p-flex-lg-row p-ai-start content-wrapper" style="height: 100%">
+  <div class="p-mr-2" style="height: 100%;" [style]="{width: searchWidth}">
+    <div #searchContainer style="height: 100%">
       <div class="user-search">
 				<span class="p-input-icon-left">
 					<i class="pi pi-search"></i>
@@ -10,7 +10,7 @@
       <p-progressSpinner *ngIf="users.length == 0" styleClass="custom-spinner" strokeWidth="8" animationDuration="2s"></p-progressSpinner>
       <p-virtualScroller
         [value]="usersFiltered"
-        [scrollHeight]="'calc(100vh - 7.5rem)'"
+        [scrollHeight]="searchHeight+'px'"
         [itemSize]="50"
         [rows]="users.length"
       >

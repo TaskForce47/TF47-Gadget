@@ -1,1 +1,12 @@
-<p>user-groups works!</p>
+<tf47-table
+  [defaultHeaders]="defaultHeaders"
+  [headers]="headers"
+  [dataLoading]="loadingGroups"
+  [data]="groups"
+  [disableSorting]="true"
+  [paginator]="true"
+  [selectionMode]="'single'"
+  [dataKey]="'groupId'"
+  (onManualReload)="loadGroups()"
+>
+</tf47-table>

@@ -74,7 +74,7 @@ import { ModalComponent } from './modal/modal.component';
 import { ChipModule } from 'primeng/chip';
 import { Tf47ChartComponent } from './tf47-chart/tf47-chart.component';
 import { HighchartsChartModule } from 'highcharts-angular';
-import { SafeUrlPipe } from '../pipes/url.pipe';
+import { SafeUrlPipe } from '../core/pipes/url.pipe';
 import '@fullcalendar/angular';
 import { Tf47CalendarComponent } from './tf47-calendar/tf47-calendar.component';
 import { FullCalendarModule } from 'primeng/fullcalendar';

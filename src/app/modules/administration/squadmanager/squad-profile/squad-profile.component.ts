@@ -11,7 +11,7 @@ import {
 	DynamicTextAreaModel,
 } from '@ng-dynamic-forms/core';
 import { FormGroup } from '@angular/forms';
-import { Squad, SquadMember } from '../../../../models/Gadget';
+import { Squad, SquadMember, User } from '../../../../core/models/Gadget';
 
 @Component({
 	templateUrl: './squad-profile.component.html',
@@ -21,7 +21,7 @@ export class SquadProfileComponent implements OnInit {
 	public loading: boolean = true;
 	public loadingUsers: boolean = true;
 	public squad: Squad;
-	public users;
+	public users: User[];
 	public id: number;
 	public defaultHeaders: any = [];
 	public defaultHeadersUsers: any = [];
@@ -138,7 +138,7 @@ export class SquadProfileComponent implements OnInit {
 
 	loadUser() {
 		this.loadingUsers = true;
-		this.http.get('/Squad/' + this.id + '/nonMember', { withCredentials: true }).subscribe((res) => {
+		this.http.get('/Squad/' + this.id + '/nonMember', { withCredentials: true }).subscribe((res: User[]) => {
 			this.users = res;
 			this.loadingUsers = false;
 		});

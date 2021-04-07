@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Squad } from '../../../models/Gadget';
+import { Squad } from '../../../core/models/Gadget';
 
 @Component({
 	selector: 'app-squads',

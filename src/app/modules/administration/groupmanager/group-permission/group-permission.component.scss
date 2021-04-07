@@ -1,0 +1,9 @@
+.permission-table{
+  width: 100%;
+  th{
+    text-align: start;
+  }
+  tr:first-child{
+    border-bottom: 2px solid grey;
+  }
+}

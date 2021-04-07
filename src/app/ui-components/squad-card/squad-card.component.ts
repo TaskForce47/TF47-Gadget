@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { AuthService } from '../../services/auth.service';
-import { Squad } from '../../models/Gadget';
+import { AuthService } from '../../core/services/auth.service';
+import { Squad } from '../../core/models/Gadget';
 
 @Component({
 	selector: 'app-squad-card',

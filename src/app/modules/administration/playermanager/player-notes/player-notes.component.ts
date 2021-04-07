@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { FieldSettings, HeaderButton } from '../../../../ui/table/table.component';
 import { ModalComponent } from '../../../../ui/modal/modal.component';
-import { AuthService } from '../../../../services/auth.service';
+import { AuthService } from '../../../../core/services/auth.service';
 import {
 	DynamicFormGroupModel,
 	DynamicFormModel,

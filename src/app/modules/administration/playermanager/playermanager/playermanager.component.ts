@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -7,12 +7,15 @@ import { HttpClient } from '@angular/common/http';
 })
 export class PlayermanagerComponent implements OnInit {
 	constructor(private http: HttpClient) {}
-
+	@ViewChild('searchContainer', { static: true }) searchContainer: ElementRef;
+	public searchHeight: number;
+	public searchWidth: string;
 	public players = [];
 	public playersFiltered = [];
-	searchValue: any;
+	public searchValue: any;
 	ngOnInit(): void {
 		this.getPlayers();
+		this.calcDimensions();
 	}
 
 	private getPlayers() {
@@ -20,6 +23,21 @@ export class PlayermanagerComponent implements OnInit {
 			this.players = res;
 			this.playersFiltered = this.players;
 		});
+	}
+
+	@HostListener('window:resize', ['$event'])
+	onResize() {
+		this.calcDimensions();
+	}
+
+	private calcDimensions() {
+		if (window.innerWidth > 991) {
+			this.searchWidth = '250px';
+			this.searchHeight = this.searchContainer.nativeElement.getBoundingClientRect().height - 120;
+		} else {
+			this.searchWidth = '100%';
+			this.searchHeight = 250;
+		}
 	}
 
 	public filterPlayers() {

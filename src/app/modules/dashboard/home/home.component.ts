@@ -9,8 +9,7 @@ import { MessageService } from 'primeng/api';
 	styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-	private connection: HubConnection;
-	constructor(private mnotificationService: MessageService) {}
+	constructor() {}
 	chartOptions: Highcharts.Options = {
 		title: { text: '' },
 		series: [
@@ -49,10 +48,6 @@ export class HomeComponent implements OnInit {
 	public data: any = [];
 	public headers: any = [];
 	ngOnInit(): void {
-		this.connection = new signalR.HubConnectionBuilder().withUrl('https://beta.taskforce47.com/shoutbox').build();
-		this.connection.start().then(() => {
-			this.mnotificationService.add({ severity: 'success', summary: 'Websocket connected' });
-		});
 		this.defaultHeaders = ['playerName', 'ticketCount'];
 		this.headers.push({ field: 'playerName', header: 'Name' }, { field: 'ticketCount', header: 'Tickets' });
 		this.data = [
@@ -97,14 +92,5 @@ export class HomeComponent implements OnInit {
 				ticketCount: 1337,
 			},
 		];
-	}
-
-	sendMessage() {
-		this.connection.invoke('SendMessage', 'Ciao').then((res) => {
-			console.log(res);
-			this.connection.invoke('GetHistory').then((res1) => {
-				console.log(res1);
-			});
-		});
 	}
 }

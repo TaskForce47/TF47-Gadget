@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { Header, SortMeta } from 'primeng/api';
 import dayjs from 'dayjs';
+import { PermissionService } from '../../core/services/permission.service';
 
 export interface GridSettings {
 	endpointUrl: string;
@@ -18,6 +19,7 @@ export interface HeaderButton {
 	condition?: ConditionModel;
 	selectable?: boolean;
 	disabled?: boolean;
+	permissions?: string[];
 }
 
 interface FieldSetting {
@@ -34,10 +36,10 @@ export interface FieldSettings {
 	styleUrls: ['./table.component.scss'],
 })
 export class TableComponent implements OnInit, OnChanges {
-	constructor() {}
+	constructor(private permissionService: PermissionService) {}
 	public tableHeaders: Array<{ field: string; header: string }> = [];
 	public tableHeadersFields: Array<string> = [];
-	public testModel;
+	public tableReady = false;
 	@Input() fieldSettings: FieldSettings;
 	@Input() gridSettings: GridSettings;
 	@Input() data: Array<any>;
@@ -96,12 +98,21 @@ export class TableComponent implements OnInit, OnChanges {
 			});
 		});
 		if (this.headerActions) {
+			const tmpHeader = [];
 			this.headerActions.forEach((action, index) => {
+				if (action.permissions?.length > 0) {
+					if (!action.permissions.every((permission) => this.permissionService.hasPermission(permission))) {
+						return;
+					}
+				}
 				if (action.selectable) {
 					this.headerActions[index].disabled = true;
 				}
+				tmpHeader.push(action);
 			});
+			this.headerActions = tmpHeader;
 		}
+		this.tableReady = true;
 	}
 	public onRowSelectEvent($event: any) {
 		this.onRowSelect.emit($event);
@@ -135,7 +146,7 @@ export class TableComponent implements OnInit, OnChanges {
 	}
 
 	public checkType(rowData: any) {
-		if (typeof rowData === 'number') {
+		if (typeof rowData !== 'string') {
 			return rowData;
 		}
 		if (!rowData.includes('T')) {

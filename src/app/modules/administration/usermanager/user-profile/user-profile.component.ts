@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Subscription } from 'rxjs';
 import { MenuItem } from 'primeng/api';
-import { User } from '../../../../models/Gadget';
+import { User } from '../../../../core/models/Gadget';
 
 @Component({
 	templateUrl: './user-profile.component.html',

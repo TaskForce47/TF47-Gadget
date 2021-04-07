@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../../../../models/Gadget';
+import { User } from '../../../../core/models/Gadget';
 import { HttpClient } from '@angular/common/http';
-import { AuthService } from '../../../../services/auth.service';
+import { AuthService } from '../../../../core/services/auth.service';
 
 @Component({
 	selector: 'app-user-keys',

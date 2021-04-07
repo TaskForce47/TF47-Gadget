@@ -26,7 +26,7 @@
 							placeholder="Search"
 						/>
 					</span>
-          <button pButton type="button" label="New Issue" class="p-button text-black p-ml-md-auto" (click)="addModal.open()"></button>
+          <button *ngIf="permissionService.hasPermission('issue:create')" pButton type="button" label="New Issue" class="p-button text-black p-ml-md-auto" (click)="addModal.open()"></button>
 				</div>
 			</ng-template>
 			<ng-template let-issue pTemplate="listItem">

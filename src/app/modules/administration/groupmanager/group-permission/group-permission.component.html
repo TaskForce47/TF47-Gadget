@@ -1,0 +1,24 @@
+<div class="p-mt-4">
+	<p-accordion [multiple]="true">
+		<p-accordionTab header="Gadget">
+      <p-table [value]="permissionMap|keyvalue" styleClass="p-datatable-sm">
+        <ng-template pTemplate="header">
+          <tr>
+            <th>Name</th>
+            <th style="text-align: center">Assigned</th>
+            <th style="text-align: center">Inherit / not Assigned</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-permission>
+          <tr>
+            <td>{{permission.key}}</td>
+            <td style="text-align: center"><p-checkbox [binary]="true" [(ngModel)]="permission.value.assigned" [readonly]="permission.value.assigned" (onChange)="update(permission.key, 'assigned')" [disabled]="requestInProgress"></p-checkbox></td>
+            <td style="text-align: center"><p-checkbox [binary]="true" [(ngModel)]="permission.value.inherit" [readonly]="permission.value.inherit" (onChange)="update(permission.key, 'inherit')" [disabled]="requestInProgress"></p-checkbox></td>
+          </tr>
+        </ng-template>
+      </p-table>
+		</p-accordionTab>
+		<p-accordionTab header="Teamspeak"> - </p-accordionTab>
+		<p-accordionTab header="Discord"> - </p-accordionTab>
+	</p-accordion>
+</div>

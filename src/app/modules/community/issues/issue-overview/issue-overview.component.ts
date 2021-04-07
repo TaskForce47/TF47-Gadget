@@ -10,6 +10,7 @@ import {
 } from '@ng-dynamic-forms/core';
 import { FormGroup } from '@angular/forms';
 import { forkJoin } from 'rxjs';
+import { PermissionService } from '../../../../core/services/permission.service';
 export interface IssueGroup {
 	issueGroupId: number;
 	groupName: string;
@@ -51,7 +52,11 @@ export class IssueOverviewComponent implements OnInit {
 	myFormModel: DynamicFormModel = [];
 	myFormGroup: FormGroup;
 	formReady: boolean = false;
-	constructor(private http: HttpClient, private formService: DynamicFormService) {}
+	constructor(
+		private http: HttpClient,
+		private formService: DynamicFormService,
+		public permissionService: PermissionService
+	) {}
 
 	ngOnInit(): void {
 		this.loadData();

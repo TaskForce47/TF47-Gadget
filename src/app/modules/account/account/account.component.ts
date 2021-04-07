@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../../services/auth.service';
+import { AuthService } from '../../../core/services/auth.service';
 import { MenuItem } from 'primeng/api';
-import { User } from '../../../models/Gadget';
+import { User } from '../../../core/models/Gadget';
 
 @Component({
 	selector: 'app-account',

@@ -2,26 +2,25 @@ import { Component, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
-import { Squad } from '../../../../core/models/Gadget';
+import { Group } from '../../../../core/models/Gadget';
 
 @Component({
-	selector: 'app-squad-wrapper',
-	templateUrl: './squad-wrapper.component.html',
-	styleUrls: ['./squad-wrapper.component.scss'],
+	templateUrl: './group-profile.component.html',
+	styleUrls: ['./group-profile.component.scss'],
 })
-export class SquadWrapperComponent implements OnInit {
+export class GroupProfileComponent implements OnInit {
 	public loading: boolean = true;
-	public squad: Squad;
+	public group: Group;
 	public id: number;
 	public subnaviItems: MenuItem[] = [
 		{
 			label: 'Members',
-			routerLink: 'profile',
+			routerLink: 'member',
 			routerLinkActiveOptions: { exact: true },
 		},
 		{
-			label: 'Settings',
-			routerLink: 'settings',
+			label: 'Permissions',
+			routerLink: 'permission',
 			routerLinkActiveOptions: { exact: true },
 		},
 	];
@@ -30,14 +29,14 @@ export class SquadWrapperComponent implements OnInit {
 	ngOnInit(): void {
 		this.activatedRoute.params.subscribe((params) => {
 			this.id = params.id;
-			this.loadSquad();
+			this.loadGroup();
 		});
 	}
 
-	loadSquad() {
+	public loadGroup() {
 		this.loading = true;
-		this.http.get('/Squad/' + this.id, { withCredentials: true }).subscribe((res: Squad) => {
-			this.squad = res;
+		this.http.get('/Group/' + this.id, { withCredentials: true }).subscribe((group: Group) => {
+			this.group = group;
 			this.loading = false;
 		});
 	}

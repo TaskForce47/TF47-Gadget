@@ -12,9 +12,10 @@ import {
 } from '@ng-dynamic-forms/core';
 import { FormGroup } from '@angular/forms';
 import { forkJoin } from 'rxjs';
-import { AuthService } from '../../../../services/auth.service';
+import { AuthService } from '../../../../core/services/auth.service';
 import { ModalComponent } from '../../../../ui/modal/modal.component';
-import { User } from '../../../../models/Gadget';
+import { User } from '../../../../core/models/Gadget';
+import { PermissionService } from '../../../../core/services/permission.service';
 
 @Component({
 	templateUrl: './issue-profile.component.html',
@@ -74,7 +75,8 @@ export class IssueProfileComponent implements OnInit {
 		private http: HttpClient,
 		private activatedRoute: ActivatedRoute,
 		private formService: DynamicFormService,
-		private auth: AuthService
+		private auth: AuthService,
+		public permissionService: PermissionService
 	) {}
 
 	ngOnInit(): void {

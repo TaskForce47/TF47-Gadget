@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { AuthService } from '../../../services/auth.service';
-import { User } from '../../../models/Gadget';
+import { AuthService } from '../../../core/services/auth.service';
+import { User } from '../../../core/models/Gadget';
 
 @Component({
 	selector: 'app-account-keys',
@@ -31,7 +31,7 @@ export class AccountKeysComponent implements OnInit {
 
 	public loadKeys() {
 		this.loadingKeys = true;
-		this.http.get('/ApiKey/' + this.user.userId + '/me', { withCredentials: true }).subscribe((res) => {
+		this.http.get('/ApiKey/me', { withCredentials: true }).subscribe((res) => {
 			this.keys = res;
 			this.loadingKeys = false;
 		});

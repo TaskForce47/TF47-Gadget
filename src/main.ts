@@ -4,7 +4,7 @@ import '@angular/compiler';
 import { AppModule } from './app/app.module';
 import { environment } from './environments/environment';
 import { setApiUri } from '@gruppe-adler/maps-frontend-utils';
-import { WMTS_BASE_URL } from './app/utils/ApiUtils';
+import { WMTS_BASE_URL } from './app/core/utils/ApiUtils';
 
 if (environment.production) {
 	enableProdMode();

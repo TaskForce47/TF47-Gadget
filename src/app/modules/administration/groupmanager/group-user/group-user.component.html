@@ -1,0 +1,50 @@
+<div class="content-wrapper">
+  <tf47-table
+    #userGrid
+    [defaultHeaders]="defaultHeaders"
+    [dataLoading]="loading"
+    [data]="data"
+    [headers]="headers"
+    [paginator]="true"
+    [rows]="20"
+    [showCurrentPageReport]="true"
+    [autoLayout]="true"
+    [headerActions]="headerAction"
+    [selectionMode]="'single'"
+    [dataKey]="'userId'"
+    (onManualReload)="loadGroup()"
+    (onHeaderButtonClicked)="headerButtonClicked($event)"
+  >
+  </tf47-table>
+</div>
+
+<app-modal #addModal [styleClass]="['modal-sm']">
+  <div header>Add Member</div>
+  <div content>
+    <div>
+      <tf47-table
+        #addUserGrid
+        [defaultHeaders]="defaultHeadersUsers"
+        [headers]="headersUsers"
+        [dataLoading]="loadingUsers"
+        [data]="users"
+        [static]="true"
+        [disableSorting]="true"
+        [paginator]="true"
+        [selectionMode]="'single'"
+        [dataKey]="'userId'"
+        (onManualReload)="loadUser()"
+      >
+      </tf47-table>
+    </div>
+  </div>
+  <div footer>
+    <p-button
+      type="submit"
+      label="Submit"
+      class="p-ml-auto"
+      [disabled]="!this.addUserGrid?.selectedItems || requestInProgress"
+      (click)="addMember()"
+    ></p-button>
+  </div>
+</app-modal>

@@ -4,7 +4,7 @@
 			"label": "Dashboard",
 			"tooltip": "Dashboard",
 			"routerLink": "/",
-			"roles": [],
+			"permissions": [],
 			"icon": "mdi-home",
 			"items": []
 		},
@@ -12,32 +12,32 @@
 			"label": "Community",
 			"tooltip": "",
 			"routerLink": "",
-			"roles": [],
+			"permissions": [],
 			"icon": "",
 			"items": [
 				{
 					"label": "Servers",
 					"icon": "mdi-gamepad-variant",
 					"routerLink": "/community/servers",
-					"roles": []
+					"permissions": []
 				},
 				{
 					"label": "Squads",
 					"icon": "mdi-account-group",
 					"routerLink": "/community/squads",
-					"roles": []
+					"permissions": ["squad:view"]
 				},
 				{
 					"label": "Issues",
 					"icon": "mdi-alert-circle",
 					"routerLink": "/community/issues",
-					"roles": []
+					"permissions": []
 				},
 				{
 					"label": "Changelog",
 					"icon": "mdi-account-hard-hat",
 					"routerLink": "/community/changelog",
-					"roles": []
+					"permissions": []
 				}
 			]
 		},
@@ -45,62 +45,20 @@
 			"label": "Gallery",
 			"tooltip": "Gallery",
 			"routerLink": "/gallery",
-			"roles": [],
+			"permissions": [],
 			"icon": "",
 			"items": [
 				{
 					"label": "Overview",
 					"icon": "mdi-folder-image",
 					"routerLink": "/gallery/overview",
-					"roles": []
+					"permissions": []
 				},
 				{
 					"label": "Upload File",
 					"icon": "mdi-upload",
 					"routerLink": "/gallery/upload",
-					"roles": []
-				}
-			]
-		},
-		{
-			"label": "Planning",
-			"tooltip": "Planning",
-			"routerLink": "/planning",
-			"roles": ["asd"],
-			"icon": "",
-			"items": [
-				{
-					"label": "Overview",
-					"icon": "mdi-map-outline",
-					"routerLink": "/planning/overview",
-					"roles": []
-				},
-				{
-					"label": "New Mission Plan",
-					"icon": "mdi-map-plus",
-					"routerLink": "/planning/create",
-					"roles": []
-				}
-			]
-		},
-		{
-			"label": "Missions",
-			"tooltip": "",
-			"routerLink": "",
-			"roles": ["asd"],
-			"icon": "pi pi-calendar",
-			"items": [
-				{
-					"label": "Overview",
-					"icon": "mdi-clipboard-check",
-					"routerLink": "/campaigns/overview",
-					"roles": []
-				},
-				{
-					"label": "Statistics",
-					"icon": "mdi-chart-areaspline",
-					"routerLink": "/campaigns/after-action-report",
-					"roles": []
+					"permissions": []
 				}
 			]
 		},
@@ -108,62 +66,62 @@
 			"label": "Administration",
 			"tooltip": "",
 			"routerLink": "",
-			"roles": ["Admin", "Moderator"],
+			"permissions": ["administration:view"],
 			"icon": "pi pi-cog",
 			"items": [
-        {
-          "label": "User Manager",
-          "icon": "mdi-account-cog",
-          "routerLink": "/administration/usermanager",
-          "roles": []
-        },
-        {
-          "label": "Group Manager",
-          "icon": "mdi-account-group",
-          "routerLink": "/administration/groupmanager",
-          "roles": []
-        },
+				{
+					"label": "User Manager",
+					"icon": "mdi-account-cog",
+					"routerLink": "/administration/usermanager",
+					"permissions": ["user:view"]
+				},
+				{
+					"label": "Group Manager",
+					"icon": "mdi-account-group",
+					"routerLink": "/administration/groupmanager",
+					"permissions": ["group:update"]
+				},
 				{
 					"label": "Player Manager",
 					"icon": "mdi-account-search",
 					"routerLink": "/administration/playermanager",
-					"roles": []
+					"permissions": ["note:view"]
 				},
 				{
 					"label": "Squad Manager",
 					"icon": "mdi-account-supervisor",
 					"routerLink": "/administration/squadmanager",
-					"roles": []
+					"permissions": ["squad:view"]
 				},
 				{
 					"label": "Server Control",
 					"icon": "mdi-server",
 					"routerLink": "/servercontrol/",
-					"roles": []
+					"permissions": ["asds"]
 				},
 				{
 					"label": "Logs",
 					"icon": "mdi-clipboard-text",
 					"routerLink": "/administration/logs",
-					"roles": []
+					"permissions": ["asd"]
 				},
 				{
 					"label": "Discord Manager",
 					"icon": "mdi-discord",
 					"routerLink": "/administration/discord",
-					"roles": ["asd"]
+					"permissions": ["asd"]
 				},
 				{
 					"label": "Whitelist",
 					"icon": "mdi-clipboard-list",
 					"routerLink": "/administration/whitelist-overview",
-					"roles": ["asd"]
+					"permissions": ["asd"]
 				},
 				{
 					"label": "Live Map",
 					"icon": "mdi-eye",
 					"routerLink": "/administration/live",
-					"roles": []
+					"permissions": ["asd"]
 				}
 			]
 		}

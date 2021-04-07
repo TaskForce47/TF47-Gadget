@@ -14,11 +14,11 @@ import { PlayerNotesComponent } from './playermanager/player-notes/player-notes.
 import { PlayerChatComponent } from './playermanager/player-chat/player-chat.component';
 import { PlayerWhitelistComponent } from './playermanager/player-whitelist/player-whitelist.component';
 import { PlayerStatisticsComponent } from './playermanager/player-statistics/player-statistics.component';
-import { LiveMapComponent } from './live-map/live-map.component';
-import { PlayerListComponent } from './map/player-list/player-list.component';
-import { TaskListComponent } from './map/task-list/task-list.component';
-import { MissionLogComponent } from './map/mission-log/mission-log.component';
-import { PlayerControlsComponent } from './map/player-controls/player-controls.component';
+import { LiveMapComponent } from './live-map/live-map/live-map.component';
+import { PlayerListComponent } from './live-map/map/player-list/player-list.component';
+import { TaskListComponent } from './live-map/map/task-list/task-list.component';
+import { MissionLogComponent } from './live-map/map/mission-log/mission-log.component';
+import { PlayerControlsComponent } from './live-map/map/player-controls/player-controls.component';
 import { DynamicFormsPrimeNGUIModule } from '@ng-dynamic-forms/ui-primeng';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SquadSettingsComponent } from './squadmanager/squad-settings/squad-settings.component';
@@ -28,6 +28,10 @@ import { UserProfileComponent } from './usermanager/user-profile/user-profile.co
 import { UserKeysComponent } from './usermanager/user-keys/user-keys.component';
 import { UserGroupsComponent } from './usermanager/user-groups/user-groups.component';
 import { GroupmanagerComponent } from './groupmanager/groupmanager/groupmanager.component';
+import { GroupOverviewComponent } from './groupmanager/group-overview/group-overview.component';
+import { GroupProfileComponent } from './groupmanager/group-profile/group-profile.component';
+import { GroupUserComponent } from './groupmanager/group-user/group-user.component';
+import { GroupPermissionComponent } from './groupmanager/group-permission/group-permission.component';
 
 const routes: Routes = [
 	{
@@ -178,16 +182,40 @@ const routes: Routes = [
 		path: 'groupmanager',
 		component: GroupmanagerComponent,
 		data: {
-			breadcrumb: 'User Manager',
+			breadcrumb: 'Group Manager',
 		},
 		children: [
+			{ path: '', redirectTo: 'overview', pathMatch: 'full' },
+			{
+				path: 'overview',
+				component: GroupOverviewComponent,
+				data: {
+					breadcrumb: 'Overview',
+				},
+			},
 			{
 				path: ':id',
-				component: UserProfileComponent,
+				component: GroupProfileComponent,
 				data: {
 					breadcrumb: '',
 				},
-				children: [{ path: '', redirectTo: 'groups', pathMatch: 'full' }],
+				children: [
+					{ path: '', redirectTo: 'member', pathMatch: 'full' },
+					{
+						path: 'member',
+						component: GroupUserComponent,
+						data: {
+							breadcrumb: 'Members',
+						},
+					},
+					{
+						path: 'permission',
+						component: GroupPermissionComponent,
+						data: {
+							breadcrumb: 'Permissions',
+						},
+					},
+				],
 			},
 		],
 	},
@@ -217,6 +245,10 @@ const routes: Routes = [
 		UserKeysComponent,
 		UserGroupsComponent,
 		GroupmanagerComponent,
+		GroupOverviewComponent,
+		GroupProfileComponent,
+		GroupUserComponent,
+		GroupPermissionComponent,
 	],
 	imports: [
 		CommonModule,

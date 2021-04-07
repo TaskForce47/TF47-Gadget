@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -7,12 +7,29 @@ import { HttpClient } from '@angular/common/http';
 })
 export class UsermanagerComponent implements OnInit {
 	constructor(private http: HttpClient) {}
-
+	@ViewChild('searchContainer', { static: true }) searchContainer: ElementRef;
+	public searchValue: any;
+	public searchHeight: number;
+	public searchWidth: string;
 	public users = [];
 	public usersFiltered = [];
-	searchValue: any;
 	ngOnInit(): void {
 		this.getUsers();
+		this.calcDimensions();
+	}
+	@HostListener('window:resize', ['$event'])
+	onResize() {
+		this.calcDimensions();
+	}
+
+	private calcDimensions() {
+		if (window.innerWidth > 991) {
+			this.searchWidth = '250px';
+			this.searchHeight = this.searchContainer.nativeElement.getBoundingClientRect().height - 120;
+		} else {
+			this.searchWidth = '100%';
+			this.searchHeight = 250;
+		}
 	}
 
 	private getUsers() {

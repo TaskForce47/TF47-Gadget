@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { DynamicFormGroupModel, DynamicFormModel, DynamicFormService, DynamicInputModel } from '@ng-dynamic-forms/core';
 import { FormGroup } from '@angular/forms';
-import { Squad } from '../../../../models/Gadget';
+import { Squad } from '../../../../core/models/Gadget';
 
 @Component({
 	selector: 'app-squad-settings',
