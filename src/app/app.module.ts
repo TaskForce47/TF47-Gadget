@@ -5,14 +5,15 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { ActivatedRoute, Router, RouterModule, Routes } from '@angular/router';
 import { ThemeModule } from './theme/theme.module';
-import { AuthService } from './services/auth.service';
+import { AuthService } from './core/services/auth.service';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-import { APIInterceptor } from './interceptor/APIInterceptor.interceptor';
+import { APIInterceptor } from './core/interceptor/APIInterceptor.interceptor';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AccountModule } from './modules/account/account.module';
 import { DynamicFormsPrimeNGUIModule } from '@ng-dynamic-forms/ui-primeng';
-import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
+import { ForbiddenComponent } from './core/forbidden/forbidden.component';
+import { AuthGuardGuard } from './core/guards/auth-guard.guard';
 
 const routes: Routes = [
 	{
@@ -24,6 +25,7 @@ const routes: Routes = [
 		data: {
 			breadcrumb: 'Account',
 		},
+		canActivate: [AuthGuardGuard],
 		loadChildren: () => import('./modules/account/account.module').then((m) => m.AccountModule),
 	},
 	{
@@ -31,6 +33,7 @@ const routes: Routes = [
 		data: {
 			breadcrumb: 'Server Control',
 		},
+		canActivate: [AuthGuardGuard],
 		loadChildren: () => import('./modules/servercontrol/servercontrol.module').then((m) => m.ServercontrolModule),
 	},
 	{
@@ -38,6 +41,7 @@ const routes: Routes = [
 		data: {
 			breadcrumb: 'Administration',
 		},
+		canActivate: [AuthGuardGuard],
 		loadChildren: () => import('./modules/administration/administration.module').then((m) => m.AdministrationModule),
 	},
 	{
@@ -61,9 +65,17 @@ const routes: Routes = [
 		},
 		loadChildren: () => import('./modules/community/community.module').then((m) => m.CommunityModule),
 	},
+	{ path: '**', redirectTo: 'forbidden' },
+	{
+		path: 'forbidden',
+		data: {
+			breadcrumb: 'Forbidden',
+		},
+		component: ForbiddenComponent,
+	},
 ];
 @NgModule({
-	declarations: [AppComponent],
+	declarations: [AppComponent, ForbiddenComponent],
 	imports: [
 		BrowserModule,
 		ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
