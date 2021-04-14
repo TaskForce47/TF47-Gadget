@@ -1,12 +1,15 @@
-<tf47-table
-  [defaultHeaders]="defaultHeaders"
-  [headers]="headers"
-  [dataLoading]="loadingGroups"
-  [data]="groups"
-  [disableSorting]="true"
-  [paginator]="true"
-  [selectionMode]="'single'"
-  [dataKey]="'groupId'"
-  (onManualReload)="loadGroups()"
->
-</tf47-table>
+<div class="content-wrapper">
+  <tf47-table
+    [defaultHeaders]="defaultHeaders"
+    [headers]="headers"
+    [dataLoading]="loadingGroups"
+    [data]="groups"
+    [disableSorting]="true"
+    [paginator]="true"
+    [selectionMode]="'single'"
+    [dataKey]="'groupId'"
+    (onManualReload)="loadGroups()"
+  >
+  </tf47-table>
+</div>
+

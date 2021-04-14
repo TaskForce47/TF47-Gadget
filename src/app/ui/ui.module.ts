@@ -80,6 +80,7 @@ import { Tf47CalendarComponent } from './tf47-calendar/tf47-calendar.component';
 import { FullCalendarModule } from 'primeng/fullcalendar';
 import { DividerModule } from 'primeng/divider';
 import { TagModule } from 'primeng/tag';
+import { Tf47DataViewComponent } from './tf47-data-view/tf47-data-view.component';
 @NgModule({
 	declarations: [
 		BreadcrumbsComponent,
@@ -90,6 +91,7 @@ import { TagModule } from 'primeng/tag';
 		Tf47ChartComponent,
 		SafeUrlPipe,
 		Tf47CalendarComponent,
+		Tf47DataViewComponent,
 	],
 	imports: [
 		CommonModule,

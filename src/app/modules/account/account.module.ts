@@ -7,6 +7,8 @@ import { AccountComponent } from './account/account.component';
 import { UiComponentsModule } from '../../ui-components/ui-components.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AccountKeysComponent } from './account-keys/account-keys.component';
+import { AccountSettingsComponent } from './account-settings/account-settings.component';
+import { BreadcrumbService } from '../../core/services/breadcrumb.service';
 
 const routes: Routes = [
 	{
@@ -31,13 +33,27 @@ const routes: Routes = [
 					breadcrumb: 'Api Keys',
 				},
 			},
+			{
+				path: 'settings',
+				component: AccountSettingsComponent,
+				data: {
+					breadcrumb: 'Settings',
+				},
+			},
 		],
 	},
 ];
 
 @NgModule({
-	declarations: [AccountComponent, AccountProfileComponent, AccountKeysComponent],
+	declarations: [AccountComponent, AccountProfileComponent, AccountKeysComponent, AccountSettingsComponent],
 	imports: [CommonModule, UiModule, RouterModule.forChild(routes), UiComponentsModule, ReactiveFormsModule],
 	exports: [RouterModule],
 })
-export class AccountModule {}
+export class AccountModule {
+	constructor(private breadcrumbService: BreadcrumbService) {
+		this.breadcrumbService.addFriendlyNameForRoute('/account', 'Account');
+		this.breadcrumbService.addFriendlyNameForRoute('/account/profile', 'Profile');
+		this.breadcrumbService.addFriendlyNameForRoute('/account/keys', 'Api Keys');
+		this.breadcrumbService.addFriendlyNameForRoute('/account/settings', 'Settings');
+	}
+}

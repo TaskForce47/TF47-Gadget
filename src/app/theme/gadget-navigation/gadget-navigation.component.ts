@@ -8,7 +8,7 @@ import { PermissionService } from '../../core/services/permission.service';
 	templateUrl: './gadget-navigation.component.html',
 })
 export class GadgetNavigationComponent implements OnInit {
-	constructor(private auth: AuthService, private permissionsService: PermissionService) {}
+	constructor(public auth: AuthService, private permissionsService: PermissionService) {}
 	private navdata = navData;
 	public links = [];
 	@ViewChild('item') item;

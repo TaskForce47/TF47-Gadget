@@ -33,7 +33,7 @@ export class SquadCardComponent implements OnInit {
 	copyLink(squad: Squad) {}
 
 	leaveSquad(squad: Squad) {
-		this.http.delete('/SquadMember/' + this.findSquadMember(squad).squadMemberId + '/me').subscribe((res) => {
+		this.http.delete('/SquadMember/' + this.findSquadMember(squad).squadMemberId).subscribe((res) => {
 			this.reload.emit();
 		});
 	}

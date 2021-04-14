@@ -5,8 +5,8 @@
 				<span>Task Force 47</span>
 				<span class="header-gadget">Gadget</span>
 			</div>
-			<app-breadcrumbs class="header-breadcrumbs p-d-md-block p-d-none"></app-breadcrumbs>
-			<div class="p-ml-auto p-d-none p-d-lg-block p-mr-3">
+			<app-breadcrumbs class="header-breadcrumbs p-d-none p-d-sm-block"></app-breadcrumbs>
+			<div class="p-d-none p-d-lg-block p-mr-3" style="position: absolute; top: 0; right: 0">
 				<a
 					pButton
 					type="button"
@@ -15,16 +15,6 @@
 					pTooltip="Github"
 					tooltipPosition="bottom"
 					href="https://github.com/taskforce47"
-          target="_blank"
-				></a>
-				<a
-					pButton
-					type="button"
-					icon="mdi mdi-forum"
-					class="p-button-text text-5xl p-mr-3 p-mt-2"
-					pTooltip="Forum"
-					tooltipPosition="bottom"
-					href="https://forum.taskforce47.com"
           target="_blank"
 				></a>
         <a href="https://beta.taskforce47.com/api/Authentication/login/steam">
@@ -52,6 +42,16 @@
         />
       </a>
 			<gadget-navigation></gadget-navigation>
+      <div class="nav-side-bottom-container" [hidden]="!toggleMenu">
+        <ul>
+          <li>
+            <button pButton icon="mdi mdi-account" label="Profile" class="p-button-text" routerLink="/account/profile"></button>
+          </li>
+          <li>
+            <button pButton icon="mdi mdi-logout" label="Logout" class="p-button-text" (click)="auth.logout()"></button>
+          </li>
+        </ul>
+      </div>
 		</div>
 	</div>
 	<div class="content-area" [ngClass]="{ 'content-blur': toggleMenu }">

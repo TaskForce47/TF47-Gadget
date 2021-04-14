@@ -1,15 +1,39 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { TreeNode } from 'primeng/api';
+import { Campaign } from '../../../../core/models/Gadget';
 
 @Component({
-  selector: 'app-campaign-overview',
-  templateUrl: './campaign-overview.component.html',
-  styleUrls: ['./campaign-overview.component.scss']
+	templateUrl: './campaign-overview.component.html',
+	styleUrls: ['./campaign-overview.component.scss'],
 })
 export class CampaignOverviewComponent implements OnInit {
+	cols: any[];
+	files: TreeNode[];
+	constructor(private http: HttpClient) {}
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+	ngOnInit(): void {
+		this.cols = [
+			{ field: 'name', header: 'Name' },
+			{ field: 'timeCreated', header: 'Created At' },
+		];
+		this.http.get('/Campaign').subscribe((res: Campaign[]) => {
+			const tmpData = [];
+			let tmpMissions = [];
+			res.forEach((resss) => {
+				resss.missions.forEach((mission) => {
+					tmpMissions.push({
+						data: mission,
+						leaf: true,
+					});
+				});
+				tmpData.push({
+					data: resss,
+					children: tmpMissions,
+				});
+				tmpMissions = [];
+			});
+			this.files = tmpData;
+		});
+	}
 }

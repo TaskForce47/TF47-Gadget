@@ -1,7 +1,7 @@
 <p-progressSpinner *ngIf="loading || userId === ''" styleClass="custom-spinner" strokeWidth="8" animationDuration="2s"></p-progressSpinner>
 
 <div *ngIf="user && !loading">
-  <div class="user-profile-header p-d-flex" *ngIf="user">
+  <div class="user-profile-header p-d-flex p-flex-column p-flex-md-row" *ngIf="user">
     <div class="user-profile-image">
       <img [src]="user.profilePicture" />
     </div>

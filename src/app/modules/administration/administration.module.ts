@@ -32,6 +32,8 @@ import { GroupOverviewComponent } from './groupmanager/group-overview/group-over
 import { GroupProfileComponent } from './groupmanager/group-profile/group-profile.component';
 import { GroupUserComponent } from './groupmanager/group-user/group-user.component';
 import { GroupPermissionComponent } from './groupmanager/group-permission/group-permission.component';
+import { GroupSettingsComponent } from './groupmanager/group-settings/group-settings.component';
+import { BreadcrumbService } from '../../core/services/breadcrumb.service';
 
 const routes: Routes = [
 	{
@@ -42,45 +44,27 @@ const routes: Routes = [
 	{
 		path: 'playermanager',
 		component: PlayermanagerComponent,
-		data: {
-			breadcrumb: 'Player Manager',
-		},
 		children: [
 			{
 				path: ':id',
 				component: PlayerProfileComponent,
-				data: {
-					breadcrumb: 'Add',
-				},
 				children: [
 					{ path: '', redirectTo: 'notes', pathMatch: 'full' },
 					{
 						path: 'notes',
 						component: PlayerNotesComponent,
-						data: {
-							breadcrumb: 'Notes',
-						},
 					},
 					{
 						path: 'whitelist',
 						component: PlayerWhitelistComponent,
-						data: {
-							breadcrumb: 'Whitelist',
-						},
 					},
 					{
 						path: 'chat',
 						component: PlayerChatComponent,
-						data: {
-							breadcrumb: 'Chat',
-						},
 					},
 					{
 						path: 'stats',
 						component: PlayerStatisticsComponent,
-						data: {
-							breadcrumb: 'Statistics',
-						},
 					},
 				],
 			},
@@ -89,9 +73,6 @@ const routes: Routes = [
 	{
 		path: 'squadmanager',
 		component: SquadmanagerComponent,
-		data: {
-			breadcrumb: 'Squad Manager',
-		},
 		children: [
 			{
 				path: '',
@@ -100,31 +81,19 @@ const routes: Routes = [
 			{
 				path: 'overview',
 				component: SquadOverviewComponent,
-				data: {
-					breadcrumb: 'Overview',
-				},
 			},
 			{
 				path: ':id',
 				component: SquadWrapperComponent,
-				data: {
-					breadcrumb: '',
-				},
 				children: [
 					{ path: '', redirectTo: 'profile', pathMatch: 'full' },
 					{
 						path: 'profile',
 						component: SquadProfileComponent,
-						data: {
-							breadcrumb: 'Profile',
-						},
 					},
 					{
 						path: 'settings',
 						component: SquadSettingsComponent,
-						data: {
-							breadcrumb: 'Settings',
-						},
 					},
 				],
 			},
@@ -134,45 +103,27 @@ const routes: Routes = [
 	{
 		path: 'logs/:type',
 		component: LogsComponent,
-		data: {
-			breadcrumb: 'Logs',
-		},
 	},
 	{
 		path: 'live',
 		component: LiveMapComponent,
-		data: {
-			breadcrumb: 'Live Map',
-		},
 	},
 	{
 		path: 'usermanager',
 		component: UsermanagerComponent,
-		data: {
-			breadcrumb: 'User Manager',
-		},
 		children: [
 			{
 				path: ':id',
 				component: UserProfileComponent,
-				data: {
-					breadcrumb: '',
-				},
 				children: [
 					{ path: '', redirectTo: 'groups', pathMatch: 'full' },
 					{
 						path: 'groups',
 						component: UserGroupsComponent,
-						data: {
-							breadcrumb: 'Groups',
-						},
 					},
 					{
 						path: 'keys',
 						component: UserKeysComponent,
-						data: {
-							breadcrumb: 'Api Keys',
-						},
 					},
 				],
 			},
@@ -181,39 +132,28 @@ const routes: Routes = [
 	{
 		path: 'groupmanager',
 		component: GroupmanagerComponent,
-		data: {
-			breadcrumb: 'Group Manager',
-		},
 		children: [
 			{ path: '', redirectTo: 'overview', pathMatch: 'full' },
 			{
 				path: 'overview',
 				component: GroupOverviewComponent,
-				data: {
-					breadcrumb: 'Overview',
-				},
 			},
 			{
 				path: ':id',
 				component: GroupProfileComponent,
-				data: {
-					breadcrumb: '',
-				},
 				children: [
 					{ path: '', redirectTo: 'member', pathMatch: 'full' },
 					{
 						path: 'member',
 						component: GroupUserComponent,
-						data: {
-							breadcrumb: 'Members',
-						},
 					},
 					{
 						path: 'permission',
 						component: GroupPermissionComponent,
-						data: {
-							breadcrumb: 'Permissions',
-						},
+					},
+					{
+						path: 'settings',
+						component: GroupSettingsComponent,
 					},
 				],
 			},
@@ -249,6 +189,7 @@ const routes: Routes = [
 		GroupProfileComponent,
 		GroupUserComponent,
 		GroupPermissionComponent,
+		GroupSettingsComponent,
 	],
 	imports: [
 		CommonModule,
@@ -259,4 +200,32 @@ const routes: Routes = [
 		ReactiveFormsModule,
 	],
 })
-export class AdministrationModule {}
+export class AdministrationModule {
+	constructor(private breadcrumbService: BreadcrumbService) {
+		this.breadcrumbService.addFriendlyNameForRoute('/administration', 'Administration');
+
+		// User Manager
+		this.breadcrumbService.addFriendlyNameForRoute('/administration/usermanager', 'User Manager');
+		// this.breadcrumbService.addFriendlyNameForRouteRegex('^/administration/usermanager/[0-9 a-z -]+$', 'Moin');
+		this.breadcrumbService.addFriendlyNameForRouteRegex('^/administration/usermanager/[0-9 a-z -]+/groups', 'Groups');
+		this.breadcrumbService.addFriendlyNameForRouteRegex('^/administration/usermanager/[0-9 a-z -]+/keys', 'Api Keys');
+
+		// Group Manager
+		this.breadcrumbService.addFriendlyNameForRoute('/administration/groupmanager', 'Group Manager');
+		this.breadcrumbService.addFriendlyNameForRoute('/administration/groupmanager/overview', 'Overview');
+		this.breadcrumbService.addFriendlyNameForRouteRegex('^/administration/groupmanager/\\d+/member', 'Member');
+
+		// Player Manager
+		this.breadcrumbService.addFriendlyNameForRoute('/administration/playermanager', 'Player Manager');
+		// this.breadcrumbService.addFriendlyNameForRouteRegex('^/administration/playermanager/\\d+$', 'Moin'); TODO
+		this.breadcrumbService.addFriendlyNameForRouteRegex('^/administration/playermanager/\\d+/notes', 'Notes');
+		this.breadcrumbService.addFriendlyNameForRouteRegex('^/administration/playermanager/\\d+/whitelist', 'Whitelist');
+		this.breadcrumbService.addFriendlyNameForRouteRegex('^/administration/playermanager/\\d+/chat', 'Chat');
+
+		// Squad Manager
+		this.breadcrumbService.addFriendlyNameForRoute('/administration/squadmanager', 'Squad Manager');
+		this.breadcrumbService.addFriendlyNameForRoute('/administration/squadmanager/overview', 'Overview');
+		this.breadcrumbService.addFriendlyNameForRouteRegex('^/administration/squadmanager/\\d+/profile', 'Profile');
+		this.breadcrumbService.addFriendlyNameForRouteRegex('^/administration/squadmanager/\\d+/settings', 'Settings');
+	}
+}

@@ -16,20 +16,33 @@ export class ChangelogComponent implements OnInit {
 		chart: {
 			inverted: true,
 			type: 'timeline',
+			borderWidth: 1,
 			zoomType: 'x',
+			panKey: 'shift',
+			panning: {
+				enabled: true,
+			},
 		},
 		title: {
 			text: 'Changelog',
 		},
 		xAxis: {
 			type: 'datetime',
-			visible: false,
+			lineWidth: 1,
+			labels: {
+				enabled: true,
+				formatter() {
+					return dayjs.unix(this.value).format('DD.MM.YY H:m:s');
+				},
+			},
 		},
 		yAxis: {
-			gridLineWidth: 1,
-			title: null,
+			width: 40,
 			labels: {
 				enabled: false,
+			},
+			title: {
+				text: null,
 			},
 		},
 		legend: {
@@ -39,19 +52,17 @@ export class ChangelogComponent implements OnInit {
 			enabled: false,
 		},
 		tooltip: {
-			style: {
-				width: 300,
-			},
+			enabled: false,
 		},
-		series: [
-			{
-				type: 'timeline',
-				data: [],
-				marker: {
-					symbol: 'circle',
+		plotOptions: {
+			timeline: {
+				dataLabels: {
+					align: 'left',
+					distance: 20,
 				},
 			},
-		],
+		},
+		series: [],
 	};
 	public ready: boolean = false;
 	constructor(private http: HttpClient) {}
@@ -63,13 +74,23 @@ export class ChangelogComponent implements OnInit {
 				changelogtmp.push({
 					name: changelog.title,
 					label: changelog.text,
-					description: changelog.text,
-					y: dayjs(changelog.timeReleased).unix(),
+					x: dayjs(changelog.timeReleased).unix(),
+					dataLabels: {
+						enabled: true,
+					},
 				});
 			});
 			this.chartOptions.series.push({
 				type: 'timeline',
 				data: changelogtmp,
+				dataLabels: {
+					alternate: false,
+					enabled: false,
+					allowOverlap: false,
+				},
+				marker: {
+					symbol: 'circle',
+				},
 			});
 			this.ready = true;
 		});

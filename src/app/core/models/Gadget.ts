@@ -71,3 +71,20 @@ export interface Permission {
 	permissionId: number;
 	type: string;
 }
+
+export interface Campaign {
+	campaignId: number;
+	name: string;
+	description: string;
+	missions: Mission[];
+	timeCreated: string;
+}
+
+export interface Mission {
+	name: string;
+	missionId: number;
+	description: string;
+	missionType: string;
+	campaignId: number;
+	campaignName: string;
+}

@@ -1,18 +1,20 @@
 <div class="p-d-flex p-flex-column squad-card" *ngIf="user !== null">
-  <div class="p-d-flex">
+  <div class="p-d-flex p-flex-md-row p-flex-column">
     <div style="max-width: 128px; max-height: 128px; height: 128px; width: 128px;">
       <img *ngIf="squad.squadImageLink !== null" style="max-width: 128px; max-height: 128px; height: 128px; width: 128px;" [src]="'https://' + squad.squadImageLink" alt="Squad Image"/>
       <img *ngIf="squad.squadImageLink == null" style="max-width: 128px; max-height: 128px; height: 128px; width: 128px;" src="assets/images/no-image.svg" alt="Squad Image"/>
     </div>
-    <div class="p-d-flex p-flex-column" style="margin-left: 0.5rem">
+    <div class="p-d-flex p-flex-column p-ml-md-2">
       <h1>{{squad.title}} [{{squad.nick}}]</h1>
       <span>Email: {{squad.mail}}</span>
       <span>Web: {{squad.website}}</span>
       <span *ngIf="!public">Your Remark: {{findRemark(squad)}}</span>
     </div>
-    <div class="p-ml-auto" *ngIf="!noButtons" style="margin-right: .25rem">
-      <button pButton type="button" icon="mdi mdi-content-copy" pTooltip="Copy XML Link" class="p-button-text p-button-secondary" tooltipPosition="bottom" (click)="copyLink(squad)"></button>
-      <button pButton type="button" icon="mdi mdi-door" pTooltip="Leave Squad" class="p-button-text" (click)="leaveSquad(squad)"></button>
+    <div class="p-ml-md-auto p-mt-2 p-mt-md-0" *ngIf="!noButtons" style="margin-right: .25rem">
+      <button pButton type="button" icon="mdi mdi-content-copy" pTooltip="Copy XML Link" class="p-button-text p-button-secondary p-d-none icon-button p-d-md-flex" (click)="copyLink(squad)"></button>
+      <button pButton type="button" icon="mdi mdi-door" pTooltip="Leave Squad" class="p-button-text p-d-none icon-button p-d-md-flex" (click)="leaveSquad(squad)"></button>
+      <button pButton type="button" icon="mdi mdi-content-copy" label="Copy XML Link" class="p-button p-d-md-none" style="width: 100%" (click)="copyLink(squad)"></button>
+      <button pButton type="button" icon="mdi mdi-door" label="Leave Squad" class="p-button p-d-md-none p-mt-2" style="width: 100%" (click)="leaveSquad(squad)"></button>
     </div>
   </div>
   <div class="p-mt-2">

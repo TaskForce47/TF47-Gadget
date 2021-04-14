@@ -23,6 +23,11 @@ export class GroupProfileComponent implements OnInit {
 			routerLink: 'permission',
 			routerLinkActiveOptions: { exact: true },
 		},
+		{
+			label: 'Settings',
+			routerLink: 'settings',
+			routerLinkActiveOptions: { exact: true },
+		},
 	];
 	constructor(private http: HttpClient, private activatedRoute: ActivatedRoute) {}
 

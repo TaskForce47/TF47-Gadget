@@ -1,0 +1,23 @@
+<div class="p-mr-2" style="height: 100%;" [style]="{width: searchWidth}">
+  <div #searchContainer style="height: 100%">
+    <div class="data-search">
+				<span class="p-input-icon-left">
+					<i class="pi pi-search"></i>
+					<input type="text" pInputText placeholder="Search" [(ngModel)]="searchValue" (keyup)="filter()" />
+				</span>
+    </div>
+    <p-progressSpinner *ngIf="rows.length == 0" styleClass="custom-spinner" strokeWidth="8" animationDuration="2s"></p-progressSpinner>
+    <p-virtualScroller
+      [value]="rowsFiltered"
+      [scrollHeight]="searchHeight+'px'"
+      [itemSize]="50"
+      [rows]="rows.length"
+      [lazy]="true"
+    >
+      <ng-template pTemplate="item" let-row>
+        <div class="data-box" [routerLink]="row.playerUid" routerLinkActive="data-box-active">{{ row.name }}</div></ng-template
+      >
+      <ng-template pTemplate="loadingItem"> Loading... </ng-template>
+    </p-virtualScroller>
+  </div>
+</div>

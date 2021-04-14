@@ -14,6 +14,7 @@ import { DynamicFormsPrimeNGUIModule } from '@ng-dynamic-forms/ui-primeng';
 import { MessageService } from 'primeng/api';
 import { ForbiddenComponent } from './core/forbidden/forbidden.component';
 import { AuthGuardGuard } from './core/guards/auth-guard.guard';
+import { BreadcrumbService } from './core/services/breadcrumb.service';
 
 const routes: Routes = [
 	{
@@ -99,4 +100,9 @@ const routes: Routes = [
 	],
 	bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule {
+	constructor(private breadcrumbService: BreadcrumbService) {
+		this.breadcrumbService.addFriendlyNameForRoute('/', 'Dashboard');
+		this.breadcrumbService.addFriendlyNameForRoute('/forbidden', 'Forbidden');
+	}
+}

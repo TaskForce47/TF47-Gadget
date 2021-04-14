@@ -1361,7 +1361,7 @@ p-togglebutton.ng-dirty.ng-invalid > .p-togglebutton.p-button {
 .p-button:focus {
   outline: 0 none;
   outline-offset: 0;
-  box-shadow: 0 0 0 1px #ff4600;
+  box-shadow: none;
 }
 .p-button .p-button-icon-left {
   margin-right: 0.5rem;

@@ -5,11 +5,16 @@ import { MissionReportComponent } from './mission/mission-report/mission-report.
 import { UiModule } from '../../ui/ui.module';
 import { RouterModule, Routes } from '@angular/router';
 import { CampaignOverviewComponent } from './campaign/campaign-overview/campaign-overview.component';
+import { CampaignProfileComponent } from './campaign/campaign-profile/campaign-profile.component';
+import { MissionProfileComponent } from './mission/mission-profile/mission-profile.component';
+import { CampaignComponent } from './campaign/campaign/campaign.component';
+import { MissionSlottingComponent } from './mission/mission-slotting/mission-slotting.component';
+import { MissionComponent } from './mission/mission/mission.component';
 
 const routes: Routes = [
 	{
 		path: '',
-		redirectTo: 'attendance',
+		redirectTo: 'overview',
 	},
 	{
 		path: 'overview',
@@ -19,23 +24,52 @@ const routes: Routes = [
 		},
 	},
 	{
-		path: 'attendance',
-		component: MissionAttendanceComponent,
+		path: ':id',
+		component: CampaignComponent,
 		data: {
-			breadcrumb: 'Attendance',
+			breadcrumb: '',
 		},
-	},
-	{
-		path: 'after-action-report',
-		component: MissionReportComponent,
-		data: {
-			breadcrumb: 'After Action Report',
-		},
+		children: [
+			{ path: '', pathMatch: 'full', redirectTo: 'profile' },
+			{
+				path: 'profile',
+				component: CampaignProfileComponent,
+				data: {
+					breadcrumb: 'Profile',
+				},
+			},
+			{
+				path: 'mission/:mid',
+				component: MissionComponent,
+				data: {
+					breadcrumb: 'Mission',
+				},
+				children: [
+					{ path: '', pathMatch: 'full', redirectTo: 'slotting' },
+					{
+						path: 'slotting',
+						component: MissionSlottingComponent,
+						data: {
+							breadcrumb: 'Slotting',
+						},
+					},
+				],
+			},
+		],
 	},
 ];
 
 @NgModule({
-	declarations: [MissionAttendanceComponent, MissionReportComponent, CampaignOverviewComponent],
+	declarations: [
+		MissionAttendanceComponent,
+		MissionReportComponent,
+		CampaignOverviewComponent,
+		CampaignProfileComponent,
+		MissionProfileComponent,
+		CampaignComponent,
+		MissionSlottingComponent,
+		MissionComponent,
+	],
 	imports: [CommonModule, UiModule, RouterModule.forChild(routes)],
 	exports: [RouterModule],
 })

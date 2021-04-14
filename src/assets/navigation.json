@@ -62,6 +62,21 @@
 				}
 			]
 		},
+    {
+      "label": "After Action Report",
+      "tooltip": "",
+      "routerLink": "",
+      "permissions": [],
+      "icon": "",
+      "items": [
+        {
+          "label": "Campaigns",
+          "icon": "mdi-folder-image",
+          "routerLink": "/campaigns",
+          "permissions": []
+        }
+      ]
+    },
 		{
 			"label": "Administration",
 			"tooltip": "",

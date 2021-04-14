@@ -12,6 +12,7 @@ import { IssueProfileComponent } from './issues/issue-profile/issue-profile.comp
 import { IssueComponent } from './issues/issue/issue.component';
 import { ChangelogComponent } from './changelog/changelog.component';
 import { HighchartsChartModule } from 'highcharts-angular';
+import { BreadcrumbService } from '../../core/services/breadcrumb.service';
 
 const routes: Routes = [
 	{
@@ -22,30 +23,18 @@ const routes: Routes = [
 	{
 		path: 'servers',
 		component: ServersComponent,
-		data: {
-			breadcrumb: 'Servers',
-		},
 	},
 	{
 		path: 'changelog',
 		component: ChangelogComponent,
-		data: {
-			breadcrumb: 'Changelog',
-		},
 	},
 	{
 		path: 'squads',
 		component: SquadsComponent,
-		data: {
-			breadcrumb: 'Squads',
-		},
 	},
 	{
 		path: 'issues',
 		component: IssueComponent,
-		data: {
-			breadcrumb: 'Issues',
-		},
 		children: [
 			{
 				path: '',
@@ -55,16 +44,10 @@ const routes: Routes = [
 			{
 				path: 'overview',
 				component: IssueOverviewComponent,
-				data: {
-					breadcrumb: 'Overview',
-				},
 			},
 			{
 				path: ':id',
 				component: IssueProfileComponent,
-				data: {
-					breadcrumb: '',
-				},
 			},
 		],
 	},
@@ -90,4 +73,13 @@ const routes: Routes = [
 	],
 	exports: [RouterModule],
 })
-export class CommunityModule {}
+export class CommunityModule {
+	constructor(private breadcrumbService: BreadcrumbService) {
+		this.breadcrumbService.addFriendlyNameForRoute('/community', 'Community');
+		this.breadcrumbService.addFriendlyNameForRoute('/community/servers', 'Servers');
+		this.breadcrumbService.addFriendlyNameForRoute('/community/changelog', 'Changelog');
+		this.breadcrumbService.addFriendlyNameForRoute('/community/squads', 'Squads');
+		this.breadcrumbService.addFriendlyNameForRoute('/community/issues', 'Issues');
+		this.breadcrumbService.addFriendlyNameForRoute('/community/issues/overview', 'Overview');
+	}
+}

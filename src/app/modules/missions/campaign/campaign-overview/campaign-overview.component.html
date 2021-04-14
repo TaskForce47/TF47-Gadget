@@ -1,1 +1,30 @@
-<p>campaign-overview works!</p>
+<div class="content-wrapper">
+  <p-treeTable [value]="files" [columns]="cols">
+    <ng-template pTemplate="caption">
+      Campaigns
+    </ng-template>
+    <ng-template pTemplate="header" let-columns>
+      <tr>
+        <th *ngFor="let col of columns">
+          {{col.header}}
+        </th>
+        <th style="width: 8rem">
+          <p-button icon="pi pi-cog"></p-button>
+        </th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-rowNode let-rowData="rowData" let-columns="columns">
+      <tr>
+        <td *ngFor="let col of columns; let i = index">
+          <p-treeTableToggler [rowNode]="rowNode" *ngIf="i == 0"></p-treeTableToggler>
+          {{rowData[col.field]}}
+        </td>
+        <td>
+          <p-button *ngIf="!rowData.missionId" icon="pi pi-search" [routerLink]="'../'+rowData['campaignId']"></p-button>
+          <p-button *ngIf="rowData.missionId" icon="pi pi-search" [routerLink]="'/campaigns/'+rowData['campaignId']+'/mission/'+ rowData['missionId']"></p-button>
+        </td>
+      </tr>
+    </ng-template>
+  </p-treeTable>
+
+</div>

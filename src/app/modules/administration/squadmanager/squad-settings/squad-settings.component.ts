@@ -6,7 +6,6 @@ import { FormGroup } from '@angular/forms';
 import { Squad } from '../../../../core/models/Gadget';
 
 @Component({
-	selector: 'app-squad-settings',
 	templateUrl: './squad-settings.component.html',
 	styleUrls: ['./squad-settings.component.scss'],
 })

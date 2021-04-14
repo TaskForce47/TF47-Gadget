@@ -1,4 +1,5 @@
 <tf47-table
+  #apiKeyGrid
   [defaultHeaders]="defaultHeaders"
   [headers]="headers"
   [dataLoading]="loadingKeys"
@@ -8,6 +9,27 @@
   [paginator]="true"
   [selectionMode]="'single'"
   [dataKey]="'apiKeyId'"
+  [headerActions]="headerButtonActions"
   (onManualReload)="loadKeys()"
+  (onHeaderButtonClicked)="headerButtonClicked($event)"
 >
 </tf47-table>
+
+<app-modal #addModal [styleClass]="['modal-sm']">
+  <div header>Add Api Key</div>
+  <div content>
+    <div>
+      <form [formGroup]="myFormGroup">
+        <dynamic-primeng-form *ngIf="ready" [group]="myFormGroup" [model]="myFormModel"></dynamic-primeng-form>
+      </form>
+    </div>
+  </div>
+  <div footer>
+    <p-button
+      type="submit"
+      label="Submit"
+      class="p-ml-auto"
+      (click)="addApiKey()"
+    ></p-button>
+  </div>
+</app-modal>

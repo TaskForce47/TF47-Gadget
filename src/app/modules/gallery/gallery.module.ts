@@ -8,6 +8,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { GalleryUploadComponent } from './gallery-upload/gallery-upload.component';
 import { GalleryResourceDirective } from './shared/gallery-resource.directive';
 import { GalleryExpandedComponent } from './shared/gallery-expanded/gallery-expanded.component';
+import { BreadcrumbService } from '../../core/services/breadcrumb.service';
 const routes: Routes = [
 	{
 		path: '',
@@ -34,4 +35,10 @@ const routes: Routes = [
 	imports: [CommonModule, UiModule, RouterModule.forChild(routes), DynamicFormsPrimeNGUIModule, ReactiveFormsModule],
 	exports: [RouterModule],
 })
-export class GalleryModule {}
+export class GalleryModule {
+	constructor(private breadcrumbService: BreadcrumbService) {
+		this.breadcrumbService.addFriendlyNameForRoute('/gallery', 'Gallery');
+		this.breadcrumbService.addFriendlyNameForRoute('/gallery/overview', 'Overview');
+		this.breadcrumbService.addFriendlyNameForRoute('/gallery/upload', 'Upload');
+	}
+}

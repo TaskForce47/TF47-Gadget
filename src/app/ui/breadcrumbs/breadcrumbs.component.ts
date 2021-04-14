@@ -1,77 +1,62 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router, NavigationEnd, Event } from '@angular/router';
-import { filter, distinctUntilChanged } from 'rxjs/operators';
-import { MenuItem } from 'primeng/api';
-
-export interface IBreadCrumb {
-	label: string;
-	url: string;
-}
+import { Component, Input, OnChanges, OnInit } from '@angular/core';
+import { NavigationEnd, Router } from '@angular/router';
+import { BreadcrumbService } from '../../core/services/breadcrumb.service';
 
 @Component({
 	selector: 'app-breadcrumbs',
 	templateUrl: './breadcrumbs.component.html',
 })
-export class BreadcrumbsComponent implements OnInit {
-	public breadcrumbs: IBreadCrumb[];
-	home: MenuItem;
-	constructor(private router: Router, private activatedRoute: ActivatedRoute) {
-		this.breadcrumbs = this.buildBreadCrumb(this.activatedRoute.root);
+export class BreadcrumbsComponent implements OnInit, OnChanges {
+	@Input() prefix: string = '/';
+
+	public _urls: string[];
+	public _routerSubscription: any;
+
+	constructor(private router: Router, private breadcrumbService: BreadcrumbService) {}
+
+	ngOnInit(): void {
+		this._urls = [];
+		this._routerSubscription = this.router.events.subscribe((navigationEnd: NavigationEnd) => {
+			if (navigationEnd instanceof NavigationEnd) {
+				this._urls.length = 0; // Fastest way to clear out array
+				this.generateBreadcrumbTrail(
+					navigationEnd.urlAfterRedirects ? navigationEnd.urlAfterRedirects : navigationEnd.url
+				);
+			}
+		});
 	}
 
-	ngOnInit() {
-		this.router.events
-			.pipe(
-				filter((event: Event) => event instanceof NavigationEnd),
-				distinctUntilChanged()
-			)
-			.subscribe(() => {
-				this.breadcrumbs = this.buildBreadCrumb(this.activatedRoute.root);
-			});
+	ngOnChanges(changes: any): void {
+		if (!this._urls) {
+			return;
+		}
+
+		this._urls.length = 0;
+		this.generateBreadcrumbTrail(this.router.url);
 	}
 
-	/**
-	 * Recursively build breadcrumb according to activated route.
-	 * @param route
-	 * @param url
-	 * @param breadcrumbs
-	 */
-	buildBreadCrumb(route: ActivatedRoute, url: string = '', breadcrumbs: IBreadCrumb[] = []): IBreadCrumb[] {
-		// If no routeConfig is avalailable we are on the root path
-		let label = route.routeConfig && route.routeConfig.data ? route.routeConfig.data.breadcrumb : '';
-		const isClickable = route.routeConfig && route.routeConfig.data && route.routeConfig.data.isClickable;
-		let path = route.routeConfig && route.routeConfig.data ? route.routeConfig.path : '';
-
-		// If the route is dynamic route such as ':id', remove it
-		const lastRoutePart = path.split('/').pop();
-		const isDynamicRoute = lastRoutePart.startsWith(':');
-		if (isDynamicRoute && !!route.snapshot) {
-			const paramName = lastRoutePart.split(':')[1];
-			path = path.replace(lastRoutePart, route.snapshot.params[paramName]);
-			label = route.snapshot.params[paramName];
-			label = label.charAt(0).toUpperCase() + label.slice(1);
+	generateBreadcrumbTrail(url: string): void {
+		if (!this.breadcrumbService.isRouteHidden(url)) {
+			// Add url to beginning of array (since the url is being recursively broken down from full url to its parent)
+			this._urls.unshift(url);
 		}
 
-		// In the routeConfig the complete path is not available,
-		// so we rebuild it each time
-		const nextUrl = path ? `${url}/${path}` : url;
+		if (url.lastIndexOf('/') > 0) {
+			this.generateBreadcrumbTrail(url.substr(0, url.lastIndexOf('/'))); // Find last '/' and add everything before it as a parent route
+		} else if (this.prefix.length > 0) {
+			this._urls.unshift(this.prefix);
+		}
+	}
 
-		const breadcrumb: IBreadCrumb = {
-			label,
-			url: nextUrl,
-		};
-		// Only adding route with non-empty label
-		const newBreadcrumbs = breadcrumb.label ? [...breadcrumbs, breadcrumb] : [...breadcrumbs];
-		if (route.firstChild) {
-			// If we are not on our current path yet,
-			// there will be more children to look after, to build our breadcumb
-			return this.buildBreadCrumb(route.firstChild, nextUrl, newBreadcrumbs);
-		}
-		if (newBreadcrumbs.length > 0) {
-			this.home = { icon: 'pi pi-home', routerLink: '/' };
-		} else {
-			this.home = null;
-		}
-		return newBreadcrumbs;
+	navigateTo(url: string): void {
+		this.router.navigateByUrl(url);
+	}
+
+	friendlyName(url: string): string {
+		return !url ? '' : this.breadcrumbService.getFriendlyNameForRoute(url);
+	}
+
+	ngOnDestroy(): void {
+		this._routerSubscription.unsubscribe();
 	}
 }

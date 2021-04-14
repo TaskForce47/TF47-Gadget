@@ -7,7 +7,7 @@ import { MenuItem } from 'primeng/api';
 	templateUrl: './gadget-layout.component.html',
 })
 export class GadgetLayoutComponent implements OnInit {
-	constructor(private auth: AuthService, private eRef: ElementRef) {}
+	constructor(public auth: AuthService, private eRef: ElementRef) {}
 	public user;
 	public toggleMenu: boolean = false;
 	public items: MenuItem[];
