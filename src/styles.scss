@@ -197,7 +197,7 @@ a:-webkit-any-link {
 
 .nav-item-container {
 	overflow-y: auto;
-	max-height: 83vh;
+	max-height: 82vh;
 
 	&::-webkit-scrollbar {
 		width: 10px;
@@ -240,10 +240,7 @@ a:-webkit-any-link {
 
 .nav-side-bottom-container {
 	clear: both;
-	bottom: 0;
 	width: 100%;
-	position: absolute;
-
 	ul {
 		list-style-type: none;
 		margin: 0;
