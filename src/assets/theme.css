@@ -4609,3 +4609,20 @@ p-togglebutton.ng-dirty.ng-invalid > .p-togglebutton.p-button {
   outline-offset: 0;
   box-shadow: 0 0 0 1px #ff4600;
 }
+
+@media (max-width: 991px){
+  ul.p-tabmenu-nav li{
+    width: 100% !important;
+  }
+
+  .p-tabmenu .p-tabmenu-nav li .p-tabmenu-nav-link {
+    border-color: #efefef !important;
+    border-top-right-radius: 0px !important;
+    border-top-left-radius: 0px !important;
+  }
+
+  .p-tabmenu .p-tabmenu-nav li.p-highlight .p-tabmenu-nav-link {
+    background: #efefef !important;
+    font-weight: bold;
+  }
+}
