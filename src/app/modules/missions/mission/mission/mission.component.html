@@ -1,6 +1,6 @@
 <div class="content-wrapper" *ngIf="mission">
   <h1>{{mission.name}}</h1>
-  <p>{{mission.description}}</p>
+  <app-subnavi [subnaviItems]="subnaviItems"></app-subnavi>
   <router-outlet></router-outlet>
 </div>
 

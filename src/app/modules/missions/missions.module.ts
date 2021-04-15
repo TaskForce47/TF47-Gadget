@@ -19,24 +19,15 @@ const routes: Routes = [
 	{
 		path: 'overview',
 		component: CampaignOverviewComponent,
-		data: {
-			breadcrumb: 'Overview',
-		},
 	},
 	{
 		path: ':id',
 		component: CampaignComponent,
-		data: {
-			breadcrumb: '',
-		},
 		children: [
 			{ path: '', pathMatch: 'full', redirectTo: 'profile' },
 			{
 				path: 'profile',
 				component: CampaignProfileComponent,
-				data: {
-					breadcrumb: 'Profile',
-				},
 			},
 			{
 				path: 'mission/:mid',
@@ -45,13 +36,18 @@ const routes: Routes = [
 					breadcrumb: 'Mission',
 				},
 				children: [
-					{ path: '', pathMatch: 'full', redirectTo: 'slotting' },
+					{ path: '', pathMatch: 'full', redirectTo: 'description' },
 					{
 						path: 'slotting',
 						component: MissionSlottingComponent,
-						data: {
-							breadcrumb: 'Slotting',
-						},
+					},
+					{
+						path: 'aar',
+						component: MissionReportComponent,
+					},
+					{
+						path: 'description',
+						component: MissionProfileComponent,
 					},
 				],
 			},

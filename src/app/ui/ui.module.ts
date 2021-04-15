@@ -77,10 +77,17 @@ import { HighchartsChartModule } from 'highcharts-angular';
 import { SafeUrlPipe } from '../core/pipes/url.pipe';
 import '@fullcalendar/angular';
 import { Tf47CalendarComponent } from './tf47-calendar/tf47-calendar.component';
-import { FullCalendarModule } from 'primeng/fullcalendar';
 import { DividerModule } from 'primeng/divider';
 import { TagModule } from 'primeng/tag';
 import { Tf47DataViewComponent } from './tf47-data-view/tf47-data-view.component';
+import { FullCalendarModule } from '@fullcalendar/angular';
+import dayGridPlugin from '@fullcalendar/daygrid';
+import interactionPlugin from '@fullcalendar/interaction';
+import timeGridPlugin from '@fullcalendar/timegrid';
+import { TimelineModule } from 'primeng/timeline';
+
+FullCalendarModule.registerPlugins([dayGridPlugin, interactionPlugin, timeGridPlugin]);
+
 @NgModule({
 	declarations: [
 		BreadcrumbsComponent,
@@ -166,6 +173,7 @@ import { Tf47DataViewComponent } from './tf47-data-view/tf47-data-view.component
 		FullCalendarModule,
 		DividerModule,
 		TagModule,
+		TimelineModule,
 	],
 	exports: [
 		CheckboxModule,
@@ -246,6 +254,7 @@ import { Tf47DataViewComponent } from './tf47-data-view/tf47-data-view.component
 		Tf47CalendarComponent,
 		DividerModule,
 		TagModule,
+		TimelineModule,
 	],
 })
 export class UiModule {}

@@ -71,6 +71,7 @@ export class IssueProfileComponent implements OnInit {
 	public editIssueFormModel: DynamicFormModel = [];
 	public issueEdit: boolean = false;
 	public requestInProgress = false;
+	public issueItemEdit: boolean = false;
 	constructor(
 		private http: HttpClient,
 		private activatedRoute: ActivatedRoute,
@@ -117,10 +118,10 @@ export class IssueProfileComponent implements OnInit {
 		});
 	}
 	public initEditIssueItem(issueItem) {
-		console.log(issueItem);
 		this.editIssueItemFormGroup.patchValue({
 			issueItem: { message: issueItem.message, issueItemId: issueItem.issueItemId },
 		});
+		this.issueItemEdit = true;
 		this.editIssueItemModal.open();
 	}
 

@@ -45,5 +45,5 @@ testem.log
 .DS_Store
 Thumbs.db
 
-gadget.taskforce.com47.com+1-key.pem
-gadget.taskforce.com47.com+1.pem
+gadget.taskforce47.com+1.pem
+gadget.taskforce47.com+1-key.pem

@@ -1,30 +1,43 @@
 import { Component, OnInit } from '@angular/core';
-import dayGridPlugin from '@fullcalendar/daygrid';
-import timeGridPlugin from '@fullcalendar/timegrid';
-import interactionPlugin from '@fullcalendar/interaction';
+import { CalendarOptions } from '@fullcalendar/angular';
 @Component({
-	selector: 'app-tf47-calendar',
+	selector: 'tf47-calendar',
 	templateUrl: './tf47-calendar.component.html',
 	styleUrls: ['./tf47-calendar.component.scss'],
 })
 export class Tf47CalendarComponent implements OnInit {
-	events: any[];
-
-	options: any;
-
-	header: any;
+	options: CalendarOptions;
 	constructor() {}
 
 	ngOnInit() {
 		this.options = {
-			plugins: [dayGridPlugin, timeGridPlugin, interactionPlugin],
-			defaultDate: '2017-02-01',
-			header: {
-				left: 'prev,next',
+			initialView: 'dayGridMonth',
+			height: '100%',
+			firstDay: 1,
+			locale: 'en-GB',
+			headerToolbar: {
+				left: 'dayGridMonth,timeGridWeek,timeGridDay',
 				center: 'title',
-				right: 'dayGridMonth,timeGridWeek,timeGridDay',
+				right: 'prevYear,prev,next,nextYear',
 			},
-			editable: true,
+			eventTimeFormat: {
+				hour: 'numeric',
+				minute: '2-digit',
+				hour12: false,
+			},
+			slotLabelFormat: {
+				hour: 'numeric',
+				minute: '2-digit',
+				hour12: false,
+			},
+			events: [
+				{
+					id: 'a',
+					title: 'Taskforce explodiert',
+					start: '2021-04-16T08:00:00',
+					allDay: false,
+				},
+			],
 		};
 	}
 }

@@ -13,6 +13,7 @@ import { IssueComponent } from './issues/issue/issue.component';
 import { ChangelogComponent } from './changelog/changelog.component';
 import { HighchartsChartModule } from 'highcharts-angular';
 import { BreadcrumbService } from '../../core/services/breadcrumb.service';
+import { CalendarOverviewComponent } from './calendar/calendar-overview/calendar-overview.component';
 
 const routes: Routes = [
 	{
@@ -23,6 +24,10 @@ const routes: Routes = [
 	{
 		path: 'servers',
 		component: ServersComponent,
+	},
+	{
+		path: 'calendar',
+		component: CalendarOverviewComponent,
 	},
 	{
 		path: 'changelog',
@@ -61,6 +66,7 @@ const routes: Routes = [
 		IssueProfileComponent,
 		IssueComponent,
 		ChangelogComponent,
+		CalendarOverviewComponent,
 	],
 	imports: [
 		CommonModule,
@@ -81,5 +87,6 @@ export class CommunityModule {
 		this.breadcrumbService.addFriendlyNameForRoute('/community/squads', 'Squads');
 		this.breadcrumbService.addFriendlyNameForRoute('/community/issues', 'Issues');
 		this.breadcrumbService.addFriendlyNameForRoute('/community/issues/overview', 'Overview');
+		this.breadcrumbService.addFriendlyNameForRoute('/community/calendar', 'Calendar');
 	}
 }

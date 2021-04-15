@@ -1,9 +1,10 @@
-<div class="gallery-filter-container p-d-flex p-jc-center content-wrapper">
-	<div>
-    <a class="p-mr-3 filter">Neu</a>
-    <a class="p-mr-3 filter filter-active">Beliebt</a>
-		<input type="search" pInputText placeholder="Search" style="height: 35px; width: 500px" class="p-mr-3" />
-    <a pButton icon="mdi mdi-cloud-upload" iconPos="left" [href]="'/gallery/upload'" style="color: black"></a>
+<div class="p-d-flex p-jc-center content-wrapper" style="width: 100%">
+	<div class="gallery-filter-container p-d-flex p-flex-md-row p-flex-column p-ai-center">
+    <a class="p-d-none p-d-md-block p-mr-3 filter">Neu</a>
+    <a class="p-d-none p-d-md-block p-mr-3 filter filter-active">Beliebt</a>
+		<input id="search-input" type="search" pInputText placeholder="Search" style="height: 35px;" class="p-mr-md-3" />
+    <a pButton class="p-mt-2 p-mt-md-0" id="upload-button" icon="mdi mdi-cloud-upload" iconPos="left" [href]="'/gallery/upload'" style="color: black"></a>
+    <a pButton class="p-mt-2 p-mt-md-0 p-d-md-none" icon="mdi mdi-filter" iconPos="left" style="color: black; width: 100%" ></a>
   </div>
 </div>
 <div class="p-grid content-wrapper">

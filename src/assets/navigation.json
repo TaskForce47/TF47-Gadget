@@ -21,6 +21,12 @@
 					"routerLink": "/community/servers",
 					"permissions": []
 				},
+        {
+          "label": "Calendar",
+          "icon": "mdi-calendar",
+          "routerLink": "/community/calendar",
+          "permissions": []
+        },
 				{
 					"label": "Squads",
 					"icon": "mdi-account-group",

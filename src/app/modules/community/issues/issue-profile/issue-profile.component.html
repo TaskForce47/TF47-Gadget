@@ -84,7 +84,7 @@
   <div content>
     <div>
       <form [formGroup]="editIssueItemFormGroup">
-        <dynamic-primeng-form [group]="editIssueItemFormGroup" [model]="editIssueItemFormModel"></dynamic-primeng-form>
+        <dynamic-primeng-form *ngIf="issueItemEdit" [group]="editIssueItemFormGroup" [model]="editIssueItemFormModel"></dynamic-primeng-form>
       </form>
     </div>
   </div>

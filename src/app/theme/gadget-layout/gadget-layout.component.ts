@@ -17,6 +17,8 @@ export class GadgetLayoutComponent implements OnInit {
 			this.user = res;
 			this.items = [
 				{ label: 'Profile', icon: 'mdi mdi-account', routerLink: 'account/profile' },
+				{ label: 'Api Keys', icon: 'mdi mdi-account-key', routerLink: 'account/keys' },
+				{ label: 'Settings', icon: 'mdi mdi-wrench', routerLink: 'account/settings' },
 				{
 					label: 'Logout',
 					icon: 'mdi mdi-logout',

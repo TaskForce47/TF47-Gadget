@@ -1,6 +1,6 @@
 <div class="table-header" *ngIf="tableReady">
 	<p-header>
-		<div class="p-d-flex p-ai-center">
+		<div class="p-d-flex p-ai-center p-p-2">
 			<div class="table-header-actions">
 				<ng-container *ngFor="let headerAction of headerActions">
 					<button
@@ -91,8 +91,8 @@
 			</tr>
       <ng-template #enabledSorting>
         <th *ngFor="let col of columns" pReorderableColumn pResizableColumn [pSortableColumn]="col.field">
-          <p-sortIcon [field]="col.field"></p-sortIcon>
           {{ col.header }}
+          <p-sortIcon [field]="col.field"></p-sortIcon>
         </th>
       </ng-template>
 		</ng-template>

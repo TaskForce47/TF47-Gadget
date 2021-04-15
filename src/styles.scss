@@ -311,6 +311,7 @@ a:-webkit-any-link {
 	background: var(--surface-a);
 	height: fit-content;
 	padding: 0.5rem;
+  overflow: auto
 }
 
 td {
@@ -624,4 +625,8 @@ text {
 
 .p-calendar {
 	width: 100%;
+}
+
+.custom-toast .p-toast {
+  top: 5%;
 }

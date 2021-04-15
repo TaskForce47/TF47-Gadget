@@ -1,8 +1,2 @@
-<div class="content-wrapper" *ngIf="campaign">
-  <h1>{{ campaign?.name }}</h1>
-  <p>{{ campaign?.description }}</p>
-  <div *ngFor="let mission of campaign.missions">
-    <a [routerLink]="'../mission/'+ mission.missionId">{{mission.name}}</a>
-  </div>
-</div>
+
 <router-outlet></router-outlet>
