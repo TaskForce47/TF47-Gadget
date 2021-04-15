@@ -1,3 +1,16 @@
-<div *ngIf="ready" style="width: 100%; height: 100%" class="content-wrapper">
-  <highcharts-chart [Highcharts]="Highcharts" [options]="chartOptions" style="width: 100%; height: 100%; display: block; overflow: scroll;"></highcharts-chart>
+<div *ngIf="ready" style="height: 100%" class="content-wrapper p-pt-4">
+  <p-timeline [value]="changelogs" align="alternate" styleClass="customized-timeline">
+    <ng-template pTemplate="content" let-changelog>
+      <p-card [header]="changelog.title" [subheader]="changelog.timeReleased | date: 'medium'">
+        <p>
+          {{changelog.text}}
+        </p>
+        <p-tag
+          *ngFor="let tag of changelog.tags"
+          class="p-ml-1"
+          [value]="tag"
+        ></p-tag>
+      </p-card>
+    </ng-template>
+  </p-timeline>
 </div>
