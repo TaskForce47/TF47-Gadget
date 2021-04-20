@@ -83,16 +83,15 @@
 		<ng-template pTemplate="header" let-columns>
 			<tr>
         <ng-container *ngIf="disableSorting; else enabledSorting">
-          <th *ngFor="let col of columns" pReorderableColumn pResizableColumn>
-            {{ col.header }}
+          <th *ngFor="let col of columns" pResizableColumn [pResizableColumnDisabled]="!resizeableColumns">
+            <span>{{ col.header }}</span>
           </th>
         </ng-container>
-
 			</tr>
       <ng-template #enabledSorting>
-        <th *ngFor="let col of columns" pReorderableColumn pResizableColumn [pSortableColumn]="col.field">
-          {{ col.header }}
-          <p-sortIcon [field]="col.field"></p-sortIcon>
+        <th *ngFor="let col of columns" pResizableColumn [pSortableColumn]="col.field" [pResizableColumnDisabled]="!resizeableColumns">
+          <span>{{ col.header }}</span>
+          <p-sortIcon style="display: inline-block; float:right" [field]="col.field"></p-sortIcon>
         </th>
       </ng-template>
 		</ng-template>

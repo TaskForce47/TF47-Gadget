@@ -113,7 +113,6 @@ export class LogTableComponent implements OnInit, OnChanges {
 		this.loading = true;
 		if ($event.first === $event.rows || $event.first === $event.rows * 2) {
 			firstElementId = $event.first * 2;
-			console.log();
 		} else {
 			firstElementId = $event.first;
 		}

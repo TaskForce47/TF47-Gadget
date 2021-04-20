@@ -1,9 +1,12 @@
 <div class="content-wrapper" style="height: 100%">
 	<div class="p-grid" style="height: 100%">
-		<div class="p-col-12 p-xl-8" style="height: 100%">
-      <app-map worldName="Tanoa" [gridShown]="grid" [satShown]="sat"></app-map>
+		<div class="p-col-12 p-xl-9 map-container">
+      <app-map worldName="Stratis" [gridShown]="grid" [satShown]="sat"></app-map>
 		</div>
-		<div class="p-col-12 p-xl-4">
+    <div class="p-col-3 p-shadow-4 side-container">
+      <p-message severity="info" text="Select a marker on the map or a row from a table below the map"></p-message>
+    </div>
+		<div class="p-col-12 p-xl-12 p-shadow-22 bottom-container">
 			<p-tabView>
 				<p-tabPanel header="Players">
 					<ng-template pTemplate="content">

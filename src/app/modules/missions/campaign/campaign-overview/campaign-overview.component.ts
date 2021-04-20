@@ -13,10 +13,7 @@ export class CampaignOverviewComponent implements OnInit {
 	constructor(private http: HttpClient) {}
 
 	ngOnInit(): void {
-		this.cols = [
-			{ field: 'name', header: 'Name' },
-			{ field: 'timeCreated', header: 'Created At' },
-		];
+		this.cols = [{ field: 'name', header: 'Name' }];
 		this.http.get('/Campaign').subscribe((res: Campaign[]) => {
 			const tmpData = [];
 			let tmpMissions = [];

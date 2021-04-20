@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
+import { Campaign } from '../../../../core/models/Gadget';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { Campaign } from '../../../../core/models/Gadget';
 
 @Component({
-	templateUrl: './campaign-profile.component.html',
-	styleUrls: ['./campaign-profile.component.scss'],
+	selector: 'app-campaign-description',
+	templateUrl: './campaign-description.component.html',
+	styleUrls: ['./campaign-description.component.scss'],
 })
-export class CampaignProfileComponent implements OnInit {
+export class CampaignDescriptionComponent implements OnInit {
 	public campaign: Campaign;
 	constructor(private router: Router, private activatedRoute: ActivatedRoute, private http: HttpClient) {}
 

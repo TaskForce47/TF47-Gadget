@@ -37,8 +37,6 @@ export class PlayerWhitelistComponent implements OnInit {
 
 	updateWhitelist(event, whitelist) {
 		const reqObj = [{ playerId: Number(this.playerId), whitelistId: whitelist.id, enabled: event.checked }];
-		this.http.put('/whitelist/whitelistUser', reqObj).subscribe((res) => {
-			console.log(res);
-		});
+		this.http.put('/whitelist/whitelistUser', reqObj).subscribe((res) => {});
 	}
 }

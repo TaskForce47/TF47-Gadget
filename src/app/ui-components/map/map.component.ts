@@ -2,6 +2,7 @@ import { Component, ElementRef, Input, OnChanges, OnInit, SimpleChanges, ViewChi
 import { GradMap } from '@gruppe-adler/maps-frontend-utils/lib/mapbox';
 import { Marker as MapboxGLMarker } from 'mapbox-gl';
 import { ReplayFrame } from '../../core/models/Replay';
+import GradCursorControl from '../../core/utils/CursorControl';
 
 @Component({
 	selector: 'app-map',
@@ -14,7 +15,7 @@ export class MapComponent implements OnInit, OnChanges {
 	@Input() private gridShown!: boolean;
 	@Input() private frame!: ReplayFrame | null;
 	@ViewChild('mapRef', { static: true }) mapRef: ElementRef;
-	private loading = false;
+	public loading = false;
 	private map: GradMap | null = null;
 	private errorText = '';
 	private errorBtn = true;
@@ -38,6 +39,11 @@ export class MapComponent implements OnInit, OnChanges {
 			loadElevation: false,
 			satShown: this.satShown,
 			gridShown: this.gridShown,
+		});
+		this.map.loadElevation = true;
+
+		this.map.on('grad-load', ({ target }: { target: GradMap }) => {
+			target.addControl(new GradCursorControl(), 'top-right');
 		});
 
 		this.map.on('grad-load', () => {

@@ -21,7 +21,7 @@
         </td>
         <td>
           <p-button *ngIf="!rowData.missionId" icon="pi pi-search" [routerLink]="'../'+rowData['campaignId']"></p-button>
-          <p-button *ngIf="rowData.missionId" icon="pi pi-search" [routerLink]="'/campaigns/'+rowData['campaignId']+'/mission/'+ rowData['missionId']"></p-button>
+          <p-button *ngIf="rowData.missionId" icon="pi pi-search" [routerLink]="'/campaigns/'+rowData['campaignId']+'/missions/'+ rowData['missionId']"></p-button>
         </td>
       </tr>
     </ng-template>

@@ -227,5 +227,8 @@ export class AdministrationModule {
 		this.breadcrumbService.addFriendlyNameForRoute('/administration/squadmanager/overview', 'Overview');
 		this.breadcrumbService.addFriendlyNameForRouteRegex('^/administration/squadmanager/\\d+/profile', 'Profile');
 		this.breadcrumbService.addFriendlyNameForRouteRegex('^/administration/squadmanager/\\d+/settings', 'Settings');
+
+		// Live Map
+		this.breadcrumbService.addFriendlyNameForRoute('/administration/live', 'Live Map');
 	}
 }

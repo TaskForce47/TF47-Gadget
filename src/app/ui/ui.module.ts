@@ -85,6 +85,7 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import { TimelineModule } from 'primeng/timeline';
+import { Tf47EditorComponent } from './tf47-editor/tf47-editor.component';
 
 FullCalendarModule.registerPlugins([dayGridPlugin, interactionPlugin, timeGridPlugin]);
 
@@ -99,6 +100,7 @@ FullCalendarModule.registerPlugins([dayGridPlugin, interactionPlugin, timeGridPl
 		SafeUrlPipe,
 		Tf47CalendarComponent,
 		Tf47DataViewComponent,
+		Tf47EditorComponent,
 	],
 	imports: [
 		CommonModule,
@@ -255,6 +257,7 @@ FullCalendarModule.registerPlugins([dayGridPlugin, interactionPlugin, timeGridPl
 		DividerModule,
 		TagModule,
 		TimelineModule,
+		Tf47EditorComponent,
 	],
 })
 export class UiModule {}

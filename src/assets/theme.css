@@ -1867,6 +1867,24 @@ p-togglebutton.ng-dirty.ng-invalid > .p-togglebutton.p-button {
 .p-datatable .p-sortable-column.p-highlight .p-sortable-column-icon {
   color: #ff4600;
 }
+.p-datatable .p-sortable-column.p-highlight {
+  background: #1e1e1e;
+  color: #ff4600;
+}
+.p-datatable .p-sortable-column.p-highlight .p-sortable-column-icon {
+  color: #ff4600;
+}
+.p-datatable .p-sortable-column.p-highlight:hover {
+  background: rgba(255, 255, 255, 0.03);
+  color: #ff4600;
+}
+.p-datatable .p-sortable-column.p-highlight:hover .p-sortable-column-icon {
+  color: #ff4600;
+}
+.p-datatable .p-sortable-column:focus {
+  box-shadow: none;
+  outline: 0 none;
+}
 .p-datatable .p-datatable-tbody > tr {
   background: #1e1e1e;
   color: rgba(255, 255, 255, 0.87);
@@ -1905,7 +1923,7 @@ p-togglebutton.ng-dirty.ng-invalid > .p-togglebutton.p-button {
 .p-datatable .p-datatable-tbody > tr > td .p-row-editor-cancel:focus {
   outline: 0 none;
   outline-offset: 0;
-  box-shadow: 0 0 0 1px #ff4600;
+  box-shadow: none;
 }
 .p-datatable .p-datatable-tbody > tr > td .p-row-editor-save {
   margin-right: 0.5rem;
@@ -2091,7 +2109,7 @@ p-togglebutton.ng-dirty.ng-invalid > .p-togglebutton.p-button {
 .fc .fc-toolbar .fc-button:enabled:active:focus {
   outline: 0 none;
   outline-offset: 0;
-  box-shadow: 0 0 0 1px #ff4600;
+  box-shadow: none;
 }
 .fc .fc-toolbar .fc-button .fc-icon-chevron-left {
   font-family: "PrimeIcons" !important;
@@ -2112,7 +2130,7 @@ p-togglebutton.ng-dirty.ng-invalid > .p-togglebutton.p-button {
 .fc .fc-toolbar .fc-button:focus {
   outline: 0 none;
   outline-offset: 0;
-  box-shadow: 0 0 0 1px #ff4600;
+  box-shadow: none;
 }
 .fc .fc-toolbar .fc-button.fc-dayGridMonth-button, .fc .fc-toolbar .fc-button.fc-timeGridWeek-button, .fc .fc-toolbar .fc-button.fc-timeGridDay-button {
   background: #1e1e1e;
@@ -2138,7 +2156,7 @@ p-togglebutton.ng-dirty.ng-invalid > .p-togglebutton.p-button {
 .fc .fc-toolbar .fc-button.fc-dayGridMonth-button:focus, .fc .fc-toolbar .fc-button.fc-timeGridWeek-button:focus, .fc .fc-toolbar .fc-button.fc-timeGridDay-button:focus {
   outline: 0 none;
   outline-offset: 0;
-  box-shadow: 0 0 0 1px #ff4600;
+  box-shadow: none;
   z-index: 1;
 }
 .fc .fc-toolbar .fc-button-group .fc-button {
@@ -2207,7 +2225,7 @@ p-togglebutton.ng-dirty.ng-invalid > .p-togglebutton.p-button {
 .p-orderlist .p-orderlist-list .p-orderlist-item:focus {
   outline: 0 none;
   outline-offset: 0;
-  box-shadow: inset 0 0 0 1px #ff4600;
+  box-shadow: none;
 }
 .p-orderlist .p-orderlist-list .p-orderlist-item.p-highlight {
   color: rgba(255, 255, 255, 0.87);
@@ -2914,7 +2932,7 @@ p-togglebutton.ng-dirty.ng-invalid > .p-togglebutton.p-button {
 .p-fieldset.p-fieldset-toggleable .p-fieldset-legend a:focus {
   outline: 0 none;
   outline-offset: 0;
-  box-shadow: 0 0 0 1px #ff4600;
+  box-shadow: none;
 }
 .p-fieldset.p-fieldset-toggleable .p-fieldset-legend:hover {
   background: rgba(255, 255, 255, 0.03);
@@ -2953,7 +2971,7 @@ p-togglebutton.ng-dirty.ng-invalid > .p-togglebutton.p-button {
 .p-panel .p-panel-header .p-panel-header-icon:focus {
   outline: 0 none;
   outline-offset: 0;
-  box-shadow: 0 0 0 1px #ff4600;
+  box-shadow: none;
 }
 .p-panel.p-panel-toggleable .p-panel-header {
   padding: 0.5rem 1rem;
@@ -3004,7 +3022,7 @@ p-togglebutton.ng-dirty.ng-invalid > .p-togglebutton.p-button {
 .p-tabview .p-tabview-nav li .p-tabview-nav-link:not(.p-disabled):focus {
   outline: 0 none;
   outline-offset: 0;
-  box-shadow: 0 0 0 1px #ff4600;
+  box-shadow: none;
 }
 .p-tabview .p-tabview-nav li:not(.p-highlight):not(.p-disabled):hover .p-tabview-nav-link {
   background: #1e1e1e;
@@ -3079,7 +3097,7 @@ p-togglebutton.ng-dirty.ng-invalid > .p-togglebutton.p-button {
 .p-dialog .p-dialog-header .p-dialog-header-icon:focus {
   outline: 0 none;
   outline-offset: 0;
-  box-shadow: 0 0 0 1px #ff4600;
+  box-shadow: none;
 }
 .p-dialog .p-dialog-header .p-dialog-header-icon:last-child {
   margin-right: 0;
@@ -3179,7 +3197,7 @@ p-togglebutton.ng-dirty.ng-invalid > .p-togglebutton.p-button {
 .p-sidebar .p-sidebar-close:focus {
   outline: 0 none;
   outline-offset: 0;
-  box-shadow: 0 0 0 1px #ff4600;
+  box-shadow: none;
 }
 
 .p-sidebar-mask.p-component-overlay {
@@ -3265,7 +3283,7 @@ p-togglebutton.ng-dirty.ng-invalid > .p-togglebutton.p-button {
 .p-breadcrumb ul li .p-menuitem-link:focus {
   outline: 0 none;
   outline-offset: 0;
-  box-shadow: 0 0 0 1px #ff4600;
+  box-shadow: none;
 }
 .p-breadcrumb ul li .p-menuitem-link .p-menuitem-text {
   color: rgba(255, 255, 255, 0.87);
@@ -3324,7 +3342,7 @@ p-togglebutton.ng-dirty.ng-invalid > .p-togglebutton.p-button {
 .p-contextmenu .p-menuitem-link:focus {
   outline: 0 none;
   outline-offset: 0;
-  box-shadow: inset 0 0 0 1px #ff4600;
+  box-shadow: none;
 }
 .p-contextmenu .p-submenu-list {
   padding: 0.25rem 0;
@@ -3389,7 +3407,7 @@ p-togglebutton.ng-dirty.ng-invalid > .p-togglebutton.p-button {
 .p-megamenu .p-megamenu-root-list > .p-menuitem > .p-menuitem-link:focus {
   outline: 0 none;
   outline-offset: 0;
-  box-shadow: inset 0 0 0 1px #ff4600;
+  box-shadow: none;
 }
 .p-megamenu .p-megamenu-root-list > .p-menuitem.p-menuitem-active > .p-menuitem-link,
 .p-megamenu .p-megamenu-root-list > .p-menuitem.p-menuitem-active > .p-menuitem-link:not(.p-disabled):hover {
@@ -3439,7 +3457,7 @@ p-togglebutton.ng-dirty.ng-invalid > .p-togglebutton.p-button {
 .p-megamenu .p-menuitem-link:focus {
   outline: 0 none;
   outline-offset: 0;
-  box-shadow: inset 0 0 0 1px #ff4600;
+  box-shadow: none;
 }
 .p-megamenu .p-megamenu-panel {
   background: #1e1e1e;
@@ -3518,7 +3536,7 @@ p-togglebutton.ng-dirty.ng-invalid > .p-togglebutton.p-button {
 .p-menu .p-menuitem-link:focus {
   outline: 0 none;
   outline-offset: 0;
-  box-shadow: inset 0 0 0 1px #ff4600;
+  box-shadow: none;
 }
 .p-menu.p-menu-overlay {
   background: #1e1e1e;
@@ -3578,7 +3596,7 @@ p-togglebutton.ng-dirty.ng-invalid > .p-togglebutton.p-button {
 .p-menubar .p-menuitem-link:focus {
   outline: 0 none;
   outline-offset: 0;
-  box-shadow: inset 0 0 0 1px #ff4600;
+  box-shadow: none;
 }
 .p-menubar .p-menubar-root-list > .p-menuitem > .p-menuitem-link {
   padding: 0.75rem 1rem;
@@ -3613,7 +3631,7 @@ p-togglebutton.ng-dirty.ng-invalid > .p-togglebutton.p-button {
 .p-menubar .p-menubar-root-list > .p-menuitem > .p-menuitem-link:focus {
   outline: 0 none;
   outline-offset: 0;
-  box-shadow: inset 0 0 0 1px #ff4600;
+  box-shadow: none;
 }
 .p-menubar .p-menubar-root-list > .p-menuitem.p-menuitem-active > .p-menuitem-link,
 .p-menubar .p-menubar-root-list > .p-menuitem.p-menuitem-active > .p-menuitem-link:not(.p-disabled):hover {
@@ -3674,7 +3692,7 @@ p-togglebutton.ng-dirty.ng-invalid > .p-togglebutton.p-button {
   .p-menubar .p-menubar-button:focus {
     outline: 0 none;
     outline-offset: 0;
-    box-shadow: 0 0 0 1px #ff4600;
+    box-shadow: none;
   }
   .p-menubar .p-menubar-root-list {
     position: absolute;
@@ -3728,7 +3746,7 @@ p-togglebutton.ng-dirty.ng-invalid > .p-togglebutton.p-button {
   .p-menubar .p-menubar-root-list > .p-menuitem > .p-menuitem-link:focus {
     outline: 0 none;
     outline-offset: 0;
-    box-shadow: inset 0 0 0 1px #ff4600;
+    box-shadow: none;
   }
   .p-menubar .p-menubar-root-list > .p-menuitem > .p-menuitem-link > .p-submenu-icon {
     margin-left: auto;
@@ -3795,7 +3813,7 @@ p-togglebutton.ng-dirty.ng-invalid > .p-togglebutton.p-button {
 .p-panelmenu .p-panelmenu-header > a:focus {
   outline: 0 none;
   outline-offset: 0;
-  box-shadow: 0 0 0 1px #ff4600;
+  box-shadow: none;
 }
 .p-panelmenu .p-panelmenu-header:not(.p-highlight):not(.p-disabled) > a:hover {
   background: rgba(255, 255, 255, 0.03);
@@ -3861,7 +3879,7 @@ p-togglebutton.ng-dirty.ng-invalid > .p-togglebutton.p-button {
 .p-panelmenu .p-panelmenu-content .p-menuitem .p-menuitem-link:focus {
   outline: 0 none;
   outline-offset: 0;
-  box-shadow: inset 0 0 0 1px #ff4600;
+  box-shadow: none;
 }
 .p-panelmenu .p-panelmenu-content .p-menuitem .p-menuitem-link .p-panelmenu-icon {
   margin-right: 0.5rem;
@@ -4295,7 +4313,7 @@ p-togglebutton.ng-dirty.ng-invalid > .p-togglebutton.p-button {
 .p-toast .p-toast-message .p-toast-icon-close:focus {
   outline: 0 none;
   outline-offset: 0;
-  box-shadow: 0 0 0 1px #ff4600;
+  box-shadow: none;
 }
 .p-toast .p-toast-message.p-toast-message-info {
   background: #B3E5FC;
@@ -4607,7 +4625,7 @@ p-togglebutton.ng-dirty.ng-invalid > .p-togglebutton.p-button {
 .p-tabmenu .p-tabmenu-nav .p-tabmenuitem .p-menuitem-link:not(.p-disabled):focus {
   outline: 0 none;
   outline-offset: 0;
-  box-shadow: 0 0 0 1px #ff4600;
+  box-shadow: none;
 }
 
 @media (max-width: 991px){

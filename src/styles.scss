@@ -6,6 +6,7 @@ body {
 	max-width: 100%;
 	margin: 0 !important;
 	height: 100%;
+  overflow: hidden;
 }
 * {
 	padding: 0;
@@ -92,10 +93,11 @@ a:-webkit-any-link {
 }
 .content-area {
 	margin-left: 0;
-	padding: 1rem 0.5rem 0;
-	margin-top: 2.75rem;
+	padding: 0.5rem 0.5rem 0;
+	margin-top: 3rem;
 	position: relative;
 	height: 100%;
+  overflow-y: auto;
 }
 
 .nav-side {
@@ -236,6 +238,10 @@ a:-webkit-any-link {
 	position: relative;
 	top: -0.75rem;
 	cursor: pointer;
+}
+
+.nav-item-container {
+  max-height: 99vh;
 }
 
 .nav-side-bottom-container {

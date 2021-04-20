@@ -51,10 +51,10 @@ export class TableComponent implements OnInit, OnChanges {
 	@Input() dataLoading: boolean;
 	@Input() static: boolean = false;
 	@Input() first: number;
-	@Input() reordableColumns: boolean;
+	@Input() reordableColumns: boolean = false;
 	@Input() resizeableColumns: boolean = false;
 	@Input() scrollHeight: string;
-	@Input() scrollable: boolean;
+	@Input() scrollable: boolean = false;
 	@Input() compareSelectionBy: string;
 	@Input() dataKey: string = 'ID';
 	@Input() totalRecords: any;

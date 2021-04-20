@@ -69,7 +69,7 @@
 			]
 		},
     {
-      "label": "After Action Report",
+      "label": "Events",
       "tooltip": "",
       "routerLink": "",
       "permissions": [],
@@ -142,7 +142,7 @@
 					"label": "Live Map",
 					"icon": "mdi-eye",
 					"routerLink": "/administration/live",
-					"permissions": ["asd"]
+					"permissions": []
 				}
 			]
 		}

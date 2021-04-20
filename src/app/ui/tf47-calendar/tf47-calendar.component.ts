@@ -30,9 +30,12 @@ export class Tf47CalendarComponent implements OnInit {
 				minute: '2-digit',
 				hour12: false,
 			},
+			eventClick(event) {
+				console.log(event.event.id);
+			},
 			events: [
 				{
-					id: 'a',
+					id: '1',
 					title: 'Taskforce explodiert',
 					start: '2021-04-16T08:00:00',
 					allDay: false,

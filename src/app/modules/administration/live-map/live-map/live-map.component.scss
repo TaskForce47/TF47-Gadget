@@ -1,0 +1,24 @@
+.map-container {
+  height: 70%
+}
+.side-container {
+
+}
+
+.bottom-container {
+  overflow-y: scroll;
+  height: 30%;
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--surface-d);
+    border-radius: 20px;
+    border: 3px solid var(--surface-d);
+  }
+}

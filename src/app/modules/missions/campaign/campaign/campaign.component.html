@@ -1,2 +1,5 @@
-
-<router-outlet></router-outlet>
+<div class="content-wrapper" *ngIf="campaign">
+  <h1>{{ campaign?.name }}</h1>
+  <app-subnavi [subnaviItems]="subnaviItems"></app-subnavi>
+  <router-outlet></router-outlet>
+</div>
