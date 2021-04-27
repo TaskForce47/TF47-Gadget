@@ -1,5 +1,50 @@
-<ul *ngIf="ready" style="list-style: none;">
-  <li *ngFor="let whitelist of whitelists; index as i" style="margin-bottom: 1rem">
-    <p-checkbox [label]="whitelist.whitelistName" [(ngModel)]="whitelist.enabled" [binary]="true" (onChange)="updateWhitelist($event, whitelist)"></p-checkbox>
-  </li>
-</ul>
+<div class="content-wrapper">
+  <tf47-table
+    #whitelistGrid
+    [defaultHeaders]="defaultHeaders"
+    [dataLoading]="loading"
+    [data]="whitelistsUser"
+    [headers]="headers"
+    [paginator]="true"
+    [rows]="20"
+    [showCurrentPageReport]="true"
+    [autoLayout]="true"
+    [headerActions]="headerAction"
+    [selectionMode]="'single'"
+    [dataKey]="'whitelistId'"
+    (onManualReload)="loadWhitelistUser()"
+    (onHeaderButtonClicked)="headerButtonClicked($event)"
+  >
+  </tf47-table>
+</div>
+
+<app-modal #addModal [styleClass]="['modal-sm']">
+  <div header>Add Whitelist</div>
+  <div content>
+    <div>
+      <tf47-table
+        #addWhitelistGrid
+        [defaultHeaders]="defaultHeadersWhitelists"
+        [headers]="headersWhitelists"
+        [dataLoading]="loadingWhitelists"
+        [data]="whitelists"
+        [static]="true"
+        [disableSorting]="true"
+        [paginator]="true"
+        [selectionMode]="'single'"
+        [dataKey]="'whitelistId'"
+        (onManualReload)="loadWhitelists()"
+      >
+      </tf47-table>
+    </div>
+  </div>
+  <div footer>
+    <p-button
+      type="submit"
+      label="Submit"
+      class="p-ml-auto"
+      [disabled]="!this.addWhitelistGrid?.selectedItems || requestInProgress"
+      (click)="addWhitelist()"
+    ></p-button>
+  </div>
+</app-modal>

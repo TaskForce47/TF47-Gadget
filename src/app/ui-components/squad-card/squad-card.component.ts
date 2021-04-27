@@ -30,7 +30,9 @@ export class SquadCardComponent implements OnInit {
 		return squad.squadMembers.filter((squadMember) => squadMember.steamId === this.user.steamId)[0];
 	}
 
-	copyLink(squad: Squad) {}
+	copyLink(squad: Squad) {
+		navigator.clipboard.writeText(squad.squadXmlLink);
+	}
 
 	leaveSquad(squad: Squad) {
 		this.http.delete('/SquadMember/' + this.findSquadMember(squad).squadMemberId).subscribe((res) => {

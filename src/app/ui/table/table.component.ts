@@ -1,7 +1,8 @@
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, ViewChild } from '@angular/core';
 import { Header, SortMeta } from 'primeng/api';
 import dayjs from 'dayjs';
 import { PermissionService } from '../../core/services/permission.service';
+import { ModalComponent } from '../modal/modal.component';
 
 export interface GridSettings {
 	endpointUrl: string;
@@ -71,12 +72,15 @@ export class TableComponent implements OnInit, OnChanges {
 	@Input() sortOrder: number = 1;
 	@Input() sortField: string;
 	@Input() lazy: boolean = true;
+	@Input() enableExport: boolean = false;
 	@Input() disableSorting: boolean = false;
 	@Output() onRowSelect: EventEmitter<any> = new EventEmitter();
 	@Output() onPage: EventEmitter<any> = new EventEmitter();
 	@Output() onManualReload: EventEmitter<any> = new EventEmitter();
 	@Output() onHeaderButtonClicked: EventEmitter<any> = new EventEmitter();
 	@Input() headerActions: HeaderButton[] = [];
+
+	@ViewChild('exportModal') exportModal: ModalComponent;
 	ngOnInit(): void {
 		this.applyFieldSettings();
 	}
@@ -149,15 +153,15 @@ export class TableComponent implements OnInit, OnChanges {
 		if (typeof rowData !== 'string') {
 			return rowData;
 		}
-		if (!rowData.includes('T')) {
-			return rowData;
+		if (rowData.includes('T') && rowData.includes(':') && rowData.includes('-')) {
+			const date = dayjs(rowData);
+			if (date.isValid()) {
+				return date.format('DD.MM.YYYY HH:MM');
+			} else {
+				return rowData;
+			}
 		}
-		const date = dayjs(rowData);
-		if (date.isValid()) {
-			return date.format('DD.MM.YYYY HH:MM');
-		} else {
-			return rowData;
-		}
+		return rowData;
 	}
 
 	public applyStyling(field, value) {
@@ -194,7 +198,39 @@ export class TableComponent implements OnInit, OnChanges {
 		this.onHeaderButtonClicked.emit([$event, action, data]);
 	}
 
-	validateHeader(headerAction: HeaderButton) {
+	public validateHeader(headerAction: HeaderButton) {
 		return this.checkCondition(this.selectedItems[headerAction.condition.field], headerAction.condition);
+	}
+
+	public openExportModal() {
+		this.exportModal.open();
+	}
+
+	export() {
+		this.exportExcel();
+	}
+
+	exportExcel() {
+		import('xlsx').then((xlsx) => {
+			const worksheet = xlsx.utils.json_to_sheet(this.data);
+			const workbook = { Sheets: { data: worksheet }, SheetNames: ['data'] };
+			const excelBuffer: any = xlsx.write(workbook, {
+				bookType: 'xlsx',
+				type: 'array',
+			});
+			this.saveAsExcelFile(excelBuffer, 'data');
+		});
+	}
+
+	saveAsExcelFile(buffer: any, fileName: string): void {
+		import('file-saver').then((FileSaver) => {
+			const EXCEL_TYPE = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8';
+			const EXCEL_EXTENSION = '.xlsx';
+			const data: Blob = new Blob([buffer], {
+				type: EXCEL_TYPE,
+			});
+			FileSaver.saveAs(data, fileName + '_export_' + new Date().getTime() + EXCEL_EXTENSION);
+			this.exportModal.close();
+		});
 	}
 }

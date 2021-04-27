@@ -1,0 +1,75 @@
+<div class="content-wrapper">
+	<div class="p-d-flex p-mb-2">
+		<p-dropdown
+			placeholder="Year"
+			[options]="yearOptions"
+			optionLabel="name"
+			optionValue="value"
+			[(ngModel)]="yearModel"
+			(ngModelChange)="loadDonations()"
+		></p-dropdown>
+		<p-dropdown
+			placeholder="Month"
+			[options]="monthOptions"
+			optionLabel="name"
+			optionValue="value"
+			class="p-ml-2"
+			[(ngModel)]="monthModel"
+			(ngModelChange)="loadDonations()"
+		></p-dropdown>
+		<p-button
+			class="p-ml-auto"
+			label="Add"
+			*ngIf="permissionService.hasPermission('donation:create')"
+			(onClick)="initUserModal()"
+		></p-button>
+	</div>
+	<app-tf47-chart *ngIf="ready" [chartOptions]="chartOptions"></app-tf47-chart>
+</div>
+
+<app-modal #addModal [styleClass]="['modal-sm']">
+	<div header>Add Donation</div>
+	<div content>
+		<div>
+			<p-button label="Select User" (onClick)="selectUserModal.open()"></p-button>
+			<p *ngIf="selectedUser">Selected User: {{ selectedUser?.username }}</p>
+			<form [formGroup]="myFormGroup">
+				<dynamic-primeng-form *ngIf="ready" [group]="myFormGroup" [model]="myFormModel"></dynamic-primeng-form>
+			</form>
+		</div>
+	</div>
+	<div footer>
+		<p-button *ngIf="ready" type="submit" label="Submit" class="p-ml-auto" (click)="addDonation()"></p-button>
+	</div>
+</app-modal>
+
+<app-modal #selectUserModal [styleClass]="['modal-sm']">
+	<div header>Add Member</div>
+	<div content>
+		<div>
+			<tf47-table
+				#userGrid
+				[defaultHeaders]="defaultHeadersUsers"
+				[headers]="headersUsers"
+				[dataLoading]="loadingUsers"
+				[data]="users"
+				[static]="true"
+				[disableSorting]="true"
+				[paginator]="true"
+				[selectionMode]="'single'"
+				[dataKey]="'userId'"
+				(onManualReload)="loadUser()"
+			>
+			</tf47-table>
+		</div>
+	</div>
+	<div footer>
+		<p-button
+			type="submit"
+			label="Submit"
+			class="p-ml-auto"
+			[disabled]="!this.userGrid?.selectedItems"
+			(onClick)="selectUser()"
+		></p-button>
+	</div>
+</app-modal>

@@ -6,6 +6,9 @@
     [data]="groups"
     [paginator]="true"
     [dataKey]="'groupId'"
+    [selectionMode]="'single'"
+    [headerActions]="headerButtonActions"
+    (onHeaderButtonClicked)="headerButtonClicked($event)"
     (onManualReload)="loadGroups()"
   >
   </tf47-table>

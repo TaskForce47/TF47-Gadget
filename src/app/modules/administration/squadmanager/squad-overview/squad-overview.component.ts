@@ -119,13 +119,13 @@ export class SquadOverviewComponent implements OnInit {
 	}
 
 	deleteSquad(squadData: any) {
-		this.http.delete('/Squad/' + squadData.id).subscribe((res) => {
+		this.http.delete('/Squad/' + squadData.squadId, { withCredentials: true }).subscribe((res) => {
 			this.loadSquads();
 		});
 	}
 
 	submit() {
-		this.http.put('/PlayerNotes/addNote', this.myFormGroup.getRawValue().squad).subscribe((res) => {
+		this.http.post('/Squad', this.myFormGroup.getRawValue().squad, { withCredentials: true }).subscribe((res) => {
 			this.loadSquads();
 			this.addModal.close();
 		});

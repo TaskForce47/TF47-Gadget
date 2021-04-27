@@ -245,7 +245,9 @@ a:-webkit-any-link {
 }
 
 .nav-side-bottom-container {
-	clear: both;
+	position: fixed;
+  bottom: 0;
+  left: 0;
 	width: 100%;
 	ul {
 		list-style-type: none;
@@ -314,7 +316,7 @@ a:-webkit-any-link {
 	background: var(--surface-a);
 	height: fit-content;
 	padding: 0.5rem;
-  overflow: auto
+  overflow-y: unset;
 }
 
 td {
@@ -468,6 +470,15 @@ a {
 .ng-dynamic-forms-select {
 	margin-bottom: 0.5rem;
 }
+.ng-dynamic-forms-datepicker{
+  margin-bottom: 0.5rem;
+}
+.ng-dynamic-forms-textarea{
+  margin-bottom: 0.5rem;
+}
+.ng-dynamic-forms-colorpicker{
+  margin-bottom: 0.5rem;
+}
 .p-inputtextarea {
 	width: 100%;
 	max-width: 100%;
@@ -475,6 +486,7 @@ a {
 .p-inputtext {
 	width: 100%;
 	max-width: 100%;
+  padding: .5em;
 }
 .p-dropdown {
 	width: 100%;
@@ -632,4 +644,28 @@ text {
 
 .custom-toast .p-toast {
   top: 5%;
+}
+
+form{
+  width: 400px;
+}
+
+.websocket-header{
+
+}
+
+.panel-wrapper{
+  min-width: 200px;
+}
+.websocket-circle{
+  height: 25px;
+  width: 25px;
+  border-radius: 999999px;
+}
+.websocket-online{
+  background-color: green;
+}
+
+.websocket-offline{
+  background-color: red;
 }

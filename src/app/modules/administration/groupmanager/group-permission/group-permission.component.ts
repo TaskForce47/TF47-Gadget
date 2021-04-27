@@ -9,6 +9,7 @@ import { Group, Permission } from '../../../../core/models/Gadget';
 })
 export class GroupPermissionComponent implements OnInit {
 	public existingPermissions: string[] = [];
+	public existingPermissionsRaw: Permission[] = [];
 	public assignedPermissions: string[] = [];
 	public notAssignedPermissions: string[] = [];
 	public permissionMap: Map<string, { inherit: boolean; assigned: boolean }> = new Map();
@@ -30,6 +31,7 @@ export class GroupPermissionComponent implements OnInit {
 		this.http.get('/Group/' + this.id, { withCredentials: true }).subscribe((group: Group) => {
 			this.group = group;
 			this.http.get('/Permission').subscribe((permissions: Permission[]) => {
+				this.existingPermissionsRaw = permissions;
 				this.existingPermissions = permissions.map((permission) => permission.name);
 				this.assignedPermissions = group.permissions.map((permission) => permission.name);
 				this.notAssignedPermissions = permissions
@@ -48,9 +50,51 @@ export class GroupPermissionComponent implements OnInit {
 	update(key: string, type: string) {
 		if (type === 'assigned') {
 			this.permissionMap.get(key).inherit = false;
+			this.addPermission(key);
 		}
 		if (type === 'inherit') {
 			this.permissionMap.get(key).assigned = false;
+			this.removePermission(key);
 		}
+	}
+
+	public addPermission(name) {
+		this.requestInProgress = true;
+		this.http
+			.put(
+				'/Group/' + this.id + '/addPermission/' + this.getPermisionId(name).permissionId,
+				{},
+				{ withCredentials: true }
+			)
+			.subscribe(
+				() => {
+					this.requestInProgress = false;
+				},
+				() => {
+					this.requestInProgress = false;
+				}
+			);
+	}
+
+	public removePermission(name) {
+		this.requestInProgress = true;
+		this.http
+			.put(
+				'/Group/' + this.id + '/removePermission/' + this.getPermisionId(name).permissionId,
+				{},
+				{ withCredentials: true }
+			)
+			.subscribe(
+				() => {
+					this.requestInProgress = false;
+				},
+				() => {
+					this.requestInProgress = false;
+				}
+			);
+	}
+
+	private getPermisionId(name): Permission {
+		return this.existingPermissionsRaw.filter((permission) => permission.name === name)[0];
 	}
 }

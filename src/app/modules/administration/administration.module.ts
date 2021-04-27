@@ -214,6 +214,11 @@ export class AdministrationModule {
 		this.breadcrumbService.addFriendlyNameForRoute('/administration/groupmanager', 'Group Manager');
 		this.breadcrumbService.addFriendlyNameForRoute('/administration/groupmanager/overview', 'Overview');
 		this.breadcrumbService.addFriendlyNameForRouteRegex('^/administration/groupmanager/\\d+/member', 'Member');
+		this.breadcrumbService.addFriendlyNameForRouteRegex(
+			'^/administration/groupmanager/\\d+/permission',
+			'Permissions'
+		);
+		this.breadcrumbService.addFriendlyNameForRouteRegex('^/administration/groupmanager/\\d+/settings', 'Settings');
 
 		// Player Manager
 		this.breadcrumbService.addFriendlyNameForRoute('/administration/playermanager', 'Player Manager');

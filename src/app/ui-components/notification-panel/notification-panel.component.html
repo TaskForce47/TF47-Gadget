@@ -1,0 +1,18 @@
+<a
+  #notificationPanelTarget
+  pButton
+  type="button"
+  icon="mdi mdi-bell"
+  class="p-button-text text-5xl p-mr-3 p-mt-2"
+  (click)="notificationPanel.show($event, notificationPanelTarget)"
+></a>
+
+<p-overlayPanel #notificationPanel appendTo="body" [dismissable]="true">
+  <ng-template pTemplate>
+    <div class="panel-wrapper">
+      <div>Notifications</div>
+      <p-divider></p-divider>
+      <div></div>
+    </div>
+  </ng-template>
+</p-overlayPanel>

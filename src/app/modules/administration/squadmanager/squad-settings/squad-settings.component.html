@@ -1,8 +1,12 @@
-<p-progressSpinner *ngIf="loading" styleClass="custom-spinner" strokeWidth="8" animationDuration="2s"></p-progressSpinner>
-<div class="p-ml-3 p-mt-3 p-d-flex">
+<p-progressSpinner *ngIf="loading" styleClass="custom-spinner" strokeWidth="8" animationDuration="2s" xmlns=""></p-progressSpinner>
+<div class="p-ml-3 p-mt-3">
   <form [formGroup]="myFormGroup">
     <dynamic-primeng-form *ngIf="!loading" [group]="myFormGroup" [model]="myFormModel"></dynamic-primeng-form>
   </form>
+  <div class="p-d-flex">
+    <p-button label="Rebuild XML" (onClick)="rebuildXml()" [disabled]="rebuildInProgress"></p-button>
+    <p-progressSpinner *ngIf="rebuildInProgress" styleClass="custom-spinner" strokeWidth="8" animationDuration="2s"></p-progressSpinner>
+  </div>
 </div>
 <div class="p-d-flex p-mr-3 p-mb-3">
   <p-button
@@ -10,6 +14,6 @@
     label="Submit"
     class="p-ml-auto"
     [disabled]="myFormGroup.invalid || myFormGroup.pristine"
-    (click)="submit()"
+    (onClick)="submit()"
   ></p-button>
 </div>

@@ -1,0 +1,29 @@
+<a
+  #websocketPanelTarget
+  pButton
+  type="button"
+  icon="mdi mdi-link"
+  class="p-button-text text-5xl p-mr-3 p-mt-2"
+  (click)="websocketPanel.show($event, websocketPanelTarget)"
+></a>
+
+<p-overlayPanel #websocketPanel appendTo="body" [dismissable]="true">
+  <ng-template pTemplate>
+    <div class="panel-wrapper">
+      <div class="websocket-header">
+        <span>Websockets</span>
+      </div>
+      <p-divider></p-divider>
+      <div class="websocket-body">
+        <div class="p-d-flex">
+          <span>Notification</span>
+          <div class="websocket-circle websocket-online p-ml-auto" pTooltip="connected"></div>
+        </div>
+        <div class="p-d-flex p-mt-2">
+          <span>Replay</span>
+          <div class="websocket-circle websocket-offline p-ml-auto" pTooltip="not connected"></div>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</p-overlayPanel>

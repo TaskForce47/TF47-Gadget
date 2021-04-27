@@ -1,32 +1,35 @@
-<tf47-table
-	[defaultHeaders]="defaultHeaders"
-	[dataLoading]="loading"
-	[data]="data"
-	[headers]="headers"
-	[paginator]="true"
-	[rows]="20"
-	[lazy]="false"
-	[showCurrentPageReport]="true"
-	[autoLayout]="false"
-	[sortMode]="'single'"
-	[sortField]="'timeCreated'"
-	[sortOrder]="-1"
-	[stateKey]="'player_profile_notes'"
-	[headerActions]="headerAction"
-	[fieldSettings]="fieldSettings"
-  [selectionMode]="'single'"
-  [dataKey]="'noteId'"
-	(onManualReload)="loadNotes()"
-	(onHeaderButtonClicked)="headerButtonClicked($event)"
->
-</tf47-table>
+<div class="content-wrapper">
+  <tf47-table
+    [defaultHeaders]="defaultHeaders"
+    [dataLoading]="loading"
+    [data]="data"
+    [headers]="headers"
+    [paginator]="true"
+    [rows]="20"
+    [lazy]="false"
+    [showCurrentPageReport]="true"
+    [autoLayout]="false"
+    [sortMode]="'single'"
+    [sortField]="'timeCreated'"
+    [sortOrder]="-1"
+    [stateKey]="'player_profile_notes'"
+    [headerActions]="headerAction"
+    [fieldSettings]="fieldSettings"
+    [selectionMode]="'single'"
+    [dataKey]="'noteId'"
+    (onManualReload)="loadNotes()"
+    (onHeaderButtonClicked)="headerButtonClicked($event)"
+  >
+  </tf47-table>
+</div>
+
 
 <app-modal #addModal [styleClass]="['modal-sm']">
 	<div header>Add Note</div>
 	<div content>
     <div>
-      <form [formGroup]="myFormGroup">
-        <dynamic-primeng-form *ngIf="!loading" [group]="myFormGroup" [model]="myFormModel" ></dynamic-primeng-form>
+      <form [formGroup]="addFormGroup">
+        <dynamic-primeng-form *ngIf="ready" [group]="addFormGroup" [model]="addFormModel" ></dynamic-primeng-form>
       </form>
     </div>
 	</div>
@@ -35,8 +38,8 @@
 			type="submit"
 			label="Submit"
 			class="p-ml-auto"
-      [disabled]="myFormGroup.invalid || myFormGroup.pristine"
-			(click)="addNote()"
+      [disabled]="addFormGroup.invalid || addFormGroup.pristine || requestInProgress"
+			(onClick)="addNote()"
 		></p-button>
 	</div>
 </app-modal>
@@ -45,8 +48,8 @@
   <div header>Edit Note</div>
   <div content>
     <div>
-      <form [formGroup]="myFormGroup">
-        <dynamic-primeng-form *ngIf="!loading" [group]="myFormGroup" [model]="myFormModel" ></dynamic-primeng-form>
+      <form [formGroup]="editFormGroup">
+        <dynamic-primeng-form *ngIf="ready" [group]="editFormGroup" [model]="editFormModel" ></dynamic-primeng-form>
       </form>
     </div>
   </div>
@@ -55,8 +58,8 @@
       type="submit"
       label="Submit"
       class="p-ml-auto"
-      [disabled]="myFormGroup.invalid || myFormGroup.pristine"
-      (click)="editNote()"
+      [disabled]="editFormGroup.invalid || editFormGroup.pristine || requestInProgress"
+      (onClick)="editNote()"
     ></p-button>
   </div>
 </app-modal>

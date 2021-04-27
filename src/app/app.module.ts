@@ -15,6 +15,7 @@ import { MessageService } from 'primeng/api';
 import { ForbiddenComponent } from './core/forbidden/forbidden.component';
 import { AuthGuardGuard } from './core/guards/auth-guard.guard';
 import { BreadcrumbService } from './core/services/breadcrumb.service';
+import { PwaService } from './core/services/pwa.service';
 
 const routes: Routes = [
 	{
@@ -97,11 +98,12 @@ const routes: Routes = [
 		},
 		AuthService,
 		MessageService,
+		PwaService,
 	],
 	bootstrap: [AppComponent],
 })
 export class AppModule {
-	constructor(private breadcrumbService: BreadcrumbService) {
+	constructor(private breadcrumbService: BreadcrumbService, private pwaService: PwaService) {
 		this.breadcrumbService.addFriendlyNameForRoute('/', 'Dashboard');
 		this.breadcrumbService.addFriendlyNameForRoute('/forbidden', 'Forbidden');
 	}

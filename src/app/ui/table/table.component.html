@@ -14,6 +14,7 @@
 			</div>
 			<div class="table-header-buttons p-d-flex p-ml-auto">
 				<div class="p-ml-auto">
+					<i *ngIf="enableExport" class="mdi mdi-export" (click)="openExportModal()"></i>
 					<i class="mdi mdi-refresh" (click)="reloadTable($event)"></i>
 				</div>
 				<div *ngIf="!static">
@@ -112,3 +113,21 @@
 		</ng-template>
 	</p-table>
 </div>
+
+
+<app-modal #exportModal [styleClass]="['modal-sm']">
+  <div header>Export Data</div>
+  <div content>
+    <div>
+    <p>Export Data as Excel Sheet</p>
+    </div>
+  </div>
+  <div footer>
+    <p-button
+      type="submit"
+      label="Submit"
+      class="p-ml-auto"
+      (onClick)="export()"
+    ></p-button>
+  </div>
+</app-modal>

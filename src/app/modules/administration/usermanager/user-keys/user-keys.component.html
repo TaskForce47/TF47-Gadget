@@ -1,19 +1,22 @@
-<tf47-table
-  #apiKeyGrid
-  [defaultHeaders]="defaultHeaders"
-  [headers]="headers"
-  [dataLoading]="loadingKeys"
-  [data]="keys"
-  [static]="true"
-  [disableSorting]="true"
-  [paginator]="true"
-  [selectionMode]="'single'"
-  [dataKey]="'apiKeyId'"
-  [headerActions]="headerButtonActions"
-  (onManualReload)="loadKeys()"
-  (onHeaderButtonClicked)="headerButtonClicked($event)"
->
-</tf47-table>
+<div class="content-wrapper">
+  <tf47-table
+    #apiKeyGrid
+    [defaultHeaders]="defaultHeaders"
+    [headers]="headers"
+    [dataLoading]="loadingKeys"
+    [data]="keys"
+    [static]="true"
+    [disableSorting]="true"
+    [paginator]="true"
+    [selectionMode]="'single'"
+    [dataKey]="'apiKeyId'"
+    [headerActions]="headerButtonActions"
+    (onManualReload)="loadKeys()"
+    (onHeaderButtonClicked)="headerButtonClicked($event)"
+  >
+  </tf47-table>
+
+</div>
 
 <app-modal #addModal [styleClass]="['modal-sm']">
   <div header>Add Api Key</div>

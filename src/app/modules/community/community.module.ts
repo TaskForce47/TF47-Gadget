@@ -14,6 +14,7 @@ import { ChangelogComponent } from './changelog/changelog.component';
 import { HighchartsChartModule } from 'highcharts-angular';
 import { BreadcrumbService } from '../../core/services/breadcrumb.service';
 import { CalendarOverviewComponent } from './calendar/calendar-overview/calendar-overview.component';
+import { DonationComponent } from './donation/donation.component';
 
 const routes: Routes = [
 	{
@@ -36,6 +37,10 @@ const routes: Routes = [
 	{
 		path: 'squads',
 		component: SquadsComponent,
+	},
+	{
+		path: 'donations',
+		component: DonationComponent,
 	},
 	{
 		path: 'issues',
@@ -67,6 +72,7 @@ const routes: Routes = [
 		IssueComponent,
 		ChangelogComponent,
 		CalendarOverviewComponent,
+		DonationComponent,
 	],
 	imports: [
 		CommonModule,
@@ -88,5 +94,6 @@ export class CommunityModule {
 		this.breadcrumbService.addFriendlyNameForRoute('/community/issues', 'Issues');
 		this.breadcrumbService.addFriendlyNameForRoute('/community/issues/overview', 'Overview');
 		this.breadcrumbService.addFriendlyNameForRoute('/community/calendar', 'Calendar');
+		this.breadcrumbService.addFriendlyNameForRoute('/community/donations', 'Donations');
 	}
 }

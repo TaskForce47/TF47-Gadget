@@ -6,6 +6,7 @@ export interface Squad {
 	mail: string;
 	website: string;
 	squadImageLink: string;
+	squadXmlLink: string;
 	squadMembers: SquadMember[];
 }
 export interface SquadMember {
@@ -87,4 +88,13 @@ export interface Mission {
 	missionType: string;
 	campaignId: number;
 	campaignName: string;
+}
+
+export interface Donation {
+	donationId: number;
+	username: string;
+	guid: string;
+	note: string;
+	amount: number;
+	timeOfDonation: string;
 }

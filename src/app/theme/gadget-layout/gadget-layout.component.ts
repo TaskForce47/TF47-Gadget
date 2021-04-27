@@ -7,7 +7,7 @@ import { MenuItem } from 'primeng/api';
 	templateUrl: './gadget-layout.component.html',
 })
 export class GadgetLayoutComponent implements OnInit {
-	constructor(public auth: AuthService, private eRef: ElementRef) {}
+	constructor(public auth: AuthService) {}
 	public user;
 	public toggleMenu: boolean = false;
 	public items: MenuItem[];
@@ -40,9 +40,5 @@ export class GadgetLayoutComponent implements OnInit {
 	public menuToggle(event: MouseEvent) {
 		this.toggleMenu = !this.toggleMenu;
 		event.stopPropagation();
-	}
-
-	openPage(page: string) {
-		window.open(page);
 	}
 }

@@ -25,7 +25,7 @@
           "label": "Calendar",
           "icon": "mdi-calendar",
           "routerLink": "/community/calendar",
-          "permissions": []
+          "permissions": ["asd"]
         },
 				{
 					"label": "Squads",
@@ -37,21 +37,27 @@
 					"label": "Issues",
 					"icon": "mdi-alert-circle",
 					"routerLink": "/community/issues",
-					"permissions": []
+					"permissions": ["asd"]
 				},
 				{
 					"label": "Changelog",
 					"icon": "mdi-account-hard-hat",
 					"routerLink": "/community/changelog",
-					"permissions": []
-				}
-			]
+					"permissions": ["asdas"]
+				},
+        {
+          "label": "Donations",
+          "icon": "mdi-account-cash",
+          "routerLink": "/community/donations",
+          "permissions": []
+        }
+      ]
 		},
 		{
 			"label": "Gallery",
 			"tooltip": "Gallery",
 			"routerLink": "/gallery",
-			"permissions": [],
+			"permissions": ["asds"],
 			"icon": "",
 			"items": [
 				{
@@ -72,7 +78,7 @@
       "label": "Events",
       "tooltip": "",
       "routerLink": "",
-      "permissions": [],
+      "permissions": ["asd"],
       "icon": "",
       "items": [
         {

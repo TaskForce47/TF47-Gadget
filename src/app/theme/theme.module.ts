@@ -7,9 +7,17 @@ import { GadgetNavigationItemComponent } from './gadget-navigation-item/gadget-n
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DynamicFormsPrimeNGUIModule } from '@ng-dynamic-forms/ui-primeng';
 import { ReactiveFormsModule } from '@angular/forms';
+import { UiComponentsModule } from '../ui-components/ui-components.module';
 @NgModule({
 	declarations: [GadgetLayoutComponent, GadgetNavigationComponent, GadgetNavigationItemComponent],
-	imports: [CommonModule, UiModule, BrowserAnimationsModule, DynamicFormsPrimeNGUIModule, ReactiveFormsModule],
+	imports: [
+		CommonModule,
+		UiModule,
+		BrowserAnimationsModule,
+		DynamicFormsPrimeNGUIModule,
+		ReactiveFormsModule,
+		UiComponentsModule,
+	],
 	exports: [GadgetLayoutComponent],
 })
 export class ThemeModule {}

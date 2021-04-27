@@ -18,12 +18,12 @@
 </div>
 
 
-<app-modal #addModal [styleClass]="['modal-sm']">
+<app-modal #addModal [styleClass]="['modal-md']">
 	<div header>Add Squad</div>
 	<div content>
 		<div>
       <form [formGroup]="myFormGroup">
-        <dynamic-primeng-form *ngIf="ready" [group]="myFormGroup" [model]="myFormModel" [layout]="formlayout" [ngClass]="'p-grid'"></dynamic-primeng-form>
+        <dynamic-primeng-form *ngIf="ready" [group]="myFormGroup" [model]="myFormModel"></dynamic-primeng-form>
       </form>
 		</div>
 	</div>

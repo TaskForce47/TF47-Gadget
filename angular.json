@@ -30,14 +30,16 @@
 				"build": {
 					"builder": "@angular-devkit/build-angular:browser",
 					"options": {
-						"outputPath": "dist/TF47-Gadget",
+						"outputPath": "dist/",
 						"index": "src/index.html",
 						"main": "src/main.ts",
 						"polyfills": "src/polyfills.ts",
 						"tsConfig": "tsconfig.app.json",
 						"aot": true,
             "allowedCommonJsDependencies": [
-              "highcharts"
+              "highcharts",
+              "file-saver",
+              "xlsx"
             ],
 						"assets": ["src/favicon.ico", "src/assets", "src/manifest.webmanifest"],
 						"styles": [

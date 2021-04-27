@@ -2,19 +2,19 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Group } from '../../../../core/models/Gadget';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { Subscription } from 'rxjs';
+import { HeaderButton } from '../../../../ui/table/table.component';
 
 @Component({
 	templateUrl: './user-groups.component.html',
 	styleUrls: ['./user-groups.component.scss'],
 })
-export class UserGroupsComponent implements OnInit, OnDestroy {
+export class UserGroupsComponent implements OnInit {
 	public headers: any = [];
 	public defaultHeaders: any = [];
 	public loadingGroups: boolean = true;
 	public groups: Group[];
-	public routeSubscription: Subscription;
 	public id: number;
+	public headerButtonActions: HeaderButton[] = [{ title: 'View', action: 'view', permissions: [], selectable: true }];
 	constructor(private router: Router, private activatedRouter: ActivatedRoute, private http: HttpClient) {}
 
 	ngOnInit(): void {
@@ -24,14 +24,10 @@ export class UserGroupsComponent implements OnInit, OnDestroy {
 			{ field: 'name', header: 'Name' },
 			{ field: 'description', header: 'Description' }
 		);
-		this.routeSubscription = this.activatedRouter.parent.params.subscribe((res) => {
+		this.activatedRouter.parent.params.subscribe((res) => {
 			this.id = res.id;
 			this.loadGroups();
 		});
-	}
-
-	ngOnDestroy() {
-		this.routeSubscription.unsubscribe();
 	}
 
 	loadGroups() {
@@ -40,5 +36,13 @@ export class UserGroupsComponent implements OnInit, OnDestroy {
 			this.groups = res;
 			this.loadingGroups = false;
 		});
+	}
+
+	headerButtonClicked($event) {
+		switch ($event[1]) {
+			case 'view':
+				this.router.navigate(['/administration/groupmanager/', $event[2].groupId]);
+				break;
+		}
 	}
 }

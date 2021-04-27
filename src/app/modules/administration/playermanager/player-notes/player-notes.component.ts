@@ -1,5 +1,4 @@
-import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { FieldSettings, HeaderButton } from '../../../../ui/table/table.component';
@@ -16,24 +15,21 @@ import {
 import { FormGroup } from '@angular/forms';
 
 @Component({
-	selector: 'app-player-notes',
 	templateUrl: './player-notes.component.html',
 	styleUrls: ['./player-notes.component.scss'],
 })
-export class PlayerNotesComponent implements OnInit, OnDestroy {
+export class PlayerNotesComponent implements OnInit {
 	public defaultHeaders: any = ['writerName', 'timeCreated', 'type', 'text'];
 	public loading: any;
 	public data: any;
 	public headers: any = [
-		{ field: 'noteId', header: 'Note ID' },
+		{ field: 'noteId', header: 'ID' },
 		{ field: 'writerName', header: 'Writer' },
 		{ field: 'timeCreated', header: 'Created Date' },
 		{ field: 'timeUpdated', header: 'Updated Date' },
 		{ field: 'type', header: 'Typ' },
 		{ field: 'text', header: 'Text' },
 	];
-	private routeSubscription: Subscription;
-	private noteSubscription: Subscription;
 	public playerId: number | undefined | string;
 	public ready: boolean = false;
 	public headerAction: HeaderButton[] = [];
@@ -49,8 +45,37 @@ export class PlayerNotesComponent implements OnInit, OnDestroy {
 			],
 		},
 	};
-	myFormGroup: FormGroup;
-	myFormModel: DynamicFormModel = [
+	public addFormGroup: FormGroup;
+	public addFormModel: DynamicFormModel = [
+		new DynamicFormGroupModel({
+			id: 'playerNote',
+			group: [
+				new DynamicInputModel({
+					id: 'playerUid',
+					label: 'Name',
+					required: true,
+					hidden: true,
+				}),
+				new DynamicSelectModel({
+					id: 'type',
+					label: 'Type',
+					required: true,
+					value: 'Info',
+					options: [
+						{ label: 'Info', value: 'Info' },
+						{ label: 'Warning', value: 'Warning' },
+					],
+				}),
+				new DynamicTextAreaModel({
+					id: 'text',
+					label: 'Text',
+					required: true,
+				}),
+			],
+		}),
+	];
+	public editFormGroup: FormGroup;
+	public editFormModel: DynamicFormModel = [
 		new DynamicFormGroupModel({
 			id: 'playerNote',
 			group: [
@@ -79,6 +104,7 @@ export class PlayerNotesComponent implements OnInit, OnDestroy {
 		}),
 	];
 	private selectedNote: any;
+	public requestInProgress: boolean = false;
 	constructor(
 		private router: Router,
 		private activatedRouter: ActivatedRoute,
@@ -90,33 +116,31 @@ export class PlayerNotesComponent implements OnInit, OnDestroy {
 	@ViewChild('editModal') editModal: ModalComponent;
 
 	ngOnInit(): void {
-		this.myFormGroup = this.formService.createFormGroup(this.myFormModel);
-		this.routeSubscription = this.activatedRouter.parent.params.subscribe((res) => {
+		this.addFormGroup = this.formService.createFormGroup(this.addFormModel);
+		this.editFormGroup = this.formService.createFormGroup(this.editFormModel);
+		this.ready = true;
+		this.activatedRouter.parent.params.subscribe((res) => {
 			this.auth.details$.subscribe((currentUser) => {
 				this.playerId = res.id;
 				this.loadNotes();
 				this.headerAction = [
-					{ title: 'Add', action: 'add' },
+					{ title: 'Add', action: 'add', permissions: ['note:create'] },
 					{
 						title: 'Edit',
 						action: 'edit',
 						selectable: true,
 						condition: { field: 'writerId', value: currentUser.userId, operator: 'eq' },
+						permissions: ['note:update'],
 					},
-					{ title: 'Delete', action: 'delete', selectable: true },
+					{ title: 'Delete', action: 'delete', selectable: true, permissions: ['note:remove'] },
 				];
 			});
 		});
 	}
 
-	ngOnDestroy() {
-		this.routeSubscription.unsubscribe();
-		this.noteSubscription.unsubscribe();
-	}
-
 	loadNotes() {
 		this.loading = true;
-		this.noteSubscription = this.http
+		this.http
 			.get('/Note/player/' + this.playerId, { withCredentials: true })
 			.subscribe((res: { notes: Array<any> }) => {
 				this.data = res;
@@ -127,16 +151,16 @@ export class PlayerNotesComponent implements OnInit, OnDestroy {
 	headerButtonClicked($event) {
 		switch ($event[1]) {
 			case 'add':
-				this.myFormGroup.reset();
-				this.myFormGroup.patchValue({ playerNote: { playerUid: this.playerId } });
+				this.addFormGroup.reset();
+				this.addFormGroup.patchValue({ playerNote: { playerUid: this.playerId, type: 'Info' } });
 				this.addModal.open();
 				break;
 			case 'edit':
 				this.editModal.open();
-				this.myFormGroup.reset();
+				this.editFormGroup.reset();
 				this.selectedNote = $event[2];
-				this.myFormGroup.patchValue({
-					playerNote: { type: $event[2].type, text: $event[2].text },
+				this.editFormGroup.patchValue({
+					playerNote: { type: $event[2].type, text: $event[2].text, playerUid: this.playerId },
 				});
 				break;
 			case 'delete':
@@ -146,30 +170,44 @@ export class PlayerNotesComponent implements OnInit, OnDestroy {
 	}
 
 	addNote() {
-		this.http.post('/Note', this.myFormGroup.getRawValue().playerNote, { withCredentials: true }).subscribe(() => {
-			this.loadNotes();
-			this.addModal.close();
-			this.myFormGroup.reset();
-		});
+		this.requestInProgress = true;
+		this.http.post('/Note', this.addFormGroup.getRawValue().playerNote, { withCredentials: true }).subscribe(
+			() => {
+				this.loadNotes();
+				this.addModal.close();
+				this.addFormGroup.reset();
+				this.requestInProgress = false;
+			},
+			() => {
+				this.requestInProgress = false;
+			}
+		);
 	}
 
 	editNote() {
+		this.requestInProgress = true;
 		this.http
 			.put(
 				'/Note/' + this.selectedNote.noteId,
 				{
-					text: this.myFormGroup.get('playerNote.text').value,
-					type: this.myFormGroup.get('playerNote.type').value,
+					text: this.editFormGroup.get('playerNote.text').value,
+					type: this.editFormGroup.get('playerNote.type').value,
 				},
 				{
 					withCredentials: true,
 				}
 			)
-			.subscribe(() => {
-				this.loadNotes();
-				this.addModal.close();
-				this.myFormGroup.reset();
-			});
+			.subscribe(
+				() => {
+					this.loadNotes();
+					this.editModal.close();
+					this.editFormGroup.reset();
+					this.requestInProgress = false;
+				},
+				() => {
+					this.requestInProgress = false;
+				}
+			);
 	}
 
 	deleteNote(noteData: any) {

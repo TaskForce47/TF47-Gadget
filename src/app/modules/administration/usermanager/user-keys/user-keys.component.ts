@@ -4,13 +4,10 @@ import { HttpClient } from '@angular/common/http';
 import { AuthService } from '../../../../core/services/auth.service';
 import { HeaderButton, TableComponent } from '../../../../ui/table/table.component';
 import {
-	DynamicCheckboxModel,
-	DynamicColorPickerModel,
 	DynamicDatePickerModel,
 	DynamicFormGroupModel,
 	DynamicFormModel,
 	DynamicFormService,
-	DynamicInputModel,
 	DynamicTextAreaModel,
 } from '@ng-dynamic-forms/core';
 import { FormGroup } from '@angular/forms';

@@ -1,7 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import * as signalR from '@microsoft/signalr';
-import { HubConnection } from '@microsoft/signalr';
-import { MessageService } from 'primeng/api';
 
 @Component({
 	selector: 'app-home',
