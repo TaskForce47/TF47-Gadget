@@ -8,9 +8,15 @@
     <div class="user-profile-text p-d-flex p-flex-column">
       <h1>{{ user.username }}</h1>
       <span>{{ user.steamId }}</span>
-      <span>First seen: {{ user.firstTimeSeen | date: 'YYYY-mm-dd H:mm:ss' }}</span>
-      <span>Last seen: {{ user.lastTimeSeen | date: 'YYYY-mm-dd H:mm:ss' }}</span>
+      <span>First seen: {{ user.firstTimeSeen | date: 'YYYY-MM-dd H:mm:ss' }}</span>
+      <span>Last seen: {{ user.lastTimeSeen | date: 'YYYY-MM-dd H:mm:ss' }}</span>
+      <span>Discord: <span [ngClass]="{'notlinked': user.discordId === null, 'linked': user.discordId !== null}">{{ user.discordId !== null ? 'linked': 'not linked' }}</span></span>
       <span>{{ user.countryCode }}</span>
+    </div>
+    <div class="profile-header-actions">
+      <a pButton label="View Steam Profile" class="p-button p-button-sm" style="color: black" icon="mdi mdi-launch" [href]="'http://steamcommunity.com/profiles/'+user.steamId |safeUrl" target="_blank"></a>
+      <button pButton label="View Player" class="p-button p-button-sm" icon="mdi mdi-account-search" [routerLink]="'/administration/playermanager/'+user.steamId"></button>
+      <button pButton label="Ban" class="p-button p-button-sm" disabled="true"></button>
     </div>
   </div>
   <app-subnavi [subnaviItems]="subnaviItems"></app-subnavi>

@@ -669,3 +669,25 @@ form{
 .websocket-offline{
   background-color: red;
 }
+
+.profile-header-actions{
+  margin-top: 1rem;
+  min-width: 200px;
+  display: flex;
+  flex-direction: column;
+  .p-button{
+    width: 100%;
+    margin-top: 0.5rem;
+  }
+  @media screen and (min-width: 769px) {
+    margin-left: auto;
+  }
+}
+
+.linked{
+  color: #55bf3b;
+}
+.notlinked {
+  color: red;
+}
+

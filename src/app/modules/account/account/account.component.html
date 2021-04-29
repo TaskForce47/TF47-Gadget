@@ -6,8 +6,9 @@
 		<div class="account-profile-text p-d-flex p-flex-column">
 			<h1>{{ userDetails.username }}</h1>
 			<span>{{ userDetails.steamId }}</span>
-			<span>First seen: {{ userDetails.firstTimeSeen | date: 'medium' }}</span>
-			<span>Last seen: {{ userDetails.lastTimeSeen | date: 'medium' }}</span>
+			<span>First seen: {{ userDetails.firstTimeSeen | date: 'YYYY-MM-dd H:mm:ss'  }}</span>
+			<span>Last seen: {{ userDetails.lastTimeSeen | date: 'YYYY-MM-dd H:mm:ss'  }}</span>
+      <span>Discord: <span [ngClass]="{'notlinked': userDetails.discordId === null, 'linked': userDetails.discordId !== null}">{{ userDetails.discordId !== null ? 'linked': 'not linked' }}</span></span>
 			<span>{{ userDetails.countryCode }}</span>
 			<div class="p-d-flex player-profile-header-roles" *ngIf="userDetails.roles && userDetails.roles.length > 0">
 				<span

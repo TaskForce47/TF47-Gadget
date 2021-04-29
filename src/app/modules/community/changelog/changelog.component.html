@@ -1,7 +1,7 @@
 <div *ngIf="ready" style="height: 100%" class="content-wrapper p-pt-4">
   <p-timeline [value]="changelogs" align="alternate" styleClass="customized-timeline">
     <ng-template pTemplate="content" let-changelog>
-      <p-card [header]="changelog.title" [subheader]="changelog.timeReleased | date: 'medium'">
+      <p-card [header]="changelog.title" [subheader]="changelog.timeReleased | date: 'YYYY-MM-dd H:mm:ss' ">
         <p>
           {{changelog.text}}
         </p>

@@ -46,7 +46,6 @@ export class SquadSettingsComponent implements OnInit {
 		}),
 	];
 	public myFormGroup: FormGroup;
-	public rebuildInProgress: boolean = false;
 	constructor(
 		private http: HttpClient,
 		private activatedRoute: ActivatedRoute,
@@ -82,17 +81,5 @@ export class SquadSettingsComponent implements OnInit {
 			.subscribe((res) => {
 				this.loadSquad();
 			});
-	}
-
-	rebuildXml() {
-		this.rebuildInProgress = true;
-		this.http.post('/Squad/' + this.id + '/rebuild', {}, { withCredentials: true }).subscribe(
-			() => {
-				this.rebuildInProgress = false;
-			},
-			() => {
-				this.rebuildInProgress = false;
-			}
-		);
 	}
 }

@@ -11,7 +11,7 @@ import { APIInterceptor } from './core/interceptor/APIInterceptor.interceptor';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AccountModule } from './modules/account/account.module';
 import { DynamicFormsPrimeNGUIModule } from '@ng-dynamic-forms/ui-primeng';
-import { MessageService } from 'primeng/api';
+import { ConfirmationService, MessageService } from 'primeng/api';
 import { ForbiddenComponent } from './core/forbidden/forbidden.component';
 import { AuthGuardGuard } from './core/guards/auth-guard.guard';
 import { BreadcrumbService } from './core/services/breadcrumb.service';
@@ -99,6 +99,7 @@ const routes: Routes = [
 		AuthService,
 		MessageService,
 		PwaService,
+		ConfirmationService,
 	],
 	bootstrap: [AppComponent],
 })

@@ -1,5 +1,5 @@
 <div class="content-wrapper">
-  <div class="squad-profile-header p-d-flex p-flex-column p-flex-md-row p-ai-center" *ngIf="squad">
+  <div class="squad-profile-header p-d-flex p-flex-column p-flex-md-row" *ngIf="squad">
     <div>
       <img *ngIf="squad.squadImageLink !== null" [src]="'https://' + squad.squadImageLink" height="128px" width="128px" />
       <img *ngIf="squad.squadImageLink === null" src="assets/images/no-image.svg" height="128px" width="128px" />
@@ -9,8 +9,15 @@
       <span>{{ squad.mail }}</span>
       <span>{{ squad.website }}</span>
     </div>
+    <div class="profile-header-actions">
+      <button pButton label="Copy XML Link" class="p-button p-button-sm" icon="mdi mdi-content-copy"></button>
+      <button pButton label="Rebuild XML" class="p-button p-button-sm" icon="mdi mdi-refresh" (click)="rebuildXml()" [disabled]="rebuildInProgress" [loading]="rebuildInProgress"></button>
+      <button pButton label="Delete Squad" class="p-button p-button-sm" icon="mdi mdi-delete" (click)="confirmDelete()"></button>
+    </div>
   </div>
 
   <app-subnavi [subnaviItems]="subnaviItems"></app-subnavi>
   <router-outlet></router-outlet>
 </div>
+
+<p-confirmDialog header="Delete Squad"></p-confirmDialog>

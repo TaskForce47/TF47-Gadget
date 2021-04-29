@@ -3,10 +3,6 @@
   <form [formGroup]="myFormGroup">
     <dynamic-primeng-form *ngIf="!loading" [group]="myFormGroup" [model]="myFormModel"></dynamic-primeng-form>
   </form>
-  <div class="p-d-flex">
-    <p-button label="Rebuild XML" (onClick)="rebuildXml()" [disabled]="rebuildInProgress"></p-button>
-    <p-progressSpinner *ngIf="rebuildInProgress" styleClass="custom-spinner" strokeWidth="8" animationDuration="2s"></p-progressSpinner>
-  </div>
 </div>
 <div class="p-d-flex p-mr-3 p-mb-3">
   <p-button

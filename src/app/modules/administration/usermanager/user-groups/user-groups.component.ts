@@ -3,6 +3,7 @@ import { Group } from '../../../../core/models/Gadget';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { HeaderButton } from '../../../../ui/table/table.component';
+import { Subscription } from 'rxjs';
 
 @Component({
 	templateUrl: './user-groups.component.html',
@@ -11,7 +12,7 @@ import { HeaderButton } from '../../../../ui/table/table.component';
 export class UserGroupsComponent implements OnInit {
 	public headers: any = [];
 	public defaultHeaders: any = [];
-	public loadingGroups: boolean = true;
+	public loadingGroups: boolean = false;
 	public groups: Group[];
 	public id: number;
 	public headerButtonActions: HeaderButton[] = [{ title: 'View', action: 'view', permissions: [], selectable: true }];
@@ -24,10 +25,8 @@ export class UserGroupsComponent implements OnInit {
 			{ field: 'name', header: 'Name' },
 			{ field: 'description', header: 'Description' }
 		);
-		this.activatedRouter.parent.params.subscribe((res) => {
-			this.id = res.id;
-			this.loadGroups();
-		});
+		this.id = this.activatedRouter.snapshot.parent.params.id;
+		this.loadGroups();
 	}
 
 	loadGroups() {

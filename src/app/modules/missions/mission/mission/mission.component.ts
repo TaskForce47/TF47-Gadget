@@ -16,6 +16,10 @@ export class MissionComponent implements OnInit {
 			routerLink: 'description',
 		},
 		{
+			label: 'Sessions',
+			routerLink: 'sessions',
+		},
+		{
 			label: 'Slotting',
 			routerLink: 'slotting',
 		},

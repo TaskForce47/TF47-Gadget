@@ -13,6 +13,7 @@ import { CampaignWrapperComponent } from './campaign/campaign-wrapper/campaign-w
 import { CampaignMissionComponent } from './campaign/campaign-mission/campaign-mission.component';
 import { CampaignMissionOverviewComponent } from './campaign/campaign-mission-overview/campaign-mission-overview.component';
 import { CampaignDescriptionComponent } from './campaign/campaign-description/campaign-description.component';
+import { MissionSessionComponent } from './mission/mission-session/mission-session.component';
 
 const routes: Routes = [
 	{
@@ -59,6 +60,10 @@ const routes: Routes = [
 						path: 'description',
 						component: MissionProfileComponent,
 					},
+					{
+						path: 'sessions',
+						component: MissionSessionComponent,
+					},
 				],
 			},
 		],
@@ -78,6 +83,7 @@ const routes: Routes = [
 		CampaignMissionComponent,
 		CampaignMissionOverviewComponent,
 		CampaignDescriptionComponent,
+		MissionSessionComponent,
 	],
 	imports: [CommonModule, UiModule, RouterModule.forChild(routes)],
 	exports: [RouterModule],
