@@ -25,8 +25,7 @@
         ],
         "urls": [
           "https://fonts.googleapis.com/**",
-          "https://fonts.gstatic.com/**",
-          "https://steamcdn-a.akamaihd.net"
+          "https://fonts.gstatic.com/**"
         ]
       }
     }
