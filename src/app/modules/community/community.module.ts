@@ -11,7 +11,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { IssueProfileComponent } from './issues/issue-profile/issue-profile.component';
 import { IssueComponent } from './issues/issue/issue.component';
 import { ChangelogComponent } from './changelog/changelog.component';
-import { HighchartsChartModule } from 'highcharts-angular';
 import { BreadcrumbService } from '../../core/services/breadcrumb.service';
 import { CalendarOverviewComponent } from './calendar/calendar-overview/calendar-overview.component';
 import { DonationComponent } from './donation/donation.component';
@@ -81,7 +80,6 @@ const routes: Routes = [
 		UiComponentsModule,
 		DynamicFormsPrimeNGUIModule,
 		ReactiveFormsModule,
-		HighchartsChartModule,
 	],
 	exports: [RouterModule],
 })

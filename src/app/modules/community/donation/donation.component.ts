@@ -23,7 +23,6 @@ export class DonationComponent implements OnInit {
 	public ready = false;
 	public donationDates: string[] = [];
 	public donationAmounts: number[] = [];
-	public chartOptions: Highcharts.Options;
 	public yearOptions = [
 		{ name: '2019', value: 2019 },
 		{ name: '2020', value: 2020 },
@@ -52,6 +51,7 @@ export class DonationComponent implements OnInit {
 	];
 	public yearModel = dayjs().year();
 	public monthModel = 0;
+  public chartData = {};
 	@ViewChild('addModal') addModal: ModalComponent;
 	@ViewChild('selectUserModal') selectUserModal: ModalComponent;
 	@ViewChild('userGrid') userGrid: TableComponent;
@@ -105,46 +105,23 @@ export class DonationComponent implements OnInit {
 	public loadDonations() {
 		const filter = this.monthModel !== 0 ? this.yearModel + '/' + this.monthModel : this.yearModel;
 		this.http.get('/Donation/statistics/' + filter).subscribe((res: Donation[]) => {
-			this.donationDates = res.map((donation) => donation.timeOfDonation);
+			this.donationDates = res.map((donation) =>  dayjs(donation.timeOfDonation).format('HH:mm:s DD.MM.YYYY'));
 			this.donationAmounts = res.map((donation) => donation.amount);
-			this.chartOptions = {
-				title: { text: 'Donations' },
-				series: [
-					{
-						type: 'column',
-						name: 'Donation',
-						data: this.donationAmounts,
-					},
-				],
-				xAxis: {
-					categories: this.donationDates,
-					labels: {
-						formatter() {
-							return dayjs(this.value).format('HH:mm:s DD.MM.YYYY');
-						},
-					},
-				},
-				yAxis: {
-					title: {
-						text: 'Amount',
-					},
-					labels: {
-						formatter() {
-							return this.value + '€';
-						},
-					},
-				},
-				tooltip: {
-					formatter() {
-						return '<b> Amount:' + this.point.y + '€</b>';
-					},
-				},
-				legend: {
-					enabled: false,
-				},
-				credits: {
-					enabled: false,
-				},
+			this.chartData = {
+        labels: this.donationDates,
+        datasets: [{
+          label: 'Donation',
+          data: this.donationAmounts,
+          backgroundColor: [
+            'rgba(255, 99, 132, 0.2)',
+            'rgba(255, 159, 64, 0.2)',
+            'rgba(255, 205, 86, 0.2)',
+            'rgba(75, 192, 192, 0.2)',
+            'rgba(54, 162, 235, 0.2)',
+            'rgba(153, 102, 255, 0.2)',
+            'rgba(201, 203, 207, 0.2)'
+          ],
+        }],
 			};
 
 			this.ready = true;

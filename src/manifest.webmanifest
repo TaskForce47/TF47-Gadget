@@ -5,8 +5,8 @@
   "description": "Task Force 47 Statistics and Administration Tool",
   "background_color": "#2C3139",
   "display": "standalone",
-  "scope": "./",
-  "start_url": "./",
+  "scope": ".",
+  "start_url": ".",
   "icons": [
     {
       "src": "assets/icons/icon-72x72.png",

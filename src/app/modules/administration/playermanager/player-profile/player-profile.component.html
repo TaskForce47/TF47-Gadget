@@ -1,14 +1,24 @@
-<p-progressSpinner *ngIf="loading || playerId === ''" styleClass="custom-spinner" strokeWidth="8" animationDuration="2s"></p-progressSpinner>
+<p-progressSpinner
+	*ngIf="loading || playerId === ''"
+	styleClass="custom-spinner"
+	strokeWidth="8"
+	animationDuration="2s"
+></p-progressSpinner>
 
-<div *ngIf="player && !loading" class="player-profile">
-	<div class="player-profile-header p-d-flex">
-		<div>
-			<div class="p-d-flex player-profile-header-name">
+<ng-container *ngIf="player && !loading">
+	<div class="profile-header p-d-flex content-wrapper">
+		<div class="p-d-flex p-flex-column profile-text">
+			<div class="p-d-flex profile-header-name">
 				<h1>{{ player.playerName }}</h1>
 			</div>
 			<span>{{ player.playerUid }}</span>
+			<span>First visit: {{ player.timeFirstVisit | date: 'YYYY-MM-dd H:mm:ss' }}</span>
+			<span>Last visit: {{ player.timeLastVisit | date: 'YYYY-MM-dd H:mm:ss' }}</span>
+			<span>Connected {{ player.numberConnections }} times</span>
 		</div>
 	</div>
-	<app-subnavi [subnaviItems]="subnaviItems"></app-subnavi>
-	<router-outlet></router-outlet>
-</div>
+	<div class="content-wrapper">
+		<app-subnavi [subnaviItems]="subnaviItems"></app-subnavi>
+		<router-outlet></router-outlet>
+	</div>
+</ng-container>

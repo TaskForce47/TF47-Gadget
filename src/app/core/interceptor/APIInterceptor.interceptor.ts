@@ -28,7 +28,7 @@ export class APIInterceptor implements HttpInterceptor {
 							this.notification.add({
 								severity: 'error',
 								summary: 'Request failed',
-								detail: 'The Resource with the specified it was not found',
+								detail: 'The Resource with the specified ID was not found',
 							});
 							break;
 					}

@@ -1,26 +1,22 @@
-<div class="content-wrapper account-profile">
-	<div class="account-profile-header p-d-flex p-flex-column p-flex-md-row" *ngIf="userDetails">
-		<div class="account-profile-image">
-			<img [src]="userDetails.profilePicture" />
-		</div>
-		<div class="account-profile-text p-d-flex p-flex-column">
-			<h1>{{ userDetails.username }}</h1>
-			<span>{{ userDetails.steamId }}</span>
-			<span>First seen: {{ userDetails.firstTimeSeen | date: 'YYYY-MM-dd H:mm:ss'  }}</span>
-			<span>Last seen: {{ userDetails.lastTimeSeen | date: 'YYYY-MM-dd H:mm:ss'  }}</span>
-      <span>Discord: <span [ngClass]="{'notlinked': userDetails.discordId === null, 'linked': userDetails.discordId !== null}">{{ userDetails.discordId !== null ? 'linked': 'not linked' }}</span></span>
-			<span>{{ userDetails.countryCode }}</span>
-			<div class="p-d-flex player-profile-header-roles" *ngIf="userDetails.roles && userDetails.roles.length > 0">
-				<span
-					class="p-tag p-tag-rounded role"
-					style="margin-left: 0.25rem"
-					*ngFor="let role of userDetails.roles"
-					>{{ role }}</span
-				>
-			</div>
-		</div>
+<div class="profile-header p-d-flex p-flex-column p-flex-md-row content-wrapper" *ngIf="userDetails">
+	<div class="account-profile-image">
+		<img [src]="userDetails.profilePicture" />
 	</div>
-
+	<div class="profile-text p-d-flex p-flex-column">
+		<h1>{{ userDetails.username }}</h1>
+		<span>{{ userDetails.steamId }}</span>
+		<span>First seen: {{ userDetails.firstTimeSeen | date: 'YYYY-MM-dd H:mm:ss' }}</span>
+		<span>Last seen: {{ userDetails.lastTimeSeen | date: 'YYYY-MM-dd H:mm:ss' }}</span>
+		<span
+			>Discord:
+			<span [ngClass]="{ notlinked: userDetails.discordId === null, linked: userDetails.discordId !== null }">{{
+				userDetails.discordId !== null ? 'linked' : 'not linked'
+			}}</span></span
+		>
+		<span>{{ userDetails.countryCode }}</span>
+	</div>
+</div>
+<div class="content-wrapper">
 	<app-subnavi [subnaviItems]="subnaviItems"></app-subnavi>
 	<router-outlet></router-outlet>
 </div>

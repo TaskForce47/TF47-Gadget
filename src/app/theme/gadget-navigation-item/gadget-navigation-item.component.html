@@ -1,17 +1,19 @@
 <div class="nav-item">
-
 	<ng-container *ngIf="data.items.length > 0; else elseBlock">
 		<div class="nav-item-header">
 			<span> {{ data.label | uppercase }}</span>
 		</div>
 		<ul class="nav-item-sub-container">
 			<ng-container *ngFor="let sublink of data.items">
-				<a [routerLink]="sublink.routerLink" *ngIf="checkPermissions(sublink)" routerLinkActive="nav-item-sub-active">
-					<li class="nav-item-sub">
-						<span><i [ngClass]="['mdi', sublink.icon]"></i></span>
-						<span>{{ sublink.label }}</span>
-					</li>
-				</a>
+				<li
+					class="nav-item-sub"
+					*ngIf="checkPermissions(sublink)"
+					[routerLink]="sublink.routerLink"
+					routerLinkActive="nav-item-sub-active"
+				>
+					<span><i [ngClass]="['mdi', sublink.icon]"></i></span>
+					<span>{{ sublink.label }}</span>
+				</li>
 			</ng-container>
 		</ul>
 	</ng-container>

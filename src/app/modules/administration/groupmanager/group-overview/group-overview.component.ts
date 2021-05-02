@@ -110,13 +110,14 @@ export class GroupOverviewComponent implements OnInit {
 	}
 
 	deleteGroup(groupData: any) {
-		this.http.delete('/group/' + groupData.groupID, { withCredentials: true }).subscribe(() => {
+		this.http.delete('/group/' + groupData.groupId, { withCredentials: true }).subscribe(() => {
 			this.loadGroups();
 		});
 	}
 
 	submit() {
 		this.http.post('/Group', this.myFormGroup.getRawValue().group, { withCredentials: true }).subscribe(() => {
+			this.myFormGroup.reset();
 			this.loadGroups();
 			this.addModal.close();
 		});

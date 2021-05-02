@@ -5,8 +5,7 @@ import { User } from '../../../core/models/Gadget';
 
 @Component({
 	selector: 'app-account',
-	templateUrl: './account.component.html',
-	styleUrls: ['./account.component.scss'],
+	templateUrl: './account.component.html'
 })
 export class AccountComponent implements OnInit {
 	public userDetails: any;

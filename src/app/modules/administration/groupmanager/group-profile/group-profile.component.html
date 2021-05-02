@@ -1,15 +1,20 @@
 <p-progressSpinner *ngIf="loading" styleClass="custom-spinner" strokeWidth="8" animationDuration="2s"></p-progressSpinner>
-<div class="content-wrapper" *ngIf="!loading">
-	<div class="group-profile-header p-d-flex">
-		<div class="group-profile-text p-d-flex p-flex-column">
+<ng-container *ngIf="!loading">
+	<div class="profile-header p-d-flex content-wrapper">
+		<div class="profile-text p-d-flex p-flex-column">
 			<div class="p-d-flex">
 				<h1>{{ group.name }}</h1>
-        <p-tag [value]="group.name" [style]="{ 'background-color': group.backgroundColor, color: group.textColor }" class="p-as-center p-ml-2"></p-tag>
+				<p-tag
+					[value]="group.name"
+					[style]="{ 'background-color': group.backgroundColor, color: group.textColor }"
+					class="p-as-center p-ml-2"
+				></p-tag>
 			</div>
 			<span>{{ group.description }}</span>
 		</div>
 	</div>
-
-	<app-subnavi [subnaviItems]="subnaviItems"></app-subnavi>
-	<router-outlet></router-outlet>
-</div>
+	<div class="content-wrapper">
+		<app-subnavi [subnaviItems]="subnaviItems"></app-subnavi>
+		<router-outlet></router-outlet>
+	</div>
+</ng-container>

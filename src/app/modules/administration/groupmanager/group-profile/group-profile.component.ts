@@ -5,8 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Group } from '../../../../core/models/Gadget';
 
 @Component({
-	templateUrl: './group-profile.component.html',
-	styleUrls: ['./group-profile.component.scss'],
+	templateUrl: './group-profile.component.html'
 })
 export class GroupProfileComponent implements OnInit {
 	public loading: boolean = true;

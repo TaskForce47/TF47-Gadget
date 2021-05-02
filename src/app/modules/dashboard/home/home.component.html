@@ -35,7 +35,7 @@
 						<h2>Players</h2>
 						<p-tabView>
 							<p-tabPanel header="Chart">
-								<app-tf47-chart [chartOptions]="chartOptions"></app-tf47-chart>
+								<tf47-chart [type]="'line'" [data]="chartPlayer"></tf47-chart>
 							</p-tabPanel>
 							<p-tabPanel header="Log"> </p-tabPanel>
 						</p-tabView>
@@ -44,7 +44,7 @@
 						<h2>Tickets</h2>
 						<p-tabView>
 							<p-tabPanel header="Chart">
-								<app-tf47-chart [chartOptions]="chartOptionsTicket"></app-tf47-chart>
+								<tf47-chart [type]="'line'" [data]="chartTicket"></tf47-chart>
 							</p-tabPanel>
 							<p-tabPanel header="Log"> </p-tabPanel>
 						</p-tabView>

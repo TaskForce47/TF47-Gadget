@@ -8,13 +8,12 @@ export interface Player {
 	playerUid: string;
 	playerName: string;
 	numberConnections: number;
-	firstVisit: string;
-	lastVisit: string;
+	timeFirstVisit: string;
+	timeLastVisit: string;
 }
 
 @Component({
 	templateUrl: './player-profile.component.html',
-	styleUrls: ['./player-profile.component.scss'],
 })
 export class PlayerProfileComponent implements OnInit, OnDestroy {
 	constructor(private router: Router, private activatedRouter: ActivatedRoute, private http: HttpClient) {}

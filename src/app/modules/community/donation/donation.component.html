@@ -1,5 +1,5 @@
 <div class="content-wrapper">
-	<div class="p-d-flex p-mb-2">
+	<div class="p-d-flex p-mb-2" >
 		<p-dropdown
 			placeholder="Year"
 			[options]="yearOptions"
@@ -24,7 +24,7 @@
 			(onClick)="initUserModal()"
 		></p-button>
 	</div>
-	<app-tf47-chart *ngIf="ready" [chartOptions]="chartOptions"></app-tf47-chart>
+	<tf47-chart *ngIf="ready" [type]="'bar'" [data]="chartData"></tf47-chart>
 </div>
 
 <app-modal #addModal [styleClass]="['modal-sm']">
