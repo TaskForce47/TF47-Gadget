@@ -1,8 +1,8 @@
 <div class=" content-wrapper" style="height: 100%">
   <div class="p-grid" style="height: 100%">
     <div class="p-xl-8 p-col-12 img-wrapper">
-      <img class="uploaded-img" [src]="file" *ngIf="file" />
-      <div class="upload-btn-wrapper" *ngIf="!file">
+      <img class="uploaded-img" [src]="fileDisplay" *ngIf="fileDisplay" />
+      <div class="upload-btn-wrapper" *ngIf="!fileDisplay">
         <div class="upload-btn">
           <button onclick="document.getElementById('file-input').click();">
             <i class="pi pi-upload"></i>
@@ -27,16 +27,16 @@
     <div class="settings-container p-d-flex p-flex-column p-xl-3 p-col-12">
       <h2>Settings</h2>
       <form [formGroup]="myFormGroup">
-        <dynamic-primeng-form [group]="myFormGroup" [model]="myFormModel"></dynamic-primeng-form>
+        <dynamic-primeng-form [group]="myFormGroup" [model]="formModel"></dynamic-primeng-form>
       </form>
       <div class="p-mt-auto">
         <p-button
           label="Reset"
           styleClass="settings-upload-btn p-button-outlined p-mb-1"
-          [disabled]="file === null"
+          [disabled]="fileDisplay === null"
           (onClick)="reset()"
         ></p-button>
-        <p-button label="Save" styleClass="settings-upload-btn"></p-button>
+        <p-button label="Save" styleClass="settings-upload-btn" [disabled]="fileDisplay === null" (onClick)="submit()"></p-button>
       </div>
     </div>
   </div>

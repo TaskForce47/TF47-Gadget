@@ -51,11 +51,11 @@ export class DonationComponent implements OnInit {
 	];
 	public yearModel = dayjs().year();
 	public monthModel = 0;
-  public chartData = {};
+	public chartData = {};
 	@ViewChild('addModal') addModal: ModalComponent;
 	@ViewChild('selectUserModal') selectUserModal: ModalComponent;
 	@ViewChild('userGrid') userGrid: TableComponent;
-	myFormModel: DynamicFormModel = [
+	formModel: DynamicFormModel = [
 		new DynamicFormGroupModel({
 			id: 'donation',
 			group: [
@@ -96,7 +96,7 @@ export class DonationComponent implements OnInit {
 	) {}
 
 	ngOnInit(): void {
-		this.myFormGroup = this.formService.createFormGroup(this.myFormModel);
+		this.myFormGroup = this.formService.createFormGroup(this.formModel);
 		this.defaultHeadersUsers = ['username'];
 		this.headersUsers.push({ field: 'username', header: 'Username' });
 		this.loadDonations();
@@ -105,23 +105,25 @@ export class DonationComponent implements OnInit {
 	public loadDonations() {
 		const filter = this.monthModel !== 0 ? this.yearModel + '/' + this.monthModel : this.yearModel;
 		this.http.get('/Donation/statistics/' + filter).subscribe((res: Donation[]) => {
-			this.donationDates = res.map((donation) =>  dayjs(donation.timeOfDonation).format('HH:mm:s DD.MM.YYYY'));
+			this.donationDates = res.map((donation) => dayjs(donation.timeOfDonation).format('HH:mm:s DD.MM.YYYY'));
 			this.donationAmounts = res.map((donation) => donation.amount);
 			this.chartData = {
-        labels: this.donationDates,
-        datasets: [{
-          label: 'Donation',
-          data: this.donationAmounts,
-          backgroundColor: [
-            'rgba(255, 99, 132, 0.2)',
-            'rgba(255, 159, 64, 0.2)',
-            'rgba(255, 205, 86, 0.2)',
-            'rgba(75, 192, 192, 0.2)',
-            'rgba(54, 162, 235, 0.2)',
-            'rgba(153, 102, 255, 0.2)',
-            'rgba(201, 203, 207, 0.2)'
-          ],
-        }],
+				labels: this.donationDates,
+				datasets: [
+					{
+						label: 'Donation',
+						data: this.donationAmounts,
+						backgroundColor: [
+							'rgba(255, 99, 132, 0.2)',
+							'rgba(255, 159, 64, 0.2)',
+							'rgba(255, 205, 86, 0.2)',
+							'rgba(75, 192, 192, 0.2)',
+							'rgba(54, 162, 235, 0.2)',
+							'rgba(153, 102, 255, 0.2)',
+							'rgba(201, 203, 207, 0.2)',
+						],
+					},
+				],
 			};
 
 			this.ready = true;

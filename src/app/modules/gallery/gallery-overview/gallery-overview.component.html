@@ -7,18 +7,21 @@
     <a pButton class="p-mt-2 p-mt-md-0 p-d-md-none" icon="mdi mdi-filter" iconPos="left" style="color: black; width: 100%" ></a>
   </div>
 </div>
-<div class="p-grid content-wrapper">
-	<div class="p-col-0 p-xl-2"></div>
+<div class="p-grid content-wrapper" style="min-height: 100%">
+  <p-progressSpinner *ngIf="loading" styleClass="custom-spinner" strokeWidth="8" animationDuration="2s"></p-progressSpinner>
+  <div class="p-col-0 p-xl-2"></div>
 	<div id="galleryContainer" class="p-col-12 p-xl-8">
 		<div *ngFor="let chunk of chunked; let x = index" class="p-d-flex p-flex-column">
 			<div class="p-d-flex p-flex-row stream-row p-jc-center">
 				<div *ngFor="let img of chunk; let i = index">
 					<img
-						[src]="'https://thumb.pr0gramm.com/' + img.thumb"
+						[src]="'https://' + img.imagePreviewUrl"
 						height="128px"
 						width="128px"
             style="margin: 0 0 4px 4px;"
-						alt="asd"
+						[alt]="img.name"
+            class="gallery-img-thumb"
+            [id]="img.galleryImageId"
 						(click)="maxImg($event, img)"
 					/>
 				</div>

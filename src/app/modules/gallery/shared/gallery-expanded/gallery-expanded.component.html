@@ -1,14 +1,19 @@
 <div class="p-grid">
-	<div class="p-col-1 next-chev">
+	<div class="p-col-0 p-md-1 p-d-none p-d-md-flex next-chev" (click)="chevronClicked.emit('previous')">
 		<i class="mdi mdi-chevron-left" style="font-size: 50pt"></i>
 	</div>
-	<div class="p-col-10 p-d-flex p-jc-center">
-    <img *ngIf="imgObj.image.indexOf('.mp4') === -1" [src]="'https://img.pr0gramm.com/' + imgObj.image" style="max-width: 100%"/>
-    <video *ngIf="imgObj.image.indexOf('.mp4') !== -1" style="max-width: 100%" controls preload="auto">
-      <source [src]="'https://vid.pr0gramm.com/' + imgObj.image" type="video/mp4" />
-    </video>
-  </div>
-	<div class="p-col-1 p-d-flex next-chev">
+	<div class="p-col-12 p-md-10 p-d-flex p-flex-column p-jc-center">
+		<img [src]="'https://' + imgObj.imageUrl" style="max-width: 100%" class="gallery-img" />
+		<div class="p-mt-3">
+			<div class="p-d-flex">
+				<span>{{  dateService.fromNow(imgObj.timeCreated) }}</span>
+				<span class="p-ml-1"> by </span>
+				<span class="p-ml-1 gallery-username"> {{ imgObj.uploader.username }} </span>
+			</div>
+			<h1>{{ imgObj.name }}</h1>
+		</div>
+	</div>
+	<div class="p-col-0 p-md-1 p-d-md-flex p-d-none next-chev" (click)="chevronClicked.emit('next')">
 		<i class="mdi mdi-chevron-right p-ml-auto" style="font-size: 50pt"></i>
 	</div>
 </div>

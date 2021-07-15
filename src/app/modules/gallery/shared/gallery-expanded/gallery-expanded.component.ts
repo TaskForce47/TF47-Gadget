@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { DateService } from '../../../../core/services/date.service';
 
 @Component({
 	selector: 'app-gallery-expanded',
@@ -7,8 +8,9 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class GalleryExpandedComponent implements OnInit {
 	@Input() imgObj;
+	@Output() chevronClicked: EventEmitter<string> = new EventEmitter();
 	public img: string;
-	constructor() {}
+	constructor(public dateService: DateService) {}
 
 	ngOnInit(): void {}
 }

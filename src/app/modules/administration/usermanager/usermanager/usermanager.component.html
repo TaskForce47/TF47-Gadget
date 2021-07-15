@@ -11,11 +11,11 @@
       <p-virtualScroller
         [value]="usersFiltered"
         [scrollHeight]="searchHeight+'px'"
-        [itemSize]="50"
+        [itemSize]="35"
         [rows]="users.length"
       >
         <ng-template pTemplate="item" let-users>
-          <div class="user-box" [routerLink]="users.userId" routerLinkActive="user-box-active">{{ users.username }}</div></ng-template
+          <div class="user-box" [routerLink]="users.userId" routerLinkActive="user-box-active"><div class="user-box-text">{{ users.username }}</div></div></ng-template
         >
         <ng-template pTemplate="loadingItem"> Loading... </ng-template>
       </p-virtualScroller>

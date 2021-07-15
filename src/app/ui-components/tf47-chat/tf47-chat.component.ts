@@ -1,0 +1,81 @@
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'tf47-chat',
+  templateUrl: './tf47-chat.component.html',
+  styleUrls: ['./tf47-chat.component.scss']
+})
+export class Tf47ChatComponent implements OnInit {
+  chats = [
+  '00:37:10 | (Group) [SOAR]Mike: pimmeln einstellen',
+  '00:44:05 | (Group) John Hunter: ja',
+  '00:44:17 | (Group) John Hunter: also der komplette heli tot',
+  '00:44:17 | (Group) John Hunter: also der komplette heli tot',
+  '00:44:17 | (Group) John Hunter: also der komplette heli tot',
+  '00:44:17 | (Group) John Hunter: also der komplette heli tot',
+  '00:44:17 | (Group) John Hunter: also der komplette heli tot',
+  '00:44:17 | (Group) John Hunter: also der komplette heli tot',
+  '00:44:17 | (Group) John Hunter: also der komplette heli tot',
+  '00:44:17 | (Group) John Hunter: also der komplette heli tot',
+  '00:44:17 | (Group) John Hunter: also der komplette heli tot',
+  '00:44:17 | (Group) John Hunter: also der komplette heli tot',
+  '00:44:17 | (Group) John Hunter: also der komplette heli tot',
+  '00:44:17 | (Group) John Hunter: also der komplette heli tot',
+  '00:44:17 | (Group) John Hunter: also der komplette heli tot',
+  '00:44:17 | (Group) John Hunter: also der komplette heli tot',
+  '00:44:17 | (Group) John Hunter: also der komplette heli tot',
+  '00:44:17 | (Group) John Hunter: also der komplette heli tot',
+  '00:44:17 | (Group) John Hunter: also der komplette heli tot',
+  '00:44:17 | (Group) John Hunter: also der komplette heli tot',
+  '00:44:17 | (Group) John Hunter: also der komplette heli tot',
+  '00:44:17 | (Group) John Hunter: also der komplette heli tot',
+  '00:44:17 | (Group) John Hunter: also der komplette heli tot',
+  '00:44:17 | (Group) John Hunter: also der komplette heli tot',
+  '00:44:17 | (Group) John Hunter: also der komplette heli tot',
+  '00:44:27 | (Group) John Hunter: ich lass mich anderweitig verlegen',
+  '00:44:27 | (Group) John Hunter: ich lass mich anderweitig verlegen',
+  '00:44:27 | (Group) John Hunter: ich lass mich anderweitig verlegen',
+  '00:44:27 | (Group) John Hunter: ich lass mich anderweitig verlegen',
+  '00:44:27 | (Group) John Hunter: ich lass mich anderweitig verlegen',
+  '00:44:27 | (Group) John Hunter: ich lass mich anderweitig verlegen',
+  '00:44:27 | (Group) John Hunter: ich lass mich anderweitig verlegen',
+  '00:44:27 | (Group) John Hunter: ich lass mich anderweitig verlegen',
+  '00:44:27 | (Group) John Hunter: ich lass mich anderweitig verlegen',
+  '00:44:27 | (Group) John Hunter: ich lass mich anderweitig verlegen',
+  '00:44:27 | (Group) John Hunter: ich lass mich anderweitig verlegen',
+  '00:44:27 | (Group) John Hunter: ich lass mich anderweitig verlegen',
+  '00:44:27 | (Group) John Hunter: ich lass mich anderweitig verlegen',
+  '00:44:27 | (Group) John Hunter: ich lass mich anderweitig verlegen',
+  '00:44:27 | (Group) John Hunter: ich lass mich anderweitig verlegen',
+  '00:44:27 | (Group) John Hunter: ich lass mich anderweitig verlegen',
+  '00:44:27 | (Group) John Hunter: ich lass mich anderweitig verlegen',
+  '00:44:27 | (Group) John Hunter: ich lass mich anderweitig verlegen',
+  '00:44:27 | (Group) John Hunter: ich lass mich anderweitig verlegen',
+  '00:44:27 | (Group) John Hunter: ich lass mich anderweitig verlegen',
+  '00:44:27 | (Group) John Hunter: ich lass mich anderweitig verlegen',
+  '00:44:27 | (Group) John Hunter: ich lass mich anderweitig verlegen',
+  '00:44:27 | (Group) John Hunter: ich lass mich anderweitig verlegen',
+  '00:44:27 | (Group) John Hunter: ich lass mich anderweitig verlegen',
+  '00:44:27 | (Group) John Hunter: ich lass mich anderweitig verlegen',
+  '00:44:27 | (Group) John Hunter: ich lass mich anderweitig verlegen',
+  '00:44:27 | (Group) John Hunter: ich lass mich anderweitig verlegen',
+  '00:44:27 | (Group) John Hunter: ich lass mich anderweitig verlegen',
+  '00:44:27 | (Group) John Hunter: ich lass mich anderweitig verlegen',
+  '00:44:27 | (Group) John Hunter: ich lass mich anderweitig verlegen',
+  '00:44:27 | (Group) John Hunter: ich lass mich anderweitig verlegen',
+  '00:44:27 | (Group) John Hunter: ich lass mich anderweitig verlegen',
+  '00:44:27 | (Group) John Hunter: ich lass mich anderweitig verlegen',
+  '00:44:27 | (Group) John Hunter: ich lass mich anderweitig verlegen',
+  '00:44:27 | (Group) John Hunter: ich lass mich anderweitig verlegen',
+  '00:44:27 | (Group) John Hunter: ich lass mich anderweitig verlegen',
+  '00:44:27 | (Group) John Hunter: ich lass mich anderweitig verlegen',
+  '00:44:27 | (Group) John Hunter: ich lass mich anderweitig verlegen',
+  '00:44:27 | (Group) John Hunter: ich lass mich anderweitig verlegen',
+  ];
+
+  constructor() { }
+
+  ngOnInit(): void {
+  }
+
+}

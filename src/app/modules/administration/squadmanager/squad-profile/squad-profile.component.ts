@@ -38,7 +38,7 @@ export class SquadProfileComponent implements OnInit {
 	@ViewChild('editModal') editModal: ModalComponent;
 	@ViewChild('addUserGrid') addUserGrid: TableComponent;
 	@ViewChild('userGrid') userGrid: TableComponent;
-	myFormModel: DynamicFormModel = [
+	formModel: DynamicFormModel = [
 		new DynamicFormGroupModel({
 			id: 'member',
 			group: [
@@ -63,7 +63,7 @@ export class SquadProfileComponent implements OnInit {
 	) {}
 
 	ngOnInit(): void {
-		this.myFormGroup = this.formService.createFormGroup(this.myFormModel);
+		this.myFormGroup = this.formService.createFormGroup(this.formModel);
 		this.defaultHeaders = ['username', 'steamId', 'remark'];
 		this.headers.push(
 			{ field: 'squadMemberId', header: 'ID' },

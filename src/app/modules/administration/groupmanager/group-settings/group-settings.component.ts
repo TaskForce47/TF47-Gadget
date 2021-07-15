@@ -21,7 +21,7 @@ export class GroupSettingsComponent implements OnInit {
 	public loading: boolean = true;
 	public group: Group;
 	public id: number;
-	myFormModel: DynamicFormModel = [
+	formModel: DynamicFormModel = [
 		new DynamicFormGroupModel({
 			id: 'group',
 			group: [
@@ -64,7 +64,7 @@ export class GroupSettingsComponent implements OnInit {
 	) {}
 
 	ngOnInit(): void {
-		this.myFormGroup = this.formService.createFormGroup(this.myFormModel);
+		this.myFormGroup = this.formService.createFormGroup(this.formModel);
 		this.activatedRoute.parent.params.subscribe((params) => {
 			this.id = params.id;
 			this.loadGroup();

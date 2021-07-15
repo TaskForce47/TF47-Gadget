@@ -29,7 +29,7 @@ export class IssueProfileComponent implements OnInit {
 	public user;
 	@ViewChild('editIssueModal') editIssueModal: ModalComponent;
 	@ViewChild('editIssueItemModal') editIssueItemModal: ModalComponent;
-	myFormModel: DynamicFormModel = [
+	formModel: DynamicFormModel = [
 		new DynamicFormGroupModel({
 			id: 'issueItem',
 			group: [
@@ -81,7 +81,7 @@ export class IssueProfileComponent implements OnInit {
 	) {}
 
 	ngOnInit(): void {
-		this.myFormGroup = this.formService.createFormGroup(this.myFormModel);
+		this.myFormGroup = this.formService.createFormGroup(this.formModel);
 		this.editIssueItemFormGroup = this.formService.createFormGroup(this.editIssueItemFormModel);
 		this.activatedRoute.params.subscribe((params) => {
 			this.id = params.id;

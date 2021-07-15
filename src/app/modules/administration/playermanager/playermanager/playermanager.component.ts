@@ -32,7 +32,7 @@ export class PlayermanagerComponent implements OnInit {
 
 	private calcDimensions() {
 		if (window.innerWidth > 991) {
-			this.searchWidth = '250px';
+			this.searchWidth = '200px';
 			this.searchHeight = this.searchContainer.nativeElement.getBoundingClientRect().height - 120;
 		} else {
 			this.searchWidth = '100%';

@@ -14,6 +14,7 @@ import { ChangelogComponent } from './changelog/changelog.component';
 import { BreadcrumbService } from '../../core/services/breadcrumb.service';
 import { CalendarOverviewComponent } from './calendar/calendar-overview/calendar-overview.component';
 import { DonationComponent } from './donation/donation.component';
+import { GuideComponent } from './guides/guide/guide.component';
 
 const routes: Routes = [
 	{
@@ -40,6 +41,15 @@ const routes: Routes = [
 	{
 		path: 'donations',
 		component: DonationComponent,
+	},
+	{
+		path: 'guide',
+		redirectTo: 'guide/1',
+		pathMatch: 'full',
+	},
+	{
+		path: 'guide/:id',
+		component: GuideComponent,
 	},
 	{
 		path: 'issues',
@@ -72,6 +82,7 @@ const routes: Routes = [
 		ChangelogComponent,
 		CalendarOverviewComponent,
 		DonationComponent,
+		GuideComponent,
 	],
 	imports: [
 		CommonModule,
@@ -93,5 +104,6 @@ export class CommunityModule {
 		this.breadcrumbService.addFriendlyNameForRoute('/community/issues/overview', 'Overview');
 		this.breadcrumbService.addFriendlyNameForRoute('/community/calendar', 'Calendar');
 		this.breadcrumbService.addFriendlyNameForRoute('/community/donations', 'Donations');
+		this.breadcrumbService.addFriendlyNameForRoute('/community/guide', 'Guides');
 	}
 }

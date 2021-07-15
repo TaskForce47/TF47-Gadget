@@ -49,7 +49,7 @@ export class IssueOverviewComponent implements OnInit {
 	sortKey: any;
 	sortOrder: any;
 	@ViewChild('addModal') addModal: ModalComponent;
-	myFormModel: DynamicFormModel = [];
+	formModel: DynamicFormModel = [];
 	myFormGroup: FormGroup;
 	formReady: boolean = false;
 	constructor(
@@ -84,7 +84,7 @@ export class IssueOverviewComponent implements OnInit {
 			arrIssueTag.forEach((issueGroup) => {
 				arrIssueTagTmp.push({ label: issueGroup.tagName, value: issueGroup.issueTagId });
 			});
-			this.myFormModel.push(
+			this.formModel.push(
 				new DynamicFormGroupModel({
 					id: 'issue',
 					group: [
@@ -113,7 +113,7 @@ export class IssueOverviewComponent implements OnInit {
 					],
 				})
 			);
-			this.myFormGroup = this.formService.createFormGroup(this.myFormModel);
+			this.myFormGroup = this.formService.createFormGroup(this.formModel);
 			this.formReady = true;
 		});
 	}

@@ -13,7 +13,7 @@ import { FormGroup } from '@angular/forms';
 	styleUrls: ['./live-map.component.scss'],
 })
 export class LiveMapComponent implements OnInit {
-	myFormModel: DynamicFormModel = [
+	formModel: DynamicFormModel = [
 		new DynamicCheckboxModel({
 			id: 'grid',
 			label: 'Show Grid',
@@ -29,7 +29,7 @@ export class LiveMapComponent implements OnInit {
 	constructor(private formService: DynamicFormService) {}
 
 	ngOnInit(): void {
-		this.myFormGroup = this.formService.createFormGroup(this.myFormModel);
+		this.myFormGroup = this.formService.createFormGroup(this.formModel);
 	}
 
 	update($event: DynamicFormControlEvent) {

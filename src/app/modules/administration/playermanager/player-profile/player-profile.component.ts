@@ -46,9 +46,9 @@ export class PlayerProfileComponent implements OnInit, OnDestroy {
 			label: 'Whitelist',
 			routerLink: 'whitelist',
 		},
-		/*		{
+		{
 			label: 'Chat',
 			routerLink: 'chat',
-		},*/
+		},
 	];
 }

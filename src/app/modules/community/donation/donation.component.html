@@ -34,7 +34,7 @@
 			<p-button label="Select User" (onClick)="selectUserModal.open()"></p-button>
 			<p *ngIf="selectedUser">Selected User: {{ selectedUser?.username }}</p>
 			<form [formGroup]="myFormGroup">
-				<dynamic-primeng-form *ngIf="ready" [group]="myFormGroup" [model]="myFormModel"></dynamic-primeng-form>
+				<dynamic-primeng-form *ngIf="ready" [group]="myFormGroup" [model]="formModel"></dynamic-primeng-form>
 			</form>
 		</div>
 	</div>

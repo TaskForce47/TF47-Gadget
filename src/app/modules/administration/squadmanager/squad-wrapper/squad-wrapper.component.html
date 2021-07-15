@@ -26,6 +26,14 @@
 			label="Copy XML Link"
 			class="p-button p-button-outlined p-button-sm"
 			icon="mdi mdi-content-copy"
+			(click)="copyLink(squad)"
+		></button>
+		<button
+			pButton
+			label="Upload Image"
+			class="p-button p-button-outlined p-button-sm"
+			icon="mdi mdi-upload"
+			(click)="openUploadModal()"
 		></button>
 		<button
 			pButton
@@ -46,9 +54,21 @@
 	</div>
 </div>
 <div class="content-wrapper">
-  <app-subnavi [subnaviItems]="subnaviItems"></app-subnavi>
-  <router-outlet></router-outlet>
+	<app-subnavi [subnaviItems]="subnaviItems"></app-subnavi>
+	<router-outlet></router-outlet>
 </div>
 
-
 <p-confirmDialog header="Delete Squad"></p-confirmDialog>
+
+<app-modal #uploadImage [styleClass]="['modal-sm']">
+	<div header>Upload Image</div>
+	<div content>
+		<div class="p-d-flex p-flex-column">
+			<input ref="upload" type="file" multiple="false" accept="image/png,image/jpeg" (change)="onFileChanged($event)" />
+      <img style="max-height: 125px; max-width: 125px" [src]="file" *ngIf="file" />
+		</div>
+	</div>
+	<div footer>
+		<p-button type="submit" label="Submit" class="p-ml-auto" (onClick)="upload()"></p-button>
+	</div>
+</app-modal>

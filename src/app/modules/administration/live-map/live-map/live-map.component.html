@@ -1,7 +1,7 @@
 <div class="content-wrapper" style="height: 100%">
 	<div class="p-grid" style="height: 100%">
 		<div class="p-col-12 p-xl-9 map-container">
-      <app-map worldName="Stratis" [gridShown]="grid" [satShown]="sat"></app-map>
+      <app-map worldName="Cam_Lao_Nam" [gridShown]="grid" [satShown]="sat"></app-map>
 		</div>
     <div class="p-col-3 p-shadow-4 side-container">
       <p-message severity="info" text="Select a marker on the map or a row from a table below the map"></p-message>
@@ -43,7 +43,7 @@
         <p-tabPanel header="Settings">
           <ng-template pTemplate="content">
             <form [formGroup]="myFormGroup">
-              <dynamic-primeng-form [group]="myFormGroup" [model]="myFormModel" (change)="update($event)"></dynamic-primeng-form>
+              <dynamic-primeng-form [group]="myFormGroup" [model]="formModel" (change)="update($event)"></dynamic-primeng-form>
             </form>
           </ng-template>
         </p-tabPanel>

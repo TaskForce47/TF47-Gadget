@@ -1,15 +1,14 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-// @ts-ignore
-import navData from 'src/assets/navigation.json';
 import { AuthService } from '../../core/services/auth.service';
 import { PermissionService } from '../../core/services/permission.service';
+import { Navigation } from '../../core/navigation';
 @Component({
 	selector: 'gadget-navigation',
 	templateUrl: './gadget-navigation.component.html',
 })
 export class GadgetNavigationComponent implements OnInit {
 	constructor(public auth: AuthService, private permissionsService: PermissionService) {}
-	private navdata = navData;
+	private navdata = new Navigation();
 	public links = [];
 	@ViewChild('item') item;
 	ngOnInit(): void {

@@ -12,7 +12,8 @@ export class PermissionService {
 	public fetchGroups() {
 		if (!this.auth.isCookieSet()) return;
 		this.http.get('/Group/me', { withCredentials: true }).subscribe((groups: Group[]) => {
-			this.permissions$ = groups.map((group) => group.permissions.map((permission) => permission.name))[0];
+			const permissionTmp = groups.map((group) => group.permissions.map((permission) => permission.name));
+			this.permissions$ = [].concat.apply([], permissionTmp);
 		});
 	}
 

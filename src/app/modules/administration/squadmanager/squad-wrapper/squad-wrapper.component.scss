@@ -17,3 +17,22 @@
   padding-left: .5rem;
   width: 100%;
 }
+
+
+.upload-image {
+  width: 12rem;
+  height: 6rem;
+  color: rgb(255,255,255);
+  border: 2px dashed currentColor;
+  border-radius: 1rem;
+  cursor: pointer;
+  transition: all 0.1s ease-in-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  text-align: center;
+  &--active, &:hover {
+    color: rgb(255,255,255);
+  }
+}

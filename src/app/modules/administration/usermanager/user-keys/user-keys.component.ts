@@ -37,7 +37,7 @@ export class UserKeysComponent implements OnInit {
 	public loadingKeys: boolean = true;
 	public user: User;
 	public ready: boolean = false;
-	myFormModel: DynamicFormModel = [
+	formModel: DynamicFormModel = [
 		new DynamicFormGroupModel({
 			id: 'apikey',
 			group: [
@@ -58,7 +58,7 @@ export class UserKeysComponent implements OnInit {
 	constructor(private http: HttpClient, private auth: AuthService, private formService: DynamicFormService) {}
 
 	ngOnInit(): void {
-		this.myFormGroup = this.formService.createFormGroup(this.myFormModel);
+		this.myFormGroup = this.formService.createFormGroup(this.formModel);
 		this.auth.details$.subscribe((user) => {
 			this.user = user;
 			this.loadKeys();

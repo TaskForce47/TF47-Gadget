@@ -35,7 +35,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="nav-side" [ngClass]="{ 'expand-side-menu': toggleMenu }" #navigation>
+	<nav class="nav-side" [ngClass]="{ 'expand-side-menu': toggleMenu }" #navigation>
 		<div class="nav-side-sub p-d-flex p-flex-column">
 			<a href="https://beta.taskforce47.com/api/Authentication/login/steam">
 				<img
@@ -45,7 +45,7 @@
 				/>
 			</a>
 			<gadget-navigation></gadget-navigation>
-			<div class="nav-side-bottom-container p-as-center p-mb-2" [hidden]="!toggleMenu">
+			<div class="nav-side-bottom-container p-as-center p-mb-2" [hidden]="!toggleMenu" *ngIf="user">
 				<ul>
 					<li>
 						<button
@@ -68,9 +68,9 @@
 				</ul>
 			</div>
 		</div>
-	</div>
-	<div class="content-area" [ngClass]="{ 'content-blur': toggleMenu }">
+	</nav>
+	<main class="content-area" [ngClass]="{ 'content-blur': toggleMenu }">
 		<p-toast class="custom-toast"></p-toast>
 		<router-outlet></router-outlet>
-	</div>
+	</main>
 </div>

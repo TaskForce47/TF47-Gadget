@@ -13,7 +13,7 @@ export class SquadSettingsComponent implements OnInit {
 	public loading: boolean = true;
 	public squad: Squad;
 	public id: number;
-	myFormModel: DynamicFormModel = [
+	formModel: DynamicFormModel = [
 		new DynamicFormGroupModel({
 			id: 'squad',
 			group: [
@@ -53,7 +53,7 @@ export class SquadSettingsComponent implements OnInit {
 	) {}
 
 	ngOnInit(): void {
-		this.myFormGroup = this.formService.createFormGroup(this.myFormModel);
+		this.myFormGroup = this.formService.createFormGroup(this.formModel);
 		this.activatedRoute.parent.params.subscribe((params) => {
 			this.id = params.id;
 			this.loadSquad();

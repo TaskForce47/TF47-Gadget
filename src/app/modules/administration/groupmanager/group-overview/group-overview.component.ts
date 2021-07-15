@@ -32,7 +32,7 @@ export class GroupOverviewComponent implements OnInit {
 		{ title: 'View', action: 'view', selectable: true },
 		{ title: 'Delete', action: 'delete', selectable: true, permissions: ['group:remove'] },
 	];
-	myFormModel: DynamicFormModel = [
+	formModel: DynamicFormModel = [
 		new DynamicFormGroupModel({
 			id: 'group',
 			group: [
@@ -82,7 +82,7 @@ export class GroupOverviewComponent implements OnInit {
 			{ field: 'name', header: 'Name' },
 			{ field: 'description', header: 'Description' }
 		);
-		this.myFormGroup = this.formService.createFormGroup(this.myFormModel);
+		this.myFormGroup = this.formService.createFormGroup(this.formModel);
 		this.loadGroups();
 		this.ready = true;
 	}

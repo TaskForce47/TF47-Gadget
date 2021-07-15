@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ConfirmationService, MenuItem } from 'primeng/api';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Squad } from '../../../../core/models/Gadget';
+import { ModalComponent } from '../../../../ui/modal/modal.component';
 
 @Component({
 	selector: 'app-squad-wrapper',
@@ -10,6 +11,7 @@ import { Squad } from '../../../../core/models/Gadget';
 	styleUrls: ['./squad-wrapper.component.scss'],
 })
 export class SquadWrapperComponent implements OnInit {
+	@ViewChild('uploadImage') uploadImageModal: ModalComponent;
 	public loading: boolean = true;
 	public squad: Squad;
 	public id: number;
@@ -27,6 +29,9 @@ export class SquadWrapperComponent implements OnInit {
 			routerLinkActiveOptions: { exact: true },
 		},
 	];
+	file: any;
+	fileBin: any;
+
 	constructor(
 		private http: HttpClient,
 		private activatedRoute: ActivatedRoute,
@@ -71,6 +76,40 @@ export class SquadWrapperComponent implements OnInit {
 					this.router.navigate(['../'], { relativeTo: this.activatedRoute });
 				});
 			},
+		});
+	}
+
+	public copyLink(squad: Squad) {
+		navigator.clipboard.writeText(squad.squadXmlLink);
+	}
+
+	public openUploadModal() {
+		this.uploadImageModal.open();
+	}
+
+	onFileChanged(event) {
+		const files = event.target.files;
+		if (files.length === 0) return;
+
+		const mimeType = files[0].type;
+		if (mimeType.match(/image\/*/) == null) {
+			return;
+		}
+
+		const reader = new FileReader();
+		reader.readAsDataURL(files[0]);
+		reader.onload = (_event) => {
+			this.file = reader.result;
+		};
+		this.fileBin = files[0];
+	}
+
+	public upload() {
+		const formData = new FormData();
+		formData.set('file', this.fileBin);
+		this.http.put('/Squad/' + this.id + '/uploadLogo', formData, { withCredentials: true }).subscribe(() => {
+			this.loadSquad();
+			this.uploadImageModal.close();
 		});
 	}
 }

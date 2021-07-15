@@ -29,7 +29,7 @@ export class SquadOverviewComponent implements OnInit {
 		{ title: 'View', action: 'view', selectable: true },
 		{ title: 'Delete', action: 'delete', selectable: true },
 	];
-	myFormModel: DynamicFormModel = [
+	formModel: DynamicFormModel = [
 		new DynamicFormGroupModel({
 			id: 'squad',
 			group: [
@@ -91,7 +91,7 @@ export class SquadOverviewComponent implements OnInit {
 			{ field: 'nick', header: 'Nick' },
 			{ field: 'website', header: 'Web' }
 		);
-		this.myFormGroup = this.formService.createFormGroup(this.myFormModel);
+		this.myFormGroup = this.formService.createFormGroup(this.formModel);
 		this.loadSquads();
 		this.ready = true;
 	}

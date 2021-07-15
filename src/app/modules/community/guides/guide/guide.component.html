@@ -1,0 +1,40 @@
+<div class="p-grid" style="height: 100%">
+	<div class="p-col-12 p-lg-2 p-d-flex content-wrapper">
+		<div class="server-selection">
+			<p>Guides</p>
+			<p-progressSpinner
+				*ngIf="!guides"
+				styleClass="custom-spinner"
+				strokeWidth="8"
+				animationDuration="2s"
+			></p-progressSpinner>
+			<ul>
+				<li
+					*ngFor="let guide of guides"
+					(click)="selectGuide(guide)"
+					[routerLink]="'../' + guide.id"
+					[ngClass]="{ 'server-selection-selected': guide.id == id }"
+				>
+					{{ guide.name }}
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="p-col-12 p-lg-10">
+		<div class="content-wrapper p-ml-0 p-ml-lg-2 p-mt-2 p-mt-lg-0 p-p-4 markdown-container">
+			<ng-container *ngIf="selectedGuide">
+				<a
+					pButton
+					*ngIf="selectedGuide.downloadLink"
+					[href]="selectedGuide.downloadLink"
+					target="_blank"
+					rel="noreferrer"
+					label="Preview Print Version"
+					icon="mdi mdi-download"
+					class="p-mb-4"
+				></a>
+				<markdown class="markdown-body" [src]="selectedGuide.markdownSource"></markdown>
+			</ng-container>
+		</div>
+	</div>
+</div>

@@ -86,6 +86,7 @@ import timeGridPlugin from '@fullcalendar/timegrid';
 import { TimelineModule } from 'primeng/timeline';
 import { Tf47EditorComponent } from './tf47-editor/tf47-editor.component';
 import { CalendarModule } from 'primeng/calendar';
+import { MarkdownModule } from 'ngx-markdown';
 
 FullCalendarModule.registerPlugins([dayGridPlugin, interactionPlugin, timeGridPlugin]);
 
@@ -175,6 +176,7 @@ FullCalendarModule.registerPlugins([dayGridPlugin, interactionPlugin, timeGridPl
 		DividerModule,
 		TagModule,
 		TimelineModule,
+    MarkdownModule.forRoot()
 	],
 	exports: [
 		CheckboxModule,
@@ -258,6 +260,7 @@ FullCalendarModule.registerPlugins([dayGridPlugin, interactionPlugin, timeGridPl
 		TimelineModule,
 		Tf47EditorComponent,
 		CalendarModule,
+	MarkdownModule
 	],
 })
 export class UiModule {}
