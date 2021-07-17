@@ -559,6 +559,8 @@ form {
 	color: var(--text-color-secondary);
 	padding-left: 0.5rem;
 	width: 100%;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
 }
 
 .profile-header-actions {
