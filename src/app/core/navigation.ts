@@ -124,7 +124,7 @@ export class Navigation {
 					label: 'Squad Manager',
 					icon: 'mdi-account-supervisor',
 					routerLink: '/administration/squadmanager',
-					permissions: ['squad:view'],
+					permissions: ['squad:update'],
 				},
 				{
 					label: 'Server Control',

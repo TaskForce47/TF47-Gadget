@@ -2,18 +2,16 @@
   width: 100%;
   height: 500px;
   background-color: var(--surface-b);
-  overflow: auto;
-  transform: rotate(180deg);
-  direction: rtl;
 }
 .chat-content{
   padding: .5rem;
   width: 100%;
+  height: 100%;
+  overflow-y: scroll;
 }
 .chat-input{
-  transform: rotate(180deg);
-  direction: ltr;
   border-top: 2px solid var(--surface-d);
+  position: static;
   input{
     width: 100%;
     background-color: transparent;
@@ -24,8 +22,6 @@
   }
 }
 .chat-message{
-  transform: rotate(180deg);
-  direction: ltr;
   &:hover{
     background-color: var(--surface-d);
   }

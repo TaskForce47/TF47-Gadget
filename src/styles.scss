@@ -655,6 +655,7 @@ form {
 	width: 100%;
 	text-align: center;
 	padding: 0.5rem;
+  overflow-y: auto;
 	li {
 		&:hover {
 			background-color: var(--surface-h);
@@ -669,7 +670,10 @@ form {
 		margin-top: 0.5rem;
 	}
 }
-
+.markdown-container-wrapper{
+  overflow-y: auto;
+  height: 100%;
+}
 .markdown-container {
 	a {
 		color: black;

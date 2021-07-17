@@ -1,13 +1,10 @@
-<div class="chat-wrapper p-d-flex">
-  <div class="">
-
-  </div>
-  <div class="chat-content p-d-flex p-flex-column-reverse p-as-start">
-    <div class="chat-message" *ngFor="let chat of chats">
-      <span>{{chat}}</span>
-    </div>
-    <div class="chat-input p-d-flex">
-      <input id="message-input" name="message" autofocus/>
-    </div>
-  </div>
+<div class="chat-wrapper p-d-flex p-flex-column">
+	<div [id]="'chatcontent'" class="chat-content p-d-flex p-flex-column p-as-start">
+		<div class="chat-message" *ngFor="let chat of chats">
+			<span>{{ chat }}</span>
+		</div>
+	</div>
+	<div class="chat-input p-d-flex">
+		<input id="message-input" name="message" autofocus />
+	</div>
 </div>

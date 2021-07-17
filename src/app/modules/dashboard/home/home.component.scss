@@ -1,43 +1,7 @@
-h4 {
-	margin: 0;
-}
-
-.termin-wrapper {
-	list-style: none;
-	h4 {
-		color: var(--primary-color);
-	}
-	:not(:first-of-type) {
-		margin-top: 1rem;
-	}
-	li {
-		padding: .5rem 1rem .5rem 1rem ;
-    width: fit-content;
-    cursor: pointer;
-		&:hover {
-			background-color: var(--surface-d);
-		}
-	}
-}
-.termin-group-name{
-  padding-left: 1rem;
-  color: var(--text-color-secondary);
-}
 .card{
   padding: 1rem;
   border-radius: 4px;
   margin-bottom: 2rem;
 }
 
-.ping{
-  width: 20px;
-  height: 20px;
-  border-radius: 999999999px;
-  background-color: green;
-}
 
-.server-join{
-  a:-webkit-any-link{
-    color: black;
-  }
-}
