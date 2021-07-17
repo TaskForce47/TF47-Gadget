@@ -16,7 +16,7 @@
 				[lazy]="true"
 			>
 				<ng-template pTemplate="item" let-player>
-					<div class="player-box" [style]="{width: searchWidth}" [routerLink]="player.playerUid" routerLinkActive="player-box-active"><div class="player-box-text">{{ player.playerName }}</div></div></ng-template
+					<div class="player-box" [routerLink]="player.playerUid" routerLinkActive="player-box-active"><div class="player-box-text">{{ player.playerName }}</div></div></ng-template
 				>
 				<ng-template pTemplate="loadingItem"> Loading... </ng-template>
 			</p-virtualScroller>

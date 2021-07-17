@@ -22,15 +22,15 @@
   <div header>Add Member</div>
   <div content>
     <div>
-      <tf47-table
+     <tf47-table
         #addUserGrid
         [defaultHeaders]="defaultHeadersUsers"
         [headers]="headersUsers"
         [dataLoading]="loadingUsers"
         [data]="users"
-        [static]="true"
-        [disableSorting]="true"
-        [paginator]="true"
+        [rows]="10"
+        [first]="1"
+        [totalRecords]="users?.length"
         [selectionMode]="'single'"
         [dataKey]="'userId'"
         (onManualReload)="loadUser()"

@@ -71,7 +71,7 @@ export class TableComponent implements OnInit, OnChanges {
 	@Input() stateKey: string;
 	@Input() sortOrder: number = 1;
 	@Input() sortField: string;
-	@Input() lazy: boolean = true;
+	@Input() lazy: boolean = false;
 	@Input() enableExport: boolean = false;
 	@Input() disableSorting: boolean = false;
 	@Output() onRowSelect: EventEmitter<any> = new EventEmitter();
@@ -210,5 +210,5 @@ export class TableComponent implements OnInit, OnChanges {
 		this.exportExcel();
 	}
 
-	exportExcel() {	}
+	exportExcel() {}
 }
