@@ -201,7 +201,7 @@ a:-webkit-any-link {
 
 .nav-item-container {
 	overflow-y: auto;
-	max-height: 82vh;
+	max-height: calc(100vh - 120px);
 
 	&::-webkit-scrollbar {
 		width: 10px;
@@ -367,6 +367,9 @@ td {
 			width: 85vw;
 		}
 	}
+  .nav-item-container {
+    max-height: calc(100vh - 80px);
+  }
 }
 @media (min-width: 992px) {
 	.modal {
@@ -1913,4 +1916,8 @@ form {
 
 .gallery-username{
   color: var(--text-color-secondary)
+}
+
+.user-banned{
+  color: red;
 }

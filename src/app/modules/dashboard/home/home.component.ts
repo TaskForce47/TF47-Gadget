@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { GameServer } from '../../../core/models/Gadget';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
 	selector: 'app-home',
@@ -6,7 +8,12 @@ import { Component, OnInit } from '@angular/core';
 	styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-	constructor() {}
+	constructor(private http: HttpClient) {}
 
-	ngOnInit(): void {}
+	public servers: GameServer[] = [];
+	ngOnInit(): void {
+		this.http.get('/GameServer').subscribe((res: GameServer[]) => {
+			this.servers = res;
+		});
+	}
 }

@@ -21,8 +21,15 @@ const routes: Routes = [
 ];
 
 @NgModule({
-	declarations: [HomeComponent, DashboardEventsComponent, DashboardPlayerComponent, DashboardTicketComponent, DashboardInfoComponent, DashboardModsComponent],
+	declarations: [
+		HomeComponent,
+		DashboardEventsComponent,
+		DashboardPlayerComponent,
+		DashboardTicketComponent,
+		DashboardInfoComponent,
+		DashboardModsComponent,
+	],
 	imports: [CommonModule, UiModule, UiComponentsModule, RouterModule.forChild(routes)],
-	exports: [RouterModule],
+	exports: [RouterModule, DashboardInfoComponent],
 })
 export class DashboardModule {}

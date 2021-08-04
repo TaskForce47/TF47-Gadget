@@ -1,0 +1,11 @@
+<div class="p-mt-4">
+	<p-progressSpinner
+		*ngIf="!ready"
+		styleClass="custom-spinner"
+		strokeWidth="8"
+		animationDuration="2s"
+	></p-progressSpinner>
+	<form [formGroup]="formGroup">
+		<dynamic-primeng-form *ngIf="ready" [group]="formGroup" [model]="formModel"></dynamic-primeng-form>
+	</form>
+</div>

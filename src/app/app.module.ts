@@ -80,7 +80,7 @@ const routes: Routes = [
 	declarations: [AppComponent, ForbiddenComponent],
 	imports: [
 		BrowserModule,
-		ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
+		ServiceWorkerModule.register('ngsw-worker.js', { enabled: false }),
 		RouterModule.forRoot(routes),
 		ThemeModule,
 		HttpClientModule,

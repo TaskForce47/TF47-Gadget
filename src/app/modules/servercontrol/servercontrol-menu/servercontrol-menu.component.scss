@@ -1,0 +1,12 @@
+.menu-card{
+  padding: 1rem;
+  width: 25%;
+  border: 1px solid var(--surface-d);
+  text-align: center;
+  margin: 1rem;
+  font-size: x-large;
+  cursor: pointer;
+  &:hover{
+    background-color: var(--surface-d);
+  }
+}

@@ -1,27 +1,83 @@
-<p-progressSpinner *ngIf="loading || userId === ''" styleClass="custom-spinner" strokeWidth="8" animationDuration="2s"></p-progressSpinner>
+<p-progressSpinner
+	*ngIf="loading || userId === ''"
+	styleClass="custom-spinner"
+	strokeWidth="8"
+	animationDuration="2s"
+></p-progressSpinner>
 
 <ng-container *ngIf="user && !loading">
-  <div class="profile-header p-d-flex p-flex-column p-flex-md-row content-wrapper" *ngIf="user">
-    <div class="profile-image">
-      <img [src]="user.profilePicture" alt="User Picture" />
-    </div>
-    <div class="profile-text p-d-flex p-flex-column">
-      <h1>{{ user.username }}</h1>
-      <span>{{ user.steamId }}</span>
-      <span>First seen: {{ user.firstTimeSeen | date: 'YYYY-MM-dd H:mm:ss' }}</span>
-      <span>Last seen: {{ user.lastTimeSeen | date: 'YYYY-MM-dd H:mm:ss' }}</span>
-      <span>Discord: <span [ngClass]="{'notlinked': user.discordId === null, 'linked': user.discordId !== null}">{{ user.discordId !== null ? 'linked': 'not linked' }}</span></span>
-      <span>{{ user.countryCode }}</span>
-    </div>
-    <div class="profile-header-actions">
-      <a pButton label="View Steam Profile" class="p-button p-button-sm p-button-outlined" icon="mdi mdi-launch" [href]="'https://steamcommunity.com/profiles/'+user.steamId |safeUrl" target="_blank" rel="noopener"></a>
-      <button pButton label="View Player" class="p-button p-button-sm p-button-outlined" icon="mdi mdi-account-search" [routerLink]="'/administration/playermanager/'+user.steamId"></button>
-      <button pButton label="Ban" class="p-button p-button-sm p-button-outlined" disabled="true"></button>
-    </div>
-  </div>
-  <div class="content-wrapper">
-    <app-subnavi [subnaviItems]="subnaviItems"></app-subnavi>
-    <router-outlet></router-outlet>
-  </div>
+	<div class="profile-header p-d-flex p-flex-column p-flex-md-row content-wrapper" *ngIf="user">
+		<div class="profile-image">
+			<img [src]="user.profilePicture" alt="User Picture" />
+		</div>
+		<div class="profile-text p-d-flex p-flex-column">
+			<div class="p-d-flex">
+				<h1>{{ user.username }}</h1>
+				<span class="user-banned p-as-center p-ml-2" *ngIf="user.banned">[Banned]</span>
+			</div>
+			<span>{{ user.steamId }}</span>
+			<span>First seen: {{ user.firstTimeSeen | date: 'YYYY-MM-dd H:mm:ss' }}</span>
+			<span>Last seen: {{ user.lastTimeSeen | date: 'YYYY-MM-dd H:mm:ss' }}</span>
+			<span
+				>Discord:
+				<span [ngClass]="{ notlinked: user.discordId === null, linked: user.discordId !== null }">{{
+					user.discordId !== null ? 'linked' : 'not linked'
+				}}</span></span
+			>
+			<span>{{ user.countryCode }}</span>
+		</div>
+		<div class="profile-header-actions">
+			<a
+				pButton
+				label="View Steam Profile"
+				class="p-button p-button-sm p-button-outlined"
+				icon="mdi mdi-launch"
+				[href]="'https://steamcommunity.com/profiles/' + user.steamId | safeUrl"
+				target="_blank"
+				rel="noopener"
+			></a>
+			<button
+				pButton
+				label="View Player"
+				class="p-button p-button-sm p-button-outlined"
+				icon="mdi mdi-account-search"
+				[routerLink]="'/administration/playermanager/' + user.steamId"
+			></button>
+			<button
+				pButton
+				label="Ban"
+				class="p-button p-button-sm p-button-outlined"
+        icon="mdi mdi-cancel"
+        (click)="openBanModal('ban')"
+        *ngIf="permissionService.hasPermission('user:ban') && !user.banned"
+      ></button>
+			<button
+				pButton
+				label="Unban"
+				class="p-button p-button-sm p-button-outlined"
+				icon="mdi mdi-check"
+				(click)="openBanModal('unban')"
+				*ngIf="permissionService.hasPermission('user:unban') && user.banned"
+			></button>
+		</div>
+	</div>
+	<div class="content-wrapper">
+		<app-subnavi [subnaviItems]="subnaviItems"></app-subnavi>
+		<router-outlet></router-outlet>
+	</div>
 
+	<app-modal #banModal [styleClass]="['modal-sm']">
+		<div header>{{ action | titlecase }} User</div>
+		<div content>
+			<p>Are you sure that you want to {{ action }} the User</p>
+		</div>
+		<div footer>
+			<p-button
+				type="submit"
+				label="Confirm"
+				class="p-ml-auto"
+				(click)="action === 'ban' ? ban() : unban()"
+			></p-button>
+		</div>
+	</app-modal>
 </ng-container>

@@ -3,17 +3,11 @@ import { HttpClient } from '@angular/common/http';
 import dayjs from 'dayjs';
 import { Donation, User } from '../../../core/models/Gadget';
 import { PermissionService } from '../../../core/services/permission.service';
-import {
-	DynamicDatePickerModel,
-	DynamicFormGroupModel,
-	DynamicFormModel,
-	DynamicFormService,
-	DynamicInputModel,
-	DynamicTextAreaModel,
-} from '@ng-dynamic-forms/core';
+import { DynamicFormModel, DynamicFormService } from '@ng-dynamic-forms/core';
 import { FormGroup } from '@angular/forms';
 import { ModalComponent } from '../../../ui/modal/modal.component';
 import { TableComponent } from '../../../ui/table/table.component';
+import donationAddForm from '../../../core/forms/donation-add';
 
 @Component({
 	templateUrl: './donation.component.html',
@@ -55,34 +49,7 @@ export class DonationComponent implements OnInit {
 	@ViewChild('addModal') addModal: ModalComponent;
 	@ViewChild('selectUserModal') selectUserModal: ModalComponent;
 	@ViewChild('userGrid') userGrid: TableComponent;
-	formModel: DynamicFormModel = [
-		new DynamicFormGroupModel({
-			id: 'donation',
-			group: [
-				new DynamicInputModel({
-					id: 'userId',
-					required: true,
-					hidden: true,
-				}),
-				new DynamicInputModel({
-					id: 'amount',
-					label: 'Amount',
-					required: true,
-				}),
-				new DynamicDatePickerModel({
-					id: 'timeOfDonation',
-					label: 'Donated at',
-					required: true,
-				}),
-				new DynamicTextAreaModel({
-					id: 'note',
-					label: 'Note',
-					required: true,
-					value: ' ',
-				}),
-			],
-		}),
-	];
+	formModel: DynamicFormModel;
 	myFormGroup: FormGroup;
 	public defaultHeadersUsers: any = [];
 	public headersUsers: any = [];
@@ -96,6 +63,7 @@ export class DonationComponent implements OnInit {
 	) {}
 
 	ngOnInit(): void {
+		this.formModel = this.formService.fromJSON(donationAddForm);
 		this.myFormGroup = this.formService.createFormGroup(this.formModel);
 		this.defaultHeadersUsers = ['username'];
 		this.headersUsers.push({ field: 'username', header: 'Username' });

@@ -1,17 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Group } from '../../../../core/models/Gadget';
-import {
-	DynamicCheckboxModel,
-	DynamicColorPickerModel,
-	DynamicFormGroupModel,
-	DynamicFormModel,
-	DynamicFormService,
-	DynamicInputModel,
-	DynamicTextAreaModel,
-} from '@ng-dynamic-forms/core';
+import { DynamicFormModel, DynamicFormService } from '@ng-dynamic-forms/core';
 import { FormGroup } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
+import groupSettingsForm from '../../../../core/forms/group-settings';
 
 @Component({
 	templateUrl: './group-settings.component.html',
@@ -21,41 +14,7 @@ export class GroupSettingsComponent implements OnInit {
 	public loading: boolean = true;
 	public group: Group;
 	public id: number;
-	formModel: DynamicFormModel = [
-		new DynamicFormGroupModel({
-			id: 'group',
-			group: [
-				new DynamicInputModel({
-					id: 'name',
-					label: 'Name',
-					required: true,
-				}),
-				new DynamicTextAreaModel({
-					id: 'description',
-					label: 'Description',
-					required: true,
-				}),
-				new DynamicCheckboxModel({
-					id: 'isVisible',
-					label: 'Visible',
-					required: true,
-					value: false,
-				}),
-				new DynamicColorPickerModel({
-					id: 'textColor',
-					label: 'Text Color',
-					required: true,
-					format: 'hex',
-				}),
-				new DynamicColorPickerModel({
-					id: 'backgroundColor',
-					label: 'Background Color',
-					required: true,
-					format: 'hex',
-				}),
-			],
-		}),
-	];
+	formModel: DynamicFormModel;
 	myFormGroup: FormGroup;
 	constructor(
 		private http: HttpClient,
@@ -64,6 +23,7 @@ export class GroupSettingsComponent implements OnInit {
 	) {}
 
 	ngOnInit(): void {
+		this.formModel = this.formService.fromJSON(groupSettingsForm);
 		this.myFormGroup = this.formService.createFormGroup(this.formModel);
 		this.activatedRoute.parent.params.subscribe((params) => {
 			this.id = params.id;

@@ -1,10 +1,10 @@
 <div class="p-d-flex p-flex-column p-flex-lg-row content-wrapper">
 	<div class="p-sm-12 p-lg-9 p-xl-10">
 		<p-tabView>
-			<p-tabPanel header="Public Server #1">
+			<p-tabPanel [header]="server.name" *ngFor="let server of servers">
 				<div class="p-grid">
 					<div class="card p-col-12 p-shadow-2">
-            <dashboard-info></dashboard-info>
+            <dashboard-info [server]="server"></dashboard-info>
           </div>
 <!--					<div class="card p-col-12 p-shadow-2">
             <dashboard-player></dashboard-player>

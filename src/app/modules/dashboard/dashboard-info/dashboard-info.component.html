@@ -1,28 +1,36 @@
 <div>
-  <div class="p-d-flex">
-    <h2>Info</h2>
-    <div class="p-ml-auto server-join">
-      <div class="p-d-flex p-ac-center p-jc-center">
-        <a pButton type="button" label="Connect" class="p-button text-black"></a>
-      </div>
-    </div>
-  </div>
-  <div class="p-d-flex">
-    <h3>[TF47] ENG/GER - MilSim Public #1 ACE|TFAR|RHS</h3>
-    <div class="p-ml-auto p-d-flex">
-      <div class="p-mr-5 p-text-center p-d-flex p-flex-column">
-        <b>Ping</b>
-        <span>39</span>
-      </div>
-      <div class="p-text-center p-d-flex p-flex-column">
-        <b>Players</b>
-        <span>21/64</span>
-      </div>
-    </div>
-  </div>
-  <div class="p-d-flex p-flex-column">
-    <div><b>Current Map:</b> Takistan</div>
-    <div><b>Current Mission:</b> TF47 Domination Takistan</div>
-    <div><b>IP:</b> 195.201.81.83:2302</div>
-  </div>
+	<div class="p-d-flex">
+		<h3>{{ server.name }}</h3>
+		<div class="p-ml-auto p-d-flex">
+			<div class="p-mr-5 p-text-center p-d-flex p-flex-column">
+				<b>Ping</b>
+				<span>39</span>
+			</div>
+			<div class="p-text-center p-d-flex p-flex-column">
+				<b>Players</b>
+				<span>21/64</span>
+			</div>
+		</div>
+	</div>
+	<div class="p-d-flex p-flex-column">
+		<p>
+			{{ server.description }}
+		</p>
+		<div><b>Current Map:</b> Takistan</div>
+		<div><b>Current Mission:</b> TF47 Domination Takistan</div>
+		<div><b>IP:</b> {{ server.ip }}:{{ server.port }}</div>
+	</div>
+	<div class="p-d-flex">
+		<div class="p-ml-auto server-join">
+			<div class="p-d-flex p-ac-center p-jc-center">
+				<a
+					pButton
+					type="button"
+					label="Connect"
+					class="p-button text-black"
+					[href]="'steam://connect/' + server.ip + ':' + server.port | safeUrl"
+				></a>
+			</div>
+		</div>
+	</div>
 </div>

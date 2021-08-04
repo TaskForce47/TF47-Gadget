@@ -85,6 +85,7 @@ export interface Mission {
 	name: string;
 	missionId: number;
 	description: string;
+	descriptionShort: string;
 	missionType: string;
 	campaignId: number;
 	campaignName: string;
@@ -97,4 +98,15 @@ export interface Donation {
 	note: string;
 	amount: number;
 	timeOfDonation: string;
+}
+
+export interface GameServer {
+	branch: string;
+	description: string;
+	gameServerStatus: string;
+	ip: string;
+	port: string;
+	lastTimeStarted: string;
+	name: string;
+	serverId: number;
 }

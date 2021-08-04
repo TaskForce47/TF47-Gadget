@@ -9,9 +9,9 @@ export class ServersComponent implements OnInit {
 		{
 			type: 'Gameserver',
 			title: '[TF47] MilSim Public Server #1 ACE|TFAR|RHS GER/ENG',
-			ip: 'arma.taskforce47.com:2302',
+			ip: '195.201.81.83:2302',
 			img: './assets/images/a3_logo.png',
-			connect: 'steam://connect/116.202.164.243:2302',
+			connect: 'steam://connect/195.201.81.83:2302',
 		},
 	];
 

@@ -9,7 +9,7 @@ export class APIInterceptor implements HttpInterceptor {
 	constructor(private notification: MessageService, private router: Router, private activatedRoute: ActivatedRoute) {}
 	intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 		if (req.url.indexOf('https') === -1) {
-			const apiReq = req.clone({ url: `https://beta.taskforce47.com/api${req.url}` });
+			const apiReq = req.clone({ url: `https://moin.taskforce47.com:5001/api${req.url}` });
 			return next.handle(apiReq).pipe(
 				// @ts-ignore
 				catchError((error: HttpErrorResponse) => {

@@ -1,18 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ModalComponent } from '../../../../ui/modal/modal.component';
 import { HeaderButton } from '../../../../ui/table/table.component';
-import {
-	DynamicCheckboxModel,
-	DynamicColorPickerModel,
-	DynamicFormGroupModel,
-	DynamicFormModel,
-	DynamicFormService,
-	DynamicInputModel,
-	DynamicTextAreaModel,
-} from '@ng-dynamic-forms/core';
+import { DynamicFormModel, DynamicFormService } from '@ng-dynamic-forms/core';
 import { FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import groupAddForm from '../../../../core/forms/group-add';
 
 @Component({
 	selector: 'app-group-overview',
@@ -32,41 +25,7 @@ export class GroupOverviewComponent implements OnInit {
 		{ title: 'View', action: 'view', selectable: true },
 		{ title: 'Delete', action: 'delete', selectable: true, permissions: ['group:remove'] },
 	];
-	formModel: DynamicFormModel = [
-		new DynamicFormGroupModel({
-			id: 'group',
-			group: [
-				new DynamicInputModel({
-					id: 'name',
-					label: 'Name',
-					required: true,
-				}),
-				new DynamicTextAreaModel({
-					id: 'description',
-					label: 'Description',
-					required: true,
-				}),
-				new DynamicCheckboxModel({
-					id: 'isVisible',
-					label: 'Visible',
-					required: true,
-					value: false,
-				}),
-				new DynamicColorPickerModel({
-					id: 'textColor',
-					label: 'Text Color',
-					required: true,
-					format: 'hex',
-				}),
-				new DynamicColorPickerModel({
-					id: 'backgroundColor',
-					label: 'Background Color',
-					required: true,
-					format: 'hex',
-				}),
-			],
-		}),
-	];
+	formModel: DynamicFormModel;
 	myFormGroup: FormGroup;
 	constructor(
 		private router: Router,
@@ -82,6 +41,7 @@ export class GroupOverviewComponent implements OnInit {
 			{ field: 'name', header: 'Name' },
 			{ field: 'description', header: 'Description' }
 		);
+		this.formModel = this.formService.fromJSON(groupAddForm);
 		this.myFormGroup = this.formService.createFormGroup(this.formModel);
 		this.loadGroups();
 		this.ready = true;

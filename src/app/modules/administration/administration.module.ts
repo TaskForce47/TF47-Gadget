@@ -34,6 +34,14 @@ import { GroupUserComponent } from './groupmanager/group-user/group-user.compone
 import { GroupPermissionComponent } from './groupmanager/group-permission/group-permission.component';
 import { GroupSettingsComponent } from './groupmanager/group-settings/group-settings.component';
 import { BreadcrumbService } from '../../core/services/breadcrumb.service';
+import { EventOverviewComponent } from './eventmanager/event-overview/event-overview.component';
+import { EventAddComponent } from './eventmanager/event-add/event-add.component';
+import { EventProfileComponent } from './eventmanager/event-profile/event-profile.component';
+import { EventComponent } from './eventmanager/event/event.component';
+import { ServerOverviewComponent } from '../servercontrol/servers/server-overview/server-overview.component';
+import { ServerComponent } from '../servercontrol/servers/server/server.component';
+import { ServerProfileComponent } from '../servercontrol/servers/server-profile/server-profile.component';
+import { EventmanagerComponent } from './eventmanager/eventmanager/eventmanager.component';
 
 const routes: Routes = [
 	{
@@ -159,6 +167,45 @@ const routes: Routes = [
 			},
 		],
 	},
+	{
+		path: 'eventmanager',
+		component: EventmanagerComponent,
+		children: [
+			{
+				path: '',
+				redirectTo: 'event/overview',
+				pathMatch: 'full',
+			},
+			{
+				path: 'event',
+				redirectTo: 'event/overview',
+				pathMatch: 'full',
+			},
+			{
+				path: 'event/overview',
+				component: EventOverviewComponent,
+			},
+			{
+				path: 'event/add',
+				component: EventAddComponent,
+			},
+			{
+				path: 'event/:id',
+				component: EventComponent,
+				children: [
+					{
+						path: '',
+						redirectTo: 'profile',
+						pathMatch: 'full',
+					},
+					{
+						path: 'profile',
+						component: EventProfileComponent,
+					},
+				],
+			},
+		],
+	},
 ];
 @NgModule({
 	declarations: [
@@ -190,6 +237,11 @@ const routes: Routes = [
 		GroupUserComponent,
 		GroupPermissionComponent,
 		GroupSettingsComponent,
+		EventOverviewComponent,
+		EventAddComponent,
+		EventProfileComponent,
+		EventComponent,
+		EventmanagerComponent,
 	],
 	imports: [
 		CommonModule,
@@ -232,6 +284,12 @@ export class AdministrationModule {
 		this.breadcrumbService.addFriendlyNameForRoute('/administration/squadmanager/overview', 'Overview');
 		this.breadcrumbService.addFriendlyNameForRouteRegex('^/administration/squadmanager/\\d+/profile', 'Profile');
 		this.breadcrumbService.addFriendlyNameForRouteRegex('^/administration/squadmanager/\\d+/settings', 'Settings');
+
+		// Server Control
+		this.breadcrumbService.addFriendlyNameForRoute('/servercontrol/server', 'Server Control');
+		this.breadcrumbService.addFriendlyNameForRoute('/servercontrol/server', 'Server');
+		this.breadcrumbService.addFriendlyNameForRoute('/servercontrol/server/overview', 'Overview');
+		this.breadcrumbService.addFriendlyNameForRouteRegex('^/servercontrol/server/\\d+/profile', 'Profile');
 
 		// Live Map
 		this.breadcrumbService.addFriendlyNameForRoute('/administration/live', 'Live Map');

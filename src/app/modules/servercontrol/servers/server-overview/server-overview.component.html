@@ -1,0 +1,18 @@
+<div class="content-wrapper">
+  <tf47-table
+    [defaultHeaders]="defaultHeaders"
+    [dataLoading]="loading"
+    [data]="data"
+    [headers]="headers"
+    [paginator]="true"
+    [rows]="20"
+    [showCurrentPageReport]="true"
+    [autoLayout]="true"
+    [headerActions]="headerAction"
+    [selectionMode]="'single'"
+    [dataKey]="'squadId'"
+    (onManualReload)="loadServers()"
+    (onHeaderButtonClicked)="headerButtonClicked($event)"
+  >
+  </tf47-table>
+</div>

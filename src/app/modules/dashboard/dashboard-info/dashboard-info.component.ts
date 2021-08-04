@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { GameServer } from '../../../core/models/Gadget';
 
 @Component({
 	selector: 'dashboard-info',
@@ -7,6 +8,6 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardInfoComponent implements OnInit {
 	constructor() {}
-
+	@Input() server: GameServer;
 	ngOnInit(): void {}
 }
