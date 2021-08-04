@@ -87,6 +87,10 @@ import { TimelineModule } from 'primeng/timeline';
 import { Tf47EditorComponent } from './tf47-editor/tf47-editor.component';
 import { CalendarModule } from 'primeng/calendar';
 import { MarkdownModule } from 'ngx-markdown';
+import { Tf47FormComponent } from './tf47-form/tf47-form.component';
+import { DynamicFormsPrimeNGUIModule } from '@ng-dynamic-forms/ui-primeng';
+import { ReactiveFormsModule } from '@angular/forms';
+import { NgxEditorModule } from 'ngx-editor';
 
 FullCalendarModule.registerPlugins([dayGridPlugin, interactionPlugin, timeGridPlugin]);
 
@@ -102,6 +106,7 @@ FullCalendarModule.registerPlugins([dayGridPlugin, interactionPlugin, timeGridPl
 		Tf47CalendarComponent,
 		Tf47DataViewComponent,
 		Tf47EditorComponent,
+		Tf47FormComponent,
 	],
 	imports: [
 		CommonModule,
@@ -176,7 +181,10 @@ FullCalendarModule.registerPlugins([dayGridPlugin, interactionPlugin, timeGridPl
 		DividerModule,
 		TagModule,
 		TimelineModule,
-    MarkdownModule.forRoot()
+		MarkdownModule.forRoot(),
+		DynamicFormsPrimeNGUIModule,
+		ReactiveFormsModule,
+		NgxEditorModule,
 	],
 	exports: [
 		CheckboxModule,
@@ -260,7 +268,9 @@ FullCalendarModule.registerPlugins([dayGridPlugin, interactionPlugin, timeGridPl
 		TimelineModule,
 		Tf47EditorComponent,
 		CalendarModule,
-	MarkdownModule
+		MarkdownModule,
+		Tf47FormComponent,
+		Tf47EditorComponent,
 	],
 })
 export class UiModule {}

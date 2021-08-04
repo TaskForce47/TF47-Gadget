@@ -2,7 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
-import { environment } from '../environments/environment';
 import { ActivatedRoute, Router, RouterModule, Routes } from '@angular/router';
 import { ThemeModule } from './theme/theme.module';
 import { AuthService } from './core/services/auth.service';

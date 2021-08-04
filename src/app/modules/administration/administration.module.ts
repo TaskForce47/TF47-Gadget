@@ -38,9 +38,6 @@ import { EventOverviewComponent } from './eventmanager/event-overview/event-over
 import { EventAddComponent } from './eventmanager/event-add/event-add.component';
 import { EventProfileComponent } from './eventmanager/event-profile/event-profile.component';
 import { EventComponent } from './eventmanager/event/event.component';
-import { ServerOverviewComponent } from '../servercontrol/servers/server-overview/server-overview.component';
-import { ServerComponent } from '../servercontrol/servers/server/server.component';
-import { ServerProfileComponent } from '../servercontrol/servers/server-profile/server-profile.component';
 import { EventmanagerComponent } from './eventmanager/eventmanager/eventmanager.component';
 
 const routes: Routes = [
