@@ -4634,6 +4634,7 @@ p-togglebutton.ng-dirty.ng-invalid > .p-togglebutton.p-button {
 @media (max-width: 991px){
   ul.p-tabmenu-nav li{
     width: 100% !important;
+    margin-top: .25rem;
   }
 
   .p-tabmenu .p-tabmenu-nav li .p-tabmenu-nav-link {
@@ -4646,4 +4647,8 @@ p-togglebutton.ng-dirty.ng-invalid > .p-togglebutton.p-button {
     background: #efefef !important;
     font-weight: bold;
   }
+}
+
+.p-tabmenu-nav a {
+  z-index: 3;
 }

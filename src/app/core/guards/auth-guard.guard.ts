@@ -13,7 +13,7 @@ export class AuthGuardGuard implements CanActivate {
 		state: RouterStateSnapshot
 	): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 		if (!this.auth.isCookieSet()) {
-			this.router.navigateByUrl('/forbidden');
+			this.router.navigateByUrl('/login');
 			return false;
 		}
 		return true;

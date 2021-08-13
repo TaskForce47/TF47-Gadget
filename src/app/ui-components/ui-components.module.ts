@@ -7,6 +7,7 @@ import { MapComponent } from './map/map.component';
 import { WebsocketPanelComponent } from './websocket-panel/websocket-panel.component';
 import { NotificationPanelComponent } from './notification-panel/notification-panel.component';
 import { Tf47ChatComponent } from './tf47-chat/tf47-chat.component';
+import { SlotGroupComponent } from './slot-group/slot-group.component';
 
 @NgModule({
 	declarations: [
@@ -16,6 +17,7 @@ import { Tf47ChatComponent } from './tf47-chat/tf47-chat.component';
 		WebsocketPanelComponent,
 		NotificationPanelComponent,
 		Tf47ChatComponent,
+		SlotGroupComponent,
 	],
 	exports: [
 		SquadCardComponent,
@@ -24,6 +26,7 @@ import { Tf47ChatComponent } from './tf47-chat/tf47-chat.component';
 		WebsocketPanelComponent,
 		NotificationPanelComponent,
 		Tf47ChatComponent,
+		SlotGroupComponent,
 	],
 	imports: [CommonModule, UiModule],
 })

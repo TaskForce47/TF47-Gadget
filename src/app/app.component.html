@@ -1,1 +1,4 @@
-<app-gadget-layout></app-gadget-layout>
+<app-gadget-layout *ngIf="isLoggedIn; else login"></app-gadget-layout>
+<ng-template #login>
+  <router-outlet ></router-outlet>
+</ng-template>

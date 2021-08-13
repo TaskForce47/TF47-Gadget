@@ -66,6 +66,11 @@ const routes: Routes = [
 		},
 		loadChildren: () => import('./modules/community/community.module').then((m) => m.CommunityModule),
 	},
+  {
+		path: 'loginsuccessful',
+    pathMatch: 'full',
+		redirectTo: ''
+	},
 	{ path: '**', redirectTo: 'forbidden' },
 	{
 		path: 'forbidden',

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { CalendarOptions } from '@fullcalendar/angular';
 @Component({
 	selector: 'tf47-calendar',
@@ -6,41 +6,8 @@ import { CalendarOptions } from '@fullcalendar/angular';
 	styleUrls: ['./tf47-calendar.component.scss'],
 })
 export class Tf47CalendarComponent implements OnInit {
-	options: CalendarOptions;
+	@Input() options: CalendarOptions;
 	constructor() {}
 
-	ngOnInit() {
-		this.options = {
-			initialView: 'dayGridMonth',
-			height: '100%',
-			firstDay: 1,
-			locale: 'en-GB',
-			headerToolbar: {
-				left: 'dayGridMonth,timeGridWeek,timeGridDay',
-				center: 'title',
-				right: 'prevYear,prev,next,nextYear',
-			},
-			eventTimeFormat: {
-				hour: 'numeric',
-				minute: '2-digit',
-				hour12: false,
-			},
-			slotLabelFormat: {
-				hour: 'numeric',
-				minute: '2-digit',
-				hour12: false,
-			},
-			eventClick(event) {
-				console.log(event.event.id);
-			},
-			events: [
-				{
-					id: '1',
-					title: 'Taskforce explodiert',
-					start: '2021-04-16T08:00:00',
-					allDay: false,
-				},
-			],
-		};
-	}
+	ngOnInit() {}
 }

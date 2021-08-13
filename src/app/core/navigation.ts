@@ -33,7 +33,7 @@ export class Navigation {
 					routerLink: '/community/squads',
 					permissions: ['squad:view'],
 				},
-				{
+				/*				{
 					label: 'Issues',
 					icon: 'mdi-alert-circle',
 					routerLink: '/community/issues',
@@ -44,7 +44,7 @@ export class Navigation {
 					icon: 'mdi-account-hard-hat',
 					routerLink: '/community/changelog',
 					permissions: ['preview'],
-				},
+				},*/
 				{
 					label: 'Donations',
 					icon: 'mdi-account-cash',
@@ -59,7 +59,7 @@ export class Navigation {
 				},
 			],
 		},
-		{
+		/*		{
 			label: 'Gallery',
 			tooltip: 'Gallery',
 			routerLink: '/gallery',
@@ -79,7 +79,7 @@ export class Navigation {
 					permissions: [],
 				},
 			],
-		},
+		},*/
 		{
 			label: 'Events',
 			tooltip: '',
@@ -134,16 +134,16 @@ export class Navigation {
 				},
 				{
 					label: 'Event Manager',
-					icon: 'mdi-eye',
+					icon: 'mdi-calendar-edit',
 					routerLink: '/administration/eventmanager',
 					permissions: ['preview'],
 				},
-				{
+				/*				{
 					label: 'Live Map',
 					icon: 'mdi-eye',
 					routerLink: '/administration/live',
 					permissions: ['preview'],
-				},
+				},*/
 				{
 					label: 'Logs',
 					icon: 'mdi-clipboard-text',

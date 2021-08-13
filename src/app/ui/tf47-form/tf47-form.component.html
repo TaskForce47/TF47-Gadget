@@ -1,4 +1,4 @@
-<div class="p-mt-4">
+<div class="p-mt-4 p-d-flex">
 	<p-progressSpinner
 		*ngIf="!ready"
 		styleClass="custom-spinner"
@@ -8,4 +8,5 @@
 	<form [formGroup]="formGroup">
 		<dynamic-primeng-form *ngIf="ready" [group]="formGroup" [model]="formModel"></dynamic-primeng-form>
 	</form>
+  <p-button type="submit" label="Submit" class="p-ml-auto p-as-end" (onClick)="submitForm()" *ngIf="!formSettings?.readonly"></p-button>
 </div>

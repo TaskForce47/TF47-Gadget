@@ -110,3 +110,24 @@ export interface GameServer {
 	name: string;
 	serverId: number;
 }
+
+export interface SlotGroup {
+	slotGroupId: number;
+	missionId: number;
+	title: string;
+	description: string;
+	orderNumber: number;
+	slots: Slot[];
+}
+
+export interface Slot {
+	slotId: number;
+	slotGroupId: number;
+	title: string;
+	description: string;
+	orderNumber: number;
+	difficulty: number;
+	reserve: boolean;
+	blocked: boolean;
+	requiredDLC: boolean;
+}

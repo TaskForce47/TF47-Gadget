@@ -20,14 +20,6 @@
 				></a>
 				<websocket-panel></websocket-panel>
 				<notification-panel></notification-panel>
-				<a href="https://moin.taskforce47.com:5001/api/Authentication/login/steam">
-					<img
-						*ngIf="!user"
-						class="steam-login"
-						alt="Steam login"
-						src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/steamworks_docs/german/sits_small.png"
-					/>
-				</a>
 				<p-splitButton *ngIf="user" class="profile-link" [label]="user.username" [model]="items"></p-splitButton>
 			</div>
 			<div class="p-d-lg-none p-ml-auto header-burger">
@@ -37,13 +29,6 @@
 	</div>
 	<nav class="nav-side" [ngClass]="{ 'expand-side-menu': toggleMenu }" #navigation>
 		<div class="nav-side-sub p-d-flex p-flex-column">
-			<a href="https://moin.taskforce47.com:5001/api/Authentication/login/steam">
-				<img
-					*ngIf="!user"
-					class="steam-login"
-					src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/steamworks_docs/german/sits_small.png"
-				/>
-			</a>
 			<gadget-navigation></gadget-navigation>
 			<div class="nav-side-bottom-container p-as-center p-mb-2" [hidden]="!toggleMenu" *ngIf="user">
 				<ul>

@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { shareReplay } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { User } from '../models/Gadget';
+import { Router } from '@angular/router';
 
 @Injectable({
 	providedIn: 'root',
@@ -12,7 +13,12 @@ export class AuthService {
 		? (this.http.get('/User/me', { withCredentials: true }).pipe(shareReplay()) as Observable<User>)
 		: new Observable<null>();
 	public isCookieSet() {
-		return document.cookie.indexOf('OperationDachdaggerAuthCookie') !== -1;
+    if(document.cookie.indexOf('OperationDachdaggerAuthCookie') === -1) {
+        this.router.navigate(['/login']);
+        return false;
+    }
+
+		return true;
 	}
 
 	public logout() {
@@ -20,5 +26,5 @@ export class AuthService {
 			location.reload();
 		});
 	}
-	constructor(private http: HttpClient) {}
+	constructor(private http: HttpClient, private router: Router) {}
 }

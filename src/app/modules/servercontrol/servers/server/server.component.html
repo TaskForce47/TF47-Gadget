@@ -1,8 +1,19 @@
-<div *ngIf="!loading" class="content-wrapper p-mb-2">
-  <h2>{{server.name}}</h2>
-  <h3>Server Status: {{server.gameServerStatus}}</h3>
+<div *ngIf="!loading" class="content-wrapper p-mb-2" style="width: 100%">
+  <div class="p-d-flex">
+    <div>
+      <h2>Server: {{ server.name }}</h2>
+      <p class="status-box">Status: {{ server.gameServerStatus }}</p>
+    </div>
+    <div class="p-d-flex p-flex-column p-ml-auto">
+      <button pButton label="Lock" class="p-button p-button-sm p-button-outlined" icon="mdi mdi-cancel"></button>
+      <button pButton label="Restart" class="p-button p-button-sm p-button-outlined p-mt-2" icon="mdi mdi-cancel"></button>
+      <button pButton label="Shutdown" class="p-button p-button-sm p-button-outlined p-mt-2" icon="mdi mdi-cancel"></button>
+    </div>
+  </div>
+  <div>
+    <app-subnavi [subnaviItems]="subnaviItems"></app-subnavi>
+  </div>
 </div>
 <div class="content-wrapper">
-  <app-subnavi [subnaviItems]="subnaviItems"></app-subnavi>
-  <router-outlet></router-outlet>
+	<router-outlet></router-outlet>
 </div>

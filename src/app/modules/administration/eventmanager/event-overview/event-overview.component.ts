@@ -12,17 +12,7 @@ import { HeaderButton } from '../../../../ui/table/table.component';
 export class EventOverviewComponent implements OnInit {
 	constructor(private router: Router, private activatedRouter: ActivatedRoute, private http: HttpClient) {}
 
-	public data: Mission[] = [
-		{
-			missionId: 1,
-			name: 'Bing Bing',
-			descriptionShort: 'Ballern',
-			missionType: 'COOP',
-			campaignName: 'Geil',
-			campaignId: 1,
-			description: 'caio',
-		},
-	];
+	public data: Mission[] = [];
 	public defaultHeaders: any = [];
 	public headers: any = [];
 	public loading: boolean = true;
@@ -49,11 +39,11 @@ export class EventOverviewComponent implements OnInit {
 	}
 
 	loadServers() {
-		/*		this.loading = true;
-		this.http.get('/GameServer').subscribe((res: GameServer[]) => {
+		this.loading = true;
+		this.http.get('/Mission').subscribe((res: Mission[]) => {
 			this.data = res;
 			this.loading = false;
-		});*/
+		});
 	}
 
 	headerButtonClicked($event) {

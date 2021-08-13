@@ -1,0 +1,6 @@
+<div class="content-wrapper">
+  <button pButton type="button" label="Add Group" class="p-button-text" style="width: 100%" (click)="addGroup()"></button>
+	<div *ngFor="let slotGroup of slotGroups" class="p-mb-6">
+		<slot-group [slotGroup]="slotGroup" (addedSlot)="loadSlotGroups()" (removedSlotGroup)="loadSlotGroups()"></slot-group>
+	</div>
+</div>

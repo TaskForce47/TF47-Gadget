@@ -1,0 +1,39 @@
+<p-accordion>
+  <p-panel [header]="slotGroup.title" [toggleable]="true">
+    <ng-template pTemplate="icons">
+      <button pButton class="p-panel-header-icon p-link" pTooltip="Edit Slot Group" (click)="editSlotGroup()">
+        <span class="pi pi-pencil"></span>
+      </button>
+      <button pButton class="p-panel-header-icon p-link" pTooltip="Remove Slot Group" (click)="removeSlotGroup()">
+        <span class="pi pi-times"></span>
+      </button>
+    </ng-template>
+    <p-table [value]="slotGroup.slots" styleClass="p-datatable-sm p-datatable-striped" [responsive]="true">
+      <ng-template pTemplate="header">
+        <tr>
+          <th>Role</th>
+          <th>Difficulty</th>
+          <th>Description</th>
+          <th>Player</th>
+          <th>Action</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-slot>
+        <tr>
+          <td>{{slot.title}}</td>
+          <td>{{slot.difficulty}}</td>
+          <td>{{slot.description}}</td>
+          <td>{{slot.user?.username}}</td>
+          <td>
+            <span class="p-buttonset">
+                <button pButton type="button" icon="pi pi-check" (click)="addUser(slot.slotId)" [disabled]="slot.userId !== null"></button>
+                <button pButton type="button" icon="pi pi-pencil" (click)="editSlot(slot.slotId)"></button>
+                <button pButton type="button" icon="pi pi-trash" (click)="removeSlot(slot.slotId)"></button>
+            </span>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+    <button pButton type="button" label="Add Slot" class="p-button-text" style="width: 100%" (click)="addSlot(slotGroup.slotGroupId)"></button>
+  </p-panel>
+</p-accordion>

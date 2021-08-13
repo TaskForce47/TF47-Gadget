@@ -1,0 +1,78 @@
+.login{
+  height: 100vh;
+  width: 100vw;
+
+}
+
+.login-left {
+  text-align: center;
+}
+
+.gadget-title-gadget {
+	color: var(--primary-color);
+}
+
+.gadget-title {
+	margin: 4rem auto;
+	font-size: 1.75rem;
+	font-weight: bolder;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+  width: fit-content;
+}
+
+.steam-login-img{
+  position: absolute;
+  bottom: 3rem;
+  left: 50%;
+  width: 120px;
+  height: 80px;
+  margin-left:-60px;
+  cursor: pointer;
+}
+.login-right{
+  display: none;
+}
+.login-links{
+  position: absolute;
+  bottom: 0;
+  width: 182px;
+  margin-left: -91.5px;
+  left: 50%;
+
+  a{
+    text-decoration: underline;
+    cursor: pointer;
+    color: white !important;
+  }
+}
+
+@media only screen and (max-width: 599px) {
+  .login-text {
+    width: fit-content;
+    margin: auto;
+  }
+}
+
+@media only screen and (min-width: 1260px ) {
+  .login-left {
+    width: 450px;
+    position: relative;
+  }
+  .login {
+    display: flex;
+    flex-direction: row;
+  }
+  .steam-login-img{
+    bottom: 6rem;
+  }
+  .login-right{
+    display: flex;
+  }
+}
+
+@media only screen and (min-width: 1930px ) {
+  .login-left {
+    width: 25%;
+  }
+}

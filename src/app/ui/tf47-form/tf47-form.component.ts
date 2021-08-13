@@ -2,6 +2,11 @@ import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { DynamicFormModel, DynamicFormService } from '@ng-dynamic-forms/core';
 
+export interface FormSettings {
+	readonly?: boolean;
+	customSubmit?: boolean;
+}
+
 @Component({
 	selector: 'tf47-form',
 	templateUrl: './tf47-form.component.html',
@@ -10,10 +15,13 @@ import { DynamicFormModel, DynamicFormService } from '@ng-dynamic-forms/core';
 export class Tf47FormComponent implements OnInit {
 	@Input() fields;
 	@Input() model;
+	@Input() formSettings: FormSettings;
 	@Output() formReady = new EventEmitter<void>();
+	@Output() submit = new EventEmitter<object>();
 	public formGroup: FormGroup;
 	public formModel: DynamicFormModel;
 	public ready: boolean = false;
+
 	constructor(private formService: DynamicFormService) {}
 
 	ngOnInit(): void {
@@ -30,5 +38,9 @@ export class Tf47FormComponent implements OnInit {
 
 	private populateForm() {
 		this.formGroup.patchValue(this.model);
+	}
+
+	submitForm() {
+		this.submit.emit(this.formGroup.getRawValue().group);
 	}
 }

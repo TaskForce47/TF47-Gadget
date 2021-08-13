@@ -19,17 +19,17 @@ export class LogsComponent implements OnInit {
 	}
 
 	public subnaviItems: MenuItem[] = [
-		{
+		/*		{
 			label: 'Chat',
 			routerLink: ['../', 'chat'],
-		},
+		},*/
 		{
 			label: 'Ticket',
 			routerLink: ['../', 'ticket'],
 		},
-		{
+		/*		{
 			label: 'Gadget',
 			routerLink: ['../', 'gadget'],
-		},
+		},*/
 	];
 }

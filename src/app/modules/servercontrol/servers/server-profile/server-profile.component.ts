@@ -3,6 +3,7 @@ import serverProfileForm from '../../../../core/forms/server-profile';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { GameServer } from '../../../../core/models/Gadget';
+import { FormSettings } from '../../../../ui/tf47-form/tf47-form.component';
 
 @Component({
 	selector: 'app-server-profile',
@@ -16,6 +17,9 @@ export class ServerProfileComponent implements OnInit {
 	public formFields;
 	public ready: boolean = false;
 	public loading: boolean = true;
+	public formSettings: FormSettings = {
+		readonly: true,
+	};
 	constructor(private http: HttpClient, private activatedRoute: ActivatedRoute) {}
 
 	ngOnInit(): void {

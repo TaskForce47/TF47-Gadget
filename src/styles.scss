@@ -34,7 +34,9 @@ a:-webkit-any-link {
 .p-menuitem-text {
 	cursor: pointer;
 }
-
+ul{
+  list-style: none;
+}
 .p-breadcrumb {
 	font-size: 0.75rem !important;
 	padding: 0.25rem !important;
@@ -218,6 +220,12 @@ a:-webkit-any-link {
 	}
 }
 
+.fc-header-toolbar{
+  display: flex;
+  flex-direction: column;
+}
+
+
 @media screen and (min-width: 992px) {
 	.nav-side {
 		transform: translateX(0%);
@@ -225,6 +233,9 @@ a:-webkit-any-link {
 	.content-area {
 		margin-left: 16rem;
 	}
+  .fc-header-toolbar{
+    flex-direction: row;
+  }
 }
 .expand-side-menu {
 	transform: translate(0%);
@@ -462,23 +473,16 @@ a {
 .mapboxgl-ctrl-attrib {
 	display: none !important;
 }
-.ng-dynamic-forms-checkbox {
-	margin-bottom: 0.5rem;
-}
-.ng-dynamic-forms-input {
-	margin-bottom: 0.5rem;
-}
-.ng-dynamic-forms-select {
-	margin-bottom: 0.5rem;
-}
-.ng-dynamic-forms-datepicker {
-	margin-bottom: 0.5rem;
-}
-.ng-dynamic-forms-textarea {
-	margin-bottom: 0.5rem;
-}
+.ng-dynamic-forms-checkbox,
+.ng-dynamic-forms-input,
+.ng-dynamic-forms-select,
+.ng-dynamic-forms-datepicker,
+.ng-dynamic-forms-textarea,
 .ng-dynamic-forms-colorpicker {
-	margin-bottom: 0.5rem;
+	margin-bottom: .75rem;
+  &:first-child {
+    margin-bottom: .5rem;
+  }
 }
 .p-inputtextarea {
 	width: 100%;
@@ -1920,4 +1924,28 @@ form {
 
 .user-banned{
   color: red;
+}
+
+.status-box {
+  padding: .50rem;
+  border: 2px solid var(--surface-g);
+  width: 200px;
+}
+
+.status-online{
+  background-color: green;
+}
+
+.status-offline{
+  background-color: red;
+}
+
+.status-locked{
+  background-color: lightblue;
+}
+
+.status-indicator {
+  width: 20px;
+  height: 20px;
+  border-radius: 999999999px;
 }

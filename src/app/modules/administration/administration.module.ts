@@ -39,6 +39,8 @@ import { EventAddComponent } from './eventmanager/event-add/event-add.component'
 import { EventProfileComponent } from './eventmanager/event-profile/event-profile.component';
 import { EventComponent } from './eventmanager/event/event.component';
 import { EventmanagerComponent } from './eventmanager/eventmanager/eventmanager.component';
+import { EventDescriptionComponent } from './eventmanager/event-description/event-description.component';
+import { EventSlottingComponent } from './eventmanager/event-slotting/event-slotting.component';
 
 const routes: Routes = [
 	{
@@ -104,7 +106,7 @@ const routes: Routes = [
 			},
 		],
 	},
-	{ path: 'logs', redirectTo: 'logs/chat' },
+	{ path: 'logs', redirectTo: 'logs/ticket' },
 	{
 		path: 'logs/:type',
 		component: LogsComponent,
@@ -199,6 +201,14 @@ const routes: Routes = [
 						path: 'profile',
 						component: EventProfileComponent,
 					},
+					{
+						path: 'description',
+						component: EventDescriptionComponent,
+					},
+					{
+						path: 'slotting',
+						component: EventSlottingComponent,
+					},
 				],
 			},
 		],
@@ -239,6 +249,8 @@ const routes: Routes = [
 		EventProfileComponent,
 		EventComponent,
 		EventmanagerComponent,
+		EventDescriptionComponent,
+		EventSlottingComponent,
 	],
 	imports: [
 		CommonModule,

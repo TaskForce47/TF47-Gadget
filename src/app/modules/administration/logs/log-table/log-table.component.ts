@@ -66,7 +66,7 @@ export class LogTableComponent implements OnInit, OnChanges {
 				this.loadChat('/1');
 				break;
 			case 'ticket':
-				this.gridSettings.endpointUrl = '/Stats/TicketLog';
+				this.gridSettings.endpointUrl = '/Ticket';
 				this.defaultHeaders = [
 					'missionName',
 					'playerName',
@@ -86,7 +86,7 @@ export class LogTableComponent implements OnInit, OnChanges {
 					{ field: 'ticketNow', header: 'Current Tickets' },
 					{ field: 'ticketChange', header: 'Ticket Change' },
 				];
-				this.loadTickets('/1');
+				this.loadTickets('?pageNumber=1');
 				break;
 			case 'gadget':
 				this.gridSettings.endpointUrl = '/PlayerNotes/getLatest';
@@ -119,13 +119,13 @@ export class LogTableComponent implements OnInit, OnChanges {
 
 		switch (this.type) {
 			case 'chat':
-				this.loadChat('/' + firstElementId / $event.rows + '?rows=' + $event.rows);
+				this.loadChat('/' + firstElementId / $event.rows);
 				break;
 			case 'ticket':
-				this.loadTickets('/' + firstElementId / $event.rows + '?rows=' + $event.rows);
+				this.loadTickets('?pageNumber=' + firstElementId / $event.rows);
 				break;
 			case 'gadget':
-				this.loadGadgetNotes('/' + firstElementId / $event.rows + '?rows=' + $event.rows);
+				this.loadGadgetNotes('/' + firstElementId / $event.rows);
 				break;
 		}
 	}
