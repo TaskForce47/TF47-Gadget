@@ -91,6 +91,9 @@ import { Tf47FormComponent } from './tf47-form/tf47-form.component';
 import { DynamicFormsPrimeNGUIModule } from '@ng-dynamic-forms/ui-primeng';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgxEditorModule } from 'ngx-editor';
+import { FormElementComponent } from './form-components/form-element/form-element.component';
+import { Tf47FormNewComponent } from './tf47-form-new/tf47-form-new.component';
+import { Tf47InputComponent } from './form-components/tf47-input/tf47-input.component';
 
 FullCalendarModule.registerPlugins([dayGridPlugin, interactionPlugin, timeGridPlugin]);
 
@@ -107,6 +110,9 @@ FullCalendarModule.registerPlugins([dayGridPlugin, interactionPlugin, timeGridPl
 		Tf47DataViewComponent,
 		Tf47EditorComponent,
 		Tf47FormComponent,
+    FormElementComponent,
+    Tf47FormNewComponent,
+    Tf47InputComponent,
 	],
 	imports: [
 		CommonModule,
@@ -271,6 +277,7 @@ FullCalendarModule.registerPlugins([dayGridPlugin, interactionPlugin, timeGridPl
 		MarkdownModule,
 		Tf47FormComponent,
 		Tf47EditorComponent,
+    Tf47FormNewComponent
 	],
 })
 export class UiModule {}

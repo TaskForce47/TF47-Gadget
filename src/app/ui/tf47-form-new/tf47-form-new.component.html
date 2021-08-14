@@ -1,0 +1,3 @@
+<form [formGroup]="form" *ngIf="formReady">
+      <input *ngFor="let formField of formFields" formControlName="{{formField.information.name}}" type="text" pInputText />
+</form>

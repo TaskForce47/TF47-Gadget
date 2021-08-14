@@ -25,7 +25,7 @@
 			},
 			"root": "",
 			"sourceRoot": "src",
-			"prefix": "app",
+			"prefix": "",
 			"architect": {
 				"build": {
 					"builder": "@angular-devkit/build-angular:browser",
@@ -88,15 +88,7 @@
 							"serviceWorker": true,
 							"ngswConfigPath": "ngsw-config.json"
 						},
-						"development": {
-              "optimization": {
-                "scripts": true,
-                "styles": {
-                  "inlineCritical": false
-                },
-                "fonts": true
-              }
-            }
+						"development": {}
 					},
 					"defaultConfiguration": "development"
 				},
