@@ -1,16 +1,11 @@
-interface Information {
-  displayName?: string;
-  name?: string;
-}
-
-interface View {
-  readonly?: boolean;
-  disabled?: boolean;
-}
-
+import { FormOptionModel } from './form-field-options.model';
+import { FormFieldRestrictionsModel } from './form-field-restrictions.model';
 
 export class FormFieldModel {
-  public dataType: string;
-  public view: View;
-  public information: Information;
+	field: string;
+  displayName: string;
+	type: string;
+	options?: FormOptionModel[];
+	required?: boolean;
+	restrictions?: FormFieldRestrictionsModel;
 }

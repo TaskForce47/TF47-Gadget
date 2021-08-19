@@ -1,0 +1,21 @@
+<div>
+	<label>
+		<div style="display: inline-flex;">
+			{{ field.displayName }}
+			<span *ngIf="field.required" style="color: red">*</span>
+			<span *ngIf="formControl?.invalid && (formControl?.dirty || formControl?.touched)" style="color: red; margin-left: .25rem;">
+				<tf47-tooltip></tf47-tooltip>
+			</span>
+		</div>
+		<ng-container [ngSwitch]="field.type">
+			<tf47-text *ngSwitchCase="'TEXT'" [field]="field"></tf47-text>
+			<tf47-number *ngSwitchCase="'NUMBER'" [field]="field"></tf47-number>
+			<tf47-radio *ngSwitchCase="'RADIO'" [field]="field"></tf47-radio>
+			<tf47-colorpicker *ngSwitchCase="'COLOR'" [field]="field"></tf47-colorpicker>
+			<tf47-select *ngSwitchCase="'SELECT'" [field]="field"></tf47-select>
+			<tf47-date *ngSwitchCase="'DATE'" [field]="field"></tf47-date>
+			<tf47-textarea *ngSwitchCase="'TEXTAREA'" [field]="field"></tf47-textarea>
+		</ng-container>
+		<!-- {{formControl?.errors|json}} -->
+	</label>
+</div>

@@ -1,0 +1,11 @@
+<ul class="radio-button-group">
+  <li *ngFor="let option of field.options">
+    <p-radioButton
+		[value]="option.value"
+		[label]="option.label"
+		[disabled]="disabled"
+		[(ngModel)]="value"
+    [formControl]="formControl"
+	></p-radioButton>
+  </li>
+</ul>

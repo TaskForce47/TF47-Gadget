@@ -1,3 +1,5 @@
-<form [formGroup]="form" *ngIf="formReady">
-      <input *ngFor="let formField of formFields" formControlName="{{formField.information.name}}" type="text" pInputText />
+<form [formGroup]="form">
+  <form-element-wrapper *ngFor="let field of formFields" [field]="field" [controlName]="field.field"></form-element-wrapper>
 </form>
+
+<pre>{{form?.value|json}}</pre>

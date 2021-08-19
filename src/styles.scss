@@ -1949,3 +1949,14 @@ form {
   height: 20px;
   border-radius: 999999999px;
 }
+
+.p-inputnumber {
+  display: block !important;
+}
+.radio-button-group{
+  display: flex;
+  flex-direction: column;
+  p-radioButton{
+    margin-top: .5rem;
+  }
+}

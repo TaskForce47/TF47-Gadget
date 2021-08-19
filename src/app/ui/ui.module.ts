@@ -91,9 +91,16 @@ import { Tf47FormComponent } from './tf47-form/tf47-form.component';
 import { DynamicFormsPrimeNGUIModule } from '@ng-dynamic-forms/ui-primeng';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgxEditorModule } from 'ngx-editor';
-import { FormElementComponent } from './form-components/form-element/form-element.component';
 import { Tf47FormNewComponent } from './tf47-form-new/tf47-form-new.component';
-import { Tf47InputComponent } from './form-components/tf47-input/tf47-input.component';
+import { FormElementWrapperComponent } from './form/form-element-wrapper/form-element-wrapper.component';
+import { Tf47TextComponent } from './form/form-elements/tf47-text/tf47-text.component';
+import { Tf47NumberComponent } from './form/form-elements/tf47-number/tf47-number.component';
+import { Tf47DateComponent } from './form/form-elements/tf47-date/tf47-date.component';
+import { Tf47SelectComponent } from './form/form-elements/tf47-select/tf47-select.component';
+import { Tf47RadioComponent } from './form/form-elements/tf47-radio/tf47-radio.component';
+import { Tf47CheckboxComponent } from './form/form-elements/tf47-checkbox/tf47-checkbox.component';
+import { Tf47ColorpickerComponent } from './form/form-elements/tf47-colorpicker/tf47-colorpicker.component';
+import { Tf47TextareaComponent } from './form/form-elements/tf47-textarea/tf47-textarea.component';
 
 FullCalendarModule.registerPlugins([dayGridPlugin, interactionPlugin, timeGridPlugin]);
 
@@ -110,9 +117,16 @@ FullCalendarModule.registerPlugins([dayGridPlugin, interactionPlugin, timeGridPl
 		Tf47DataViewComponent,
 		Tf47EditorComponent,
 		Tf47FormComponent,
-    FormElementComponent,
     Tf47FormNewComponent,
-    Tf47InputComponent,
+    FormElementWrapperComponent,
+    Tf47TextComponent,
+    Tf47NumberComponent,
+    Tf47DateComponent,
+    Tf47SelectComponent,
+    Tf47RadioComponent,
+    Tf47CheckboxComponent,
+    Tf47ColorpickerComponent,
+    Tf47TextareaComponent
 	],
 	imports: [
 		CommonModule,
