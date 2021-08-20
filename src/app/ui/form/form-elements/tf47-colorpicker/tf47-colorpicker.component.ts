@@ -1,53 +1,11 @@
-import { Component, forwardRef, Input, OnInit } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { Component } from '@angular/core';
+import { BasicFormElement } from '../../form-element-wrapper/basic-form-element';
 
 @Component({
 	selector: 'tf47-colorpicker',
 	templateUrl: './tf47-colorpicker.component.html',
-	styleUrls: ['./tf47-colorpicker.component.scss'],
-	providers: [
-		{
-			provide: NG_VALUE_ACCESSOR,
-			multi: true,
-			useExisting: forwardRef(() => Tf47ColorpickerComponent),
-		},
-	],
+	styleUrls: ['./tf47-colorpicker.component.scss']
 })
-export class Tf47ColorpickerComponent implements ControlValueAccessor {
-	value = null;
+export class Tf47ColorpickerComponent extends BasicFormElement {
 
-	@Input() field;
-
-	public touched = false;
-
-	public disabled = false;
-
-	onChange = (value) => {
-		this.value = value;
-	};
-
-	onTouched = () => {};
-
-	writeValue(value: string) {
-		this.value = value;
-	}
-
-	registerOnChange(onChange: any) {
-		this.onChange = onChange;
-	}
-
-	registerOnTouched(onTouched: any) {
-		this.onTouched = onTouched;
-	}
-
-	markAsTouched() {
-		if (!this.touched) {
-			this.onTouched();
-			this.touched = true;
-		}
-	}
-
-	setDisabledState(disabled: boolean) {
-		this.disabled = disabled;
-	}
 }

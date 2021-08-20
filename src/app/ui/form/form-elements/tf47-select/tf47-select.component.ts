@@ -6,6 +6,4 @@ import { BasicFormElement } from '../../form-element-wrapper/basic-form-element'
 	templateUrl: './tf47-select.component.html',
 	styleUrls: ['./tf47-select.component.scss']
 })
-export class Tf47SelectComponent extends BasicFormElement {
-
-}
+export class Tf47SelectComponent extends BasicFormElement {}

@@ -1,5 +1,15 @@
-<form [formGroup]="form">
-  <form-element-wrapper *ngFor="let field of formFields" [field]="field" [controlName]="field.field"></form-element-wrapper>
+<p-progressSpinner *ngIf="!formReady" styleClass="custom-spinner" strokeWidth="8" animationDuration="2s"></p-progressSpinner>
+<form [formGroup]="form" *ngIf="formReady" #formEl>
+	<ngx-masonry [options]="masonryOptions" *ngFor="let formFieldGroup of formFieldGroups" #masonry>
+		<div ngxMasonryItem *ngFor="let fieldGroup of formFieldGroup">
+			<h3>{{ fieldGroup?.label }}</h3>
+			<form-element-wrapper
+				*ngFor="let field of fieldGroup.fields"
+				[field]="field"
+				[controlName]="field.field"
+			></form-element-wrapper>
+		</div>
+	</ngx-masonry>
+  <button pButton [disabled]="form?.invalid || form?.untouched">Submit</button>
 </form>
-
-<pre>{{form?.value|json}}</pre>
+<!-- <pre>{{ form?.value | json }}</pre> -->

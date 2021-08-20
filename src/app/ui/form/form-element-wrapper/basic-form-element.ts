@@ -1,5 +1,5 @@
 import { Input, Component, OnInit } from '@angular/core';
-import { ControlValueAccessor, FormControl, FormGroupDirective } from '@angular/forms';
+import { FormControl, FormGroupDirective } from '@angular/forms';
 @Component({
 	template: ``,
 })

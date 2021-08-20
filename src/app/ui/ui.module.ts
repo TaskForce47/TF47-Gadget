@@ -101,7 +101,8 @@ import { Tf47RadioComponent } from './form/form-elements/tf47-radio/tf47-radio.c
 import { Tf47CheckboxComponent } from './form/form-elements/tf47-checkbox/tf47-checkbox.component';
 import { Tf47ColorpickerComponent } from './form/form-elements/tf47-colorpicker/tf47-colorpicker.component';
 import { Tf47TextareaComponent } from './form/form-elements/tf47-textarea/tf47-textarea.component';
-
+import { NgxMasonryModule } from 'ngx-masonry';
+import { Tf47MultiselectComponent } from './form/form-elements/tf47-multiselect/tf47-multiselect.component';
 FullCalendarModule.registerPlugins([dayGridPlugin, interactionPlugin, timeGridPlugin]);
 
 @NgModule({
@@ -126,7 +127,8 @@ FullCalendarModule.registerPlugins([dayGridPlugin, interactionPlugin, timeGridPl
     Tf47RadioComponent,
     Tf47CheckboxComponent,
     Tf47ColorpickerComponent,
-    Tf47TextareaComponent
+    Tf47TextareaComponent,
+    Tf47MultiselectComponent
 	],
 	imports: [
 		CommonModule,
@@ -198,6 +200,7 @@ FullCalendarModule.registerPlugins([dayGridPlugin, interactionPlugin, timeGridPl
 		TerminalModule,
 		ChipModule,
 		FullCalendarModule,
+    CalendarModule,
 		DividerModule,
 		TagModule,
 		TimelineModule,
@@ -205,6 +208,7 @@ FullCalendarModule.registerPlugins([dayGridPlugin, interactionPlugin, timeGridPl
 		DynamicFormsPrimeNGUIModule,
 		ReactiveFormsModule,
 		NgxEditorModule,
+    NgxMasonryModule
 	],
 	exports: [
 		CheckboxModule,
@@ -291,7 +295,8 @@ FullCalendarModule.registerPlugins([dayGridPlugin, interactionPlugin, timeGridPl
 		MarkdownModule,
 		Tf47FormComponent,
 		Tf47EditorComponent,
-    Tf47FormNewComponent
+    Tf47FormNewComponent,
+    NgxMasonryModule
 	],
 })
 export class UiModule {}

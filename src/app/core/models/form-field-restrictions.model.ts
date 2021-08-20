@@ -1,6 +1,4 @@
 class NumberFieldRestrictionsModel {
-	min?: number;
-	max?: number;
 	step?: number;
 	minFractionDigits?: number;
 	maxFractionDigits?: number;
@@ -14,5 +12,8 @@ export class FormFieldRestrictionsModel {
   minLength?: number;
   maxLength?: number;
   pattern?: string;
+  min?: number;
+	max?: number;
+  multi?: boolean;
 	numberField?: NumberFieldRestrictionsModel;
 }

@@ -1,11 +1,8 @@
-<div>
+<div style="width: 100%;" class="form_element">
 	<label>
-		<div style="display: inline-flex;">
+		<div style="display: inline-flex; width: 100%;">
 			{{ field.displayName }}
-			<span *ngIf="field.required" style="color: red">*</span>
-			<span *ngIf="formControl?.invalid && (formControl?.dirty || formControl?.touched)" style="color: red; margin-left: .25rem;">
-				<tf47-tooltip></tf47-tooltip>
-			</span>
+			<span *ngIf="field.required" style="color: red">&nbsp;*</span>
 		</div>
 		<ng-container [ngSwitch]="field.type">
 			<tf47-text *ngSwitchCase="'TEXT'" [field]="field"></tf47-text>
@@ -13,9 +10,16 @@
 			<tf47-radio *ngSwitchCase="'RADIO'" [field]="field"></tf47-radio>
 			<tf47-colorpicker *ngSwitchCase="'COLOR'" [field]="field"></tf47-colorpicker>
 			<tf47-select *ngSwitchCase="'SELECT'" [field]="field"></tf47-select>
+			<tf47-multiselect *ngSwitchCase="'MULTISELECT'" [field]="field"></tf47-multiselect>
 			<tf47-date *ngSwitchCase="'DATE'" [field]="field"></tf47-date>
 			<tf47-textarea *ngSwitchCase="'TEXTAREA'" [field]="field"></tf47-textarea>
 		</ng-container>
-		<!-- {{formControl?.errors|json}} -->
+    <ul *ngIf="formControl?.errors && formControl?.invalid && (formControl?.dirty || formControl?.touched)">
+      <li *ngIf="formControl?.errors?.required">This field is required</li>
+      <li *ngIf="formControl?.errors?.min">Min value: {{formControl?.errors?.min?.min}}. Current value: {{formControl?.errors?.min?.current}}</li>
+      <li *ngIf="formControl?.errors?.max">Max value: {{formControl?.errors?.max?.max}}. Current value: {{formControl?.errors?.min?.current}}</li>
+      <li *ngIf="formControl?.errors?.minlength">Min length: {{formControl?.errors?.minlength?.requiredLength}}. Current length: {{formControl?.errors?.minlength?.actualLength}}</li>
+      <li *ngIf="formControl?.errors?.maxlength">Max length: {{formControl?.errors?.maxlength?.requiredLength}}. Current length: {{formControl?.errors?.maxlength?.actualLength}}</li>
+    </ul>
 	</label>
 </div>

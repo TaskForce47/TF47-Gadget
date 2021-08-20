@@ -1953,10 +1953,15 @@ form {
 .p-inputnumber {
   display: block !important;
 }
+
 .radio-button-group{
   display: flex;
   flex-direction: column;
   p-radioButton{
     margin-top: .5rem;
   }
+}
+
+.form_element {
+  margin-bottom: 1rem;
 }
